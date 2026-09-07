@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seema Resort | Best Resort In Neral</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#0B5A28;
+    --forest-deep:#073D1B;
+    --leaf:#5C9A34;
+    --leaf-light:#8CC63F;
+    --gold:#E8A23A;
+    --gold-dark:#C6821F;
+    --cream:#F7F8F1;
+    --cream-soft:#EEF2E4;
+    --charcoal:#20281D;
+    --paper:#FBFBF6;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--charcoal);
+    font-family:'Karla',sans-serif;
+    font-size:17px;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:var(--cream);
+    border-bottom:1px solid rgba(42,38,34,0.1);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 0;
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:1.35rem;
+    display:flex;align-items:baseline;gap:8px;
+  }
+  .brand em{
+    font-style:italic;font-weight:500;color:var(--gold);
+  }
+  nav.links{display:flex;gap:32px;font-size:0.96rem;font-weight:500;}
+  nav.links a{text-decoration:none;position:relative;padding-bottom:3px;}
+  nav.links a:hover{color:var(--forest);}
+  .call-btn{
+    background:var(--forest);color:var(--paper);
+    padding:10px 20px;border-radius:3px;
+    text-decoration:none;font-weight:600;font-size:0.92rem;
+    white-space:nowrap;
+  }
+  .call-btn:hover{background:var(--forest-deep);}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--forest);}
+  @media(max-width:860px){
+    nav.links{
+      display:none;
+      position:absolute;top:100%;left:0;right:0;
+      background:var(--paper);
+      flex-direction:column;gap:0;
+      border-bottom:1px solid rgba(0,0,0,0.08);
+    }
+    nav.links.open{display:flex;}
+    nav.links a{padding:16px 20px;border-top:1px solid rgba(0,0,0,0.06);}
+    .menu-toggle{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(180deg,#EAF3E0 0%,#F0F5E8 40%,var(--cream) 100%);
+  }
+  .hero-inner{
+    position:relative;z-index:2;
+    padding:76px 32px 0;
+    max-width:1180px;margin:0 auto;
+    display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;
+  }
+  @media(max-width:900px){
+    .hero-inner{grid-template-columns:1fr;padding-top:48px;}
+  }
+  .eyebrow-line{
+    font-size:0.95rem;color:var(--forest);font-weight:600;margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem,5vw,3.6rem);
+    line-height:1.05;
+    color:var(--forest-deep);
+    margin-bottom:22px;
+  }
+  .hero h1 i{font-style:italic;font-weight:500;color:var(--forest);}
+  .hero p.lede{
+    font-size:1.14rem;max-width:46ch;color:#3c372f;margin-bottom:30px;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px;}
+  .btn-primary{
+    background:var(--forest);color:var(--paper);
+    padding:14px 26px;border-radius:3px;text-decoration:none;
+    font-weight:600;font-size:0.98rem;display:inline-block;
+  }
+  .btn-primary:hover{background:var(--forest-deep);}
+  .btn-ghost{
+    border:1.5px solid var(--forest);color:var(--forest);
+    padding:13px 25px;border-radius:3px;text-decoration:none;
+    font-weight:600;font-size:0.98rem;display:inline-block;
+  }
+  .btn-ghost:hover{background:rgba(36,56,45,0.06);}
+
+  .hero-art{align-self:end;}
+  .hero-art svg{width:100%;height:auto;}
+
+  /* ---------- ROUTE STRIP ---------- */
+  .route{
+    background:var(--forest-deep);
+    color:var(--paper);
+    padding:52px 0 58px;
+  }
+  .route .wrap{position:relative;}
+  .route-head{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+    font-size:1.3rem;color:#D9CFB2;margin-bottom:38px;
+  }
+  .route-track{
+    display:flex;align-items:flex-start;justify-content:space-between;
+    position:relative;gap:12px;
+  }
+  .route-track::before{
+    content:"";position:absolute;top:9px;left:0;right:0;height:2px;
+    background:repeating-linear-gradient(90deg,rgba(217,164,65,0.55) 0 10px, transparent 10px 20px);
+  }
+  .stop{position:relative;flex:1;padding-top:32px;min-width:0;}
+  .stop::before{
+    content:"";position:absolute;top:0;left:0;width:20px;height:20px;
+    border-radius:50%;background:var(--gold);border:3px solid var(--forest-deep);
+  }
+  .stop.here::before{background:var(--leaf-light);width:22px;height:22px;}
+  .stop h3{font-family:'Karla',sans-serif;font-weight:700;font-size:1rem;color:var(--paper);margin-bottom:6px;}
+  .stop span{font-size:0.9rem;color:#BFB89C;}
+  @media(max-width:720px){
+    .route-track{flex-direction:column;gap:28px;}
+    .route-track::before{width:2px;height:100%;top:0;left:9px;right:auto;
+      background:repeating-linear-gradient(180deg,rgba(217,164,65,0.55) 0 10px, transparent 10px 20px);}
+    .stop{padding-top:0;padding-left:36px;}
+    .stop::before{top:2px;left:0;}
+  }
+
+  /* ---------- SECTION HEADS ---------- */
+  .section{padding:88px 0;}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head h2{font-size:clamp(1.9rem,3.4vw,2.5rem);color:var(--forest-deep);margin-bottom:14px;}
+  .section-head p{color:#524C40;font-size:1.05rem;}
+  .kicker{color:var(--forest);font-weight:600;font-size:0.92rem;margin-bottom:10px;font-family:'Fraunces',serif;font-style:italic;}
+
+  /* ---------- ROOMS ---------- */
+  .rooms{display:flex;flex-direction:column;gap:2px;background:rgba(42,38,34,0.1);}
+  .room{
+    display:grid;grid-template-columns:280px 1fr auto;gap:32px;
+    background:var(--paper);padding:34px 30px;align-items:center;
+  }
+  .room:nth-child(even){background:#FBF7EE;}
+  @media(max-width:760px){
+    .room{grid-template-columns:1fr;gap:16px;}
+  }
+  .room-visual{
+    height:150px;border-radius:2px;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;
+  }
+  .room-visual span.tag{
+    position:relative;z-index:1;color:#fff;font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;
+  }
+  .room h3{font-size:1.35rem;color:var(--forest-deep);margin-bottom:8px;}
+  .room p{color:#5a5344;margin:0 0 10px;font-size:0.98rem;}
+  .room .meta{font-size:0.86rem;color:var(--forest);font-weight:600;}
+  .room .price{text-align:right;white-space:nowrap;}
+  .room .price strong{font-size:1.4rem;font-family:'Fraunces',serif;color:var(--forest-deep);display:block;}
+  .room .price span{font-size:0.82rem;color:#7a7364;}
+
+  /* ---------- CHECK-IN SLOTS ---------- */
+  .slot-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media(max-width:640px){.slot-grid{grid-template-columns:1fr;}}
+  .slot-card{
+    background:var(--paper);border:1px solid rgba(42,38,34,0.1);border-radius:4px;
+    padding:28px 26px;
+  }
+  .slot-card h3{font-size:1.05rem;color:var(--forest);margin-bottom:16px;}
+  .slot-flow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .slot-point{flex:1;min-width:120px;}
+  .slot-point .label{font-size:0.78rem;color:#8a836f;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;}
+  .slot-point .time{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--forest-deep);font-weight:700;}
+  .slot-point .part{font-size:0.85rem;color:#5a5344;}
+  .slot-arrow{color:var(--gold-dark);font-size:1.3rem;}
+
+  /* ---------- ROOMS ---------- */
+  .rooms-note{font-size:0.92rem;color:#7a7364;font-style:italic;margin-top:-30px;margin-bottom:40px;}
+  .rooms-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(42,38,34,0.1);}
+  @media(max-width:820px){.rooms-grid{grid-template-columns:1fr;}}
+  .room-card{background:var(--paper);}
+  .room-card:nth-child(even){background:#FBF7EE;}
+  .room-visual{
+    height:230px;position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--cream-soft);
+  }
+  .room-visual img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+  .room-visual span.tag{
+    position:relative;z-index:1;color:#fff;font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;
+  }
+  .room-visual span.soon{
+    position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.32);color:#fff;
+    font-size:0.72rem;padding:4px 10px;border-radius:12px;font-weight:600;
+  }
+  .room-body{padding:26px 26px 30px;}
+  .room-body h3{font-size:1.3rem;color:var(--forest-deep);margin-bottom:6px;}
+  .room-body .tagline{color:#5a5344;font-size:0.92rem;margin:0 0 16px;}
+  .price-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;}
+  .price-chip{background:var(--cream-soft);padding:10px 16px;border-radius:3px;}
+  .price-chip strong{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--forest-deep);display:block;line-height:1.3;}
+  .price-chip span{font-size:0.76rem;color:#7a7364;}
+  .meal-slots{display:grid;grid-template-columns:1fr 1fr;gap:16px;border-top:1px solid rgba(42,38,34,0.1);padding-top:16px;}
+  @media(max-width:480px){.meal-slots{grid-template-columns:1fr;}}
+  .meal-slot h4{font-size:0.8rem;font-weight:700;color:var(--forest);margin:0 0 6px;}
+  .meal-slot p{font-size:0.85rem;color:#5a5344;margin:0;line-height:1.5;}
+
+  /* ---------- AMENITIES ---------- */
+  .amenities-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(42,38,34,0.12);}
+  @media(max-width:760px){.amenities-grid{grid-template-columns:1fr;}}
+  .amenity-card{background:var(--cream);padding:34px 30px;}
+  .amenity-card h3{font-size:1.12rem;margin-bottom:14px;color:var(--forest-deep);}
+  .amenity-card ul{margin:0;padding-left:18px;color:#5a5344;font-size:0.95rem;line-height:1.9;}
+  .amenity-card ul li::marker{color:var(--forest);}
+
+  /* ---------- GOOD TO KNOW ---------- */
+  .info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(42,38,34,0.12);}
+  @media(max-width:900px){.info-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.info-grid{grid-template-columns:1fr;}}
+  .info-card{background:var(--cream);padding:30px 26px;}
+  .info-card h3{font-size:1.02rem;margin-bottom:12px;color:var(--forest-deep);}
+  .info-card ul{margin:0;padding-left:16px;color:#5a5344;font-size:0.9rem;line-height:1.75;}
+  .info-card ul li::marker{color:var(--gold-dark);}
+
+  /* ---------- GALLERY ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  @media(max-width:860px){.gallery{grid-template-columns:repeat(2,1fr);}}
+  .g-tile{
+    aspect-ratio:4/5;border-radius:2px;position:relative;overflow:hidden;
+    display:flex;align-items:flex-end;padding:16px;
+    background:var(--cream-soft);
+  }
+  .g-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;}
+  .g-tile span{position:relative;z-index:2;color:#fff;font-weight:600;font-size:0.92rem;}
+  .g-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.45));}
+  .g-note{margin-top:18px;font-size:0.88rem;color:#7a7364;}
+
+  /* ---------- QUOTE ---------- */
+  .quote-block{
+    background:var(--forest);color:var(--paper);padding:70px 0;
+  }
+  .quote-block blockquote{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+    font-size:clamp(1.4rem,2.6vw,1.9rem);max-width:760px;margin:0 0 20px;
+    line-height:1.4;
+  }
+  .quote-block cite{font-style:normal;font-weight:600;font-size:0.95rem;opacity:0.85;}
+
+  /* ---------- LOCATION / BOOK ---------- */
+  .book{background:var(--forest-deep);color:var(--paper);}
+  .book .section-head h2{color:var(--paper);}
+  .book .section-head p{color:#C9C1A6;}
+  .book-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  @media(max-width:860px){.book-grid{grid-template-columns:1fr;}}
+  .book-info h3{font-size:1.1rem;margin-bottom:6px;color:var(--gold);}
+  .book-info p{color:#D9D2B8;margin:0 0 26px;font-size:0.96rem;}
+  .map-box{
+    border:1px solid rgba(217,207,178,0.3);border-radius:3px;
+    padding:22px;font-size:0.88rem;color:#C9C1A6;
+  }
+  form.book-form{display:flex;flex-direction:column;gap:14px;}
+  form.book-form label{font-size:0.85rem;color:#C9C1A6;margin-bottom:4px;display:block;}
+  form.book-form input, form.book-form textarea, form.book-form select{
+    width:100%;padding:12px 14px;border-radius:3px;border:1px solid rgba(217,207,178,0.35);
+    background:rgba(255,255,255,0.06);color:var(--paper);font-family:'Karla',sans-serif;font-size:0.95rem;
+  }
+  form.book-form select{background-color:var(--forest-deep);}
+  form.book-form select option{background:var(--forest-deep);color:var(--paper);}
+  form.book-form input::placeholder, form.book-form textarea::placeholder{color:#8f886f;}
+  .row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:480px){.row-2{grid-template-columns:1fr;}}
+  form.book-form button{
+    margin-top:8px;background:var(--gold);color:var(--forest-deep);border:none;
+    padding:14px;border-radius:3px;font-weight:700;font-size:0.98rem;cursor:pointer;font-family:'Karla',sans-serif;
+  }
+  form.book-form button:hover{background:var(--gold-dark);color:var(--forest-deep);}
+  .form-note{font-size:0.82rem;color:#8f886f;margin-top:4px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--forest-deep);border-top:1px solid rgba(217,207,178,0.15);padding:34px 0;color:#8f886f;font-size:0.85rem;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a href="#top" class="brand-logo" style="display:flex;align-items:center;"><img src="images/logo%20s.webp" alt="Seema's Resort" style="height:52px;width:auto;display:block;"></a>
+    <nav class="links" id="navLinks">
+      <a href="#rooms">Rooms</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#book">Location &amp; Booking</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <a class="call-btn" href="tel:+91 7559411323">Call to Book</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow-line">Highway-touch resort in Neral, Maharashtra</div>
+      <h1>Right on the highway.<br><i>Best resort in Neral.</i></h1>
+      <p class="lede">Seema Resort sits directly on the highway at Neral — easy to spot, easy to stop at, and just as easy to stay the night.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#book">Check availability</a>
+        <a class="btn-ghost" href="#rooms">See rooms &amp; rates</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 560 460" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="430" cy="90" r="46" fill="#E8A23A" opacity="0.9"/>
+        <path d="M0 300 Q140 180 280 260 T560 220 L560 460 L0 460 Z" fill="#8CC63F"/>
+        <path d="M0 350 Q160 250 300 320 T560 280 L560 460 L0 460 Z" fill="#5C9A34"/>
+        <path d="M0 400 Q180 330 320 380 T560 350 L560 460 L0 460 Z" fill="#0B5A28"/>
+        <path d="M60 460 C140 340 180 300 240 300 C300 300 340 340 420 460 Z" fill="#073D1B" opacity="0.9"/>
+        <path d="M150 460 C210 380 250 350 300 350 C350 350 390 390 460 460 Z" fill="#0B5A28"/>
+        <path d="M230 460 C260 430 270 415 300 415 C325 415 340 435 370 460" stroke="#FBFBF6" stroke-width="6" fill="none" stroke-dasharray="2 16" stroke-linecap="round"/>
+        <rect x="205" y="392" width="34" height="26" rx="1" fill="#C6821F"/>
+        <polygon points="200,392 222,376 244,392" fill="#8F5E15"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="route">
+  <div class="wrap">
+    <div class="route-head">No detour required — we're right on the road</div>
+    <div class="route-track">
+      <div class="stop">
+        <h3>Mumbai / Pune</h3>
+        <span>Join the highway, stay on it</span>
+      </div>
+      <div class="stop">
+        <h3>Neral phata</h3>
+        <span>~1.5–2 hrs by car</span>
+      </div>
+      <div class="stop here">
+        <h3>Seema Resort</h3>
+        <span>Highway touch — you can't miss it</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="timings" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:36px;">
+      <div class="kicker">Two ways to check in</div>
+      <h2>Pick whichever slot fits your drive</h2>
+    </div>
+    <div class="slot-grid">
+      <div class="slot-card">
+        <h3>Slot 1</h3>
+        <div class="slot-flow">
+          <div class="slot-point">
+            <div class="label">Check-in</div>
+            <div class="time">12:00 PM</div>
+            <div class="part">Afternoon</div>
+          </div>
+          <div class="slot-arrow">&#8594;</div>
+          <div class="slot-point">
+            <div class="label">Check-out</div>
+            <div class="time">10:00 AM</div>
+            <div class="part">Morning, next day</div>
+          </div>
+        </div>
+      </div>
+      <div class="slot-card">
+        <h3>Slot 2</h3>
+        <div class="slot-flow">
+          <div class="slot-point">
+            <div class="label">Check-in</div>
+            <div class="time">5:00 PM</div>
+            <div class="part">Evening</div>
+          </div>
+          <div class="slot-arrow">&#8594;</div>
+          <div class="slot-point">
+            <div class="label">Check-out</div>
+            <div class="time">3:00 PM</div>
+            <div class="part">Afternoon, next day</div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem;color:var(--forest);font-weight:600;margin:14px 0 0;">Available only with the AP (meal-inclusive) plan</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="rooms">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Where you'll stay</div>
+      <h2>Four room types, all with full amenity access</h2>
+      <p>Every package includes a meal plan tied to your check-in slot, plus full access to the pool, lawns, and games.</p>
+    </div>
+    <p class="rooms-note">Prices may vary on weekends.</p>
+  </div>
+  <div class="rooms-grid wrap" style="padding:0 32px;">
+
+    <div class="room-card">
+      <div class="room-visual">
+      <img src="images/D4.jpg" alt="D4 Suite Cottage" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="room-body">
+        <h3>D4 Suite Cottage</h3>
+        <p class="tagline">Includes full access to all available resort amenities.</p>
+        <div class="price-row">
+          <div class="price-chip"><strong>₹7,500</strong><span>per couple, with meals</span></div>
+          <div class="price-chip"><strong>₹6,000</strong><span>room only</span></div>
+        </div>
+        <div class="meal-slots">
+          <div class="meal-slot">
+            <h4>Slot 1 · 12 PM – 10 AM</h4>
+            <p>Lunch, high-tea, dinner and next-day breakfast before check-out.</p>
+          </div>
+          <div class="meal-slot">
+            <h4>Slot 2 · 5 PM – 3 PM <span style="font-weight:600;color:var(--forest);font-size:0.72rem;">(AP plan only)</span></h4>
+            <p>High-tea, dinner, breakfast and lunch before check-out.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <div class="room-visual">
+      <img src="images/S1.jpg" alt="Elite Room" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="room-body">
+        <h3>Elite Room</h3>
+        <p class="tagline">Includes full access to all available resort amenities.</p>
+        <div class="price-row">
+          <div class="price-chip"><strong>₹6,000</strong><span>per couple, with meals</span></div>
+          <div class="price-chip"><strong>₹4,000</strong><span>room only</span></div>
+        </div>
+        <div class="meal-slots">
+          <div class="meal-slot">
+            <h4>Slot 1 · 12 PM – 10 AM</h4>
+            <p>Lunch, high-tea, dinner and next-day breakfast before check-out.</p>
+          </div>
+          <div class="meal-slot">
+            <h4>Slot 2 · 5 PM – 3 PM <span style="font-weight:600;color:var(--forest);font-size:0.72rem;">(AP plan only)</span></h4>
+            <p>High-tea, dinner, breakfast and lunch before check-out.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="room-card">
+      <div class="room-visual">
+      <img src="images/C2.png" alt="Couple Deluxe Premium Room" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="room-body">
+        <h3>Couple Deluxe Premium Room</h3>
+        <p class="tagline">Includes full access to all available resort amenities.</p>
+        <div class="price-row">
+          <div class="price-chip"><strong>₹6,500</strong><span>per couple, with meals</span></div>
+          <div class="price-chip"><strong>₹4,500</strong><span>room only</span></div>
+        </div>
+        <div class="meal-slots">
+          <div class="meal-slot">
+            <h4>Slot 1 · 12 PM – 10 AM</h4>
+            <p>Lunch, high-tea, dinner and next-day breakfast before check-out.</p>
+          </div>
+          <div class="meal-slot">
+            <h4>Slot 2 · 5 PM – 3 PM <span style="font-weight:600;color:var(--forest);font-size:0.72rem;">(AP plan only)</span></h4>
+            <p>High-tea, dinner, breakfast and lunch before check-out.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <div class="room-visual">
+      <img src="images/201.jpg" alt="Family Executive Room" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="room-body">
+        <h3>Family Executive Room</h3>
+        <p class="tagline">Includes full access to all available resort amenities.</p>
+        <div class="price-row">
+          <div class="price-chip"><strong>₹2,800</strong><span>per person, with meals</span></div>
+          <div class="price-chip"><strong>₹4,500</strong><span>room only</span></div>
+        </div>
+        <div class="meal-slots">
+          <div class="meal-slot">
+            <h4>Slot 1 · 12 PM – 10 AM</h4>
+            <p>Lunch, high-tea, dinner and next-day breakfast before check-out.</p>
+          </div>
+          <div class="meal-slot">
+            <h4>Slot 2 · 5 PM – 3 PM <span style="font-weight:600;color:var(--forest);font-size:0.72rem;">(AP plan only)</span></h4>
+            <p>High-tea, dinner, breakfast and lunch before check-out.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="amenities" style="background:var(--cream-soft);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Amenities &amp; features</div>
+      <h2>Enough to fill a weekend without leaving the property</h2>
+    </div>
+  </div>
+  <div class="amenities-grid">
+    <div class="amenity-card">
+      <h3>Indoor Games</h3>
+      <ul>
+        <li>Pool table</li>
+        <li>Chess</li>
+        <li>Carrom</li>
+        <li>Ludo</li>
+      </ul>
+    </div>
+    <div class="amenity-card">
+      <h3>Outdoor Games &amp; Activities</h3>
+      <ul>
+        <li>Swimming pool &amp; kids' pool</li>
+        <li>Rain dance</li>
+        <li>Cricket</li>
+        <li>Football</li>
+        <li>Badminton</li>
+        <li>Nature walks</li>
+        <li>Kids' play area</li>
+        <li>Outdoor games with kits</li>
+        <li>And many more...</li>
+      </ul>
+    </div>
+    <div class="amenity-card">
+      <h3>Resort Facilities</h3>
+      <ul>
+        <li>Music system</li>
+        <li>AC dining hall</li>
+        <li>AC rooms</li>
+        <li>Free parking</li>
+        <li>Complimentary Wi-Fi</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="good-to-know">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Good to know</div>
+      <h2>The fine print, before you book</h2>
+    </div>
+  </div>
+  <div class="info-grid">
+    <div class="info-card">
+      <h3>Dining &amp; Meals</h3>
+      <ul>
+        <li>Unlimited veg &amp; non-veg buffet included in the rates</li>
+        <li>All rates are inclusive of meals during your stay</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>Activity Timings</h3>
+      <ul>
+        <li>Swimming pool: 9:00 AM – 6:00 PM</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>Resort Rules</h3>
+      <ul>
+        <li>Outside food is not allowed (special permission required)</li>
+        <li>Poolside food and drinks are strictly prohibited</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>Payment &amp; Cancellation</h3>
+      <ul>
+        <li>20–30% advance required to confirm your booking</li>
+        <li>Remaining balance is paid at check-in only</li>
+      
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">A first look</div>
+      <h2>Around the resort</h2>
+    </div>
+    <div class="gallery">
+      <div class="g-tile"><img src="images/pool.jpeg" alt="The pool & lawn"><span>The pool &amp; lawn</span></div>
+      <div class="g-tile"><img src="images/hillrooms.jpeg" alt="Hill-facing rooms"><span>Hill-facing rooms</span></div>
+      <div class="g-tile"><img src="images/hall.jpeg" alt="The dining hall"><span>The dining hall</span></div>
+    </div>
+    <p class="g-note">Swap the photos above anytime by replacing the files in your <code>images</code> folder.</p>
+  </div>
+</section>
+
+<div class="quote-block">
+  <div class="wrap">
+    <blockquote>"We stopped meaning to just have lunch on the highway, and ended up staying the night. That's the whole pitch, really."</blockquote>
+    <cite>— A guest, on a weekend drive</cite>
+  </div>
+</div>
+
+<section class="section book" id="book">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Plan your stay</div>
+      <h2>Find us, then stop looking at the map</h2>
+      <p>We're a well-marked 10-minute turn off the highway — call ahead and someone can talk you in for the last stretch.</p>
+    </div>
+    <div class="book-grid">
+      <div class="book-info">
+        <h3>Address</h3>
+        <p>Seema Resort, on the highway at Neral, Maharashtra</p>
+        <h3>Phone &amp; WhatsApp</h3>
+        <p><a href="tel:+917559411323" style="color:var(--paper);">+91 75594 11323</a> — 8 AM to 9 PM, every day</p>
+        <h3>Email</h3>
+        <p><a href="mailto:seemasresort@gmail.com" style="color:var(--paper);">seemasresort@gmail.com</a></p>
+        <h3>Getting there</h3>
+        <p>Neral Railway Station is about 3 km away — auto-rickshaws are easily available from the station.</p>
+        <div class="map-box" style="padding:0;overflow:hidden;">
+          <iframe
+            src="https://maps.google.com/maps?q=19.0112567,73.3265305&z=16&output=embed"
+            width="100%" height="240" style="border:0;display:block;"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          <div style="padding:14px 16px;">
+            Highway-touch location, right on the road at Neral — <a href="https://maps.app.goo.gl/tj6RLJuCBuRJt2n1A" target="_blank" rel="noopener" style="color:#E8A23A;">open in Google Maps</a>.
+          </div>
+        </div>
+      </div>
+      <form class="book-form" id="bookingForm">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" type="text" placeholder="Your full name" required>
+        </div>
+        <div class="row-2">
+          <div>
+            <label for="checkin">Check-in</label>
+            <input id="checkin" type="date" required>
+          </div>
+          <div>
+            <label for="checkout">Check-out</label>
+            <input id="checkout" type="date" required>
+          </div>
+        </div>
+        <div class="row-2">
+          <div>
+            <label for="guests">Guests</label>
+            <input id="guests" type="number" min="1" placeholder="2" required>
+          </div>
+          <div>
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" placeholder="For a callback" required>
+          </div>
+        </div>
+        <div>
+          <label for="roomtype">Room preference</label>
+          <select id="roomtype">
+            <option value="">Select a room</option>
+            <option value="D4 Suite Cottage">D4 Suite Cottage</option>
+            <option value="Elite Room">Elite Room</option>
+            <option value="Couple Deluxe Premium Room">Couple Deluxe Premium Room</option>
+            <option value="Family Executive Room">Family Executive Room</option>
+          </select>
+        </div>
+        <div>
+          <label for="notes">Anything else?</label>
+          <textarea id="notes" rows="3" placeholder="Occasion, check-in slot, special requests..."></textarea>
+        </div>
+        <button type="submit">Send booking request</button>
+        <p class="form-note">Submitting opens your email app with these details pre-filled — just hit send.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> Seema Resort. Best resort in Neral.</span>
+    <span>Highway touch, at the foot of Matheran.</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+
+  const RESORT_EMAIL = "seemasresort@gmail.com";
+
+  document.getElementById('bookingForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+    const guests = document.getElementById('guests').value;
+    const phone = document.getElementById('phone').value;
+    const roomtype = document.getElementById('roomtype').value || "Not specified";
+    const notes = document.getElementById('notes').value || "-";
+
+    const subject = `Booking Request - ${name}`;
+    const body =
+`Name: ${name}
+Check-in: ${checkin}
+Check-out: ${checkout}
+Guests: ${guests}
+Phone: ${phone}
+Room preference: ${roomtype}
+Notes: ${notes}`;
+
+    const mailtoLink = `mailto:${RESORT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  });
+</script>
+
+</body>
+</html>
