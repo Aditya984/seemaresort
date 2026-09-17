@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0B5A28">
 <title>Seema Resort | Best Resort In Neral</title>
 <meta name="description" content="Seema Resort is a highway-touch resort in Neral, Maharashtra, near Matheran — 1.5–2 hrs from Mumbai/Pune. Cottages, suites & family rooms with pool, meals included, and easy highway access. Book your stay today.">
 <link rel="canonical" href="https://www.seemaresort.in/">
@@ -24,6 +25,7 @@
 
 <link rel="icon" type="image/webp" href="images/logo%20s.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- Structured data: LodgingBusiness -->
@@ -101,6 +103,7 @@
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
+    html{scroll-behavior:auto;}
   }
 
   /* ---------- NAV ---------- */
@@ -132,7 +135,14 @@
     white-space:nowrap;
   }
   .call-btn:hover{background:var(--forest-deep);}
-  .menu-toggle{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--forest);}
+  .brand-logo{display:flex;align-items:center;}
+  .logo-img{height:52px;width:auto;display:block;}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--forest);padding:8px;line-height:1;}
+  @media(max-width:400px){
+    .logo-img{height:38px;}
+    .call-btn{padding:8px 12px;font-size:0.82rem;}
+    .nav{gap:8px;}
+  }
   @media(max-width:860px){
     nav.links{
       display:none;
@@ -233,31 +243,6 @@
   .section-head p{color:#524C40;font-size:1.05rem;}
   .kicker{color:var(--forest);font-weight:600;font-size:0.92rem;margin-bottom:10px;font-family:'Fraunces',serif;font-style:italic;}
 
-  /* ---------- ROOMS ---------- */
-  .rooms{display:flex;flex-direction:column;gap:2px;background:rgba(42,38,34,0.1);}
-  .room{
-    display:grid;grid-template-columns:280px 1fr auto;gap:32px;
-    background:var(--paper);padding:34px 30px;align-items:center;
-  }
-  .room:nth-child(even){background:#FBF7EE;}
-  @media(max-width:760px){
-    .room{grid-template-columns:1fr;gap:16px;}
-  }
-  .room-visual{
-    height:150px;border-radius:2px;
-    display:flex;align-items:center;justify-content:center;
-    position:relative;overflow:hidden;
-  }
-  .room-visual span.tag{
-    position:relative;z-index:1;color:#fff;font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;
-  }
-  .room h3{font-size:1.35rem;color:var(--forest-deep);margin-bottom:8px;}
-  .room p{color:#5a5344;margin:0 0 10px;font-size:0.98rem;}
-  .room .meta{font-size:0.86rem;color:var(--forest);font-weight:600;}
-  .room .price{text-align:right;white-space:nowrap;}
-  .room .price strong{font-size:1.4rem;font-family:'Fraunces',serif;color:var(--forest-deep);display:block;}
-  .room .price span{font-size:0.82rem;color:#7a7364;}
-
   /* ---------- CHECK-IN SLOTS ---------- */
   .slot-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
   @media(max-width:640px){.slot-grid{grid-template-columns:1fr;}}
@@ -274,7 +259,7 @@
   .slot-arrow{color:var(--gold-dark);font-size:1.3rem;}
 
   /* ---------- ROOMS ---------- */
-  .rooms-note{font-size:0.92rem;color:#7a7364;font-style:italic;margin-top:-30px;margin-bottom:40px;}
+  .rooms-note{font-size:0.92rem;color:#7a7364;font-style:italic;margin-top:0;margin-bottom:40px;}
   .rooms-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(42,38,34,0.1);}
   @media(max-width:820px){.rooms-grid{grid-template-columns:1fr;}}
   .room-card{background:var(--paper);}
@@ -385,7 +370,7 @@
 
 <header class="site">
   <div class="wrap nav">
-    <a href="#top" class="brand-logo" style="display:flex;align-items:center;"><img src="images/logo%20s.webp" alt="Seema's Resort" style="height:52px;width:auto;display:block;"></a>
+    <a href="#top" class="brand-logo"><img src="images/logo%20s.webp" alt="Seema's Resort" class="logo-img" width="150" height="52" fetchpriority="high"></a>
     <nav class="links" id="navLinks">
       <a href="#rooms">Rooms</a>
       <a href="#amenities">Amenities</a>
@@ -395,7 +380,7 @@
     </nav>
     <div style="display:flex;align-items:center;gap:14px;">
       <a class="call-btn" href="tel:+917559411323">Call to Book</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">&#9776;</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
     </div>
   </div>
 </header>
@@ -493,7 +478,7 @@
 
 <section class="section" id="rooms">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" style="margin-bottom:16px;">
       <div class="kicker">Where you'll stay</div>
       <h2>Featured rooms — plus more categories to choose from</h2>
       <p>Every package includes a meal plan tied to your check-in slot, plus full access to the pool, lawns, and games. Showing our most popular picks below — we also have cottages, suites, dorms and studio rooms not listed here.</p>
@@ -504,7 +489,7 @@
 
     <div class="room-card">
       <div class="room-visual">
-      <img src="images/D4.jpg" alt="Deluxe Suite Couple Cottage" style="width:100%;height:100%;object-fit:cover;">
+      <img src="images/D4.jpg" alt="Deluxe Suite Couple Cottage" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
       </div>
       <div class="room-body">
         <h3>Deluxe Suite Couple Cottage</h3>
@@ -528,7 +513,7 @@
 
     <div class="room-card">
       <div class="room-visual">
-      <img src="images/S1.jpg" alt="Elite Room" style="width:100%;height:100%;object-fit:cover;">
+      <img src="images/S1.jpg" alt="Elite Room" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
       </div>
       <div class="room-body">
         <h3>Elite Room</h3>
@@ -552,7 +537,7 @@
 
       <div class="room-card">
       <div class="room-visual">
-      <img src="images/C2.png" alt="Couple Deluxe Premium Room" style="width:100%;height:100%;object-fit:cover;">
+      <img src="images/C2.png" alt="Couple Deluxe Premium Room" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
       </div>
       <div class="room-body">
         <h3>Couple Deluxe Premium Room</h3>
@@ -576,7 +561,7 @@
 
     <div class="room-card">
       <div class="room-visual">
-      <img src="images/201.jpg" alt="Family Executive Room" style="width:100%;height:100%;object-fit:cover;">
+      <img src="images/201.jpg" alt="Family Executive Room" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
       </div>
       <div class="room-body">
         <h3>Family Executive Room</h3>
@@ -686,7 +671,6 @@
       <ul>
         <li>20–30% advance required to confirm your booking</li>
         <li>Remaining balance is paid at check-in only</li>
-       
       </ul>
     </div>
   </div>
@@ -699,9 +683,9 @@
       <h2>Around the resort</h2>
     </div>
     <div class="gallery">
-      <div class="g-tile"><img src="images/pool.jpeg" alt="The pool & lawn"><span>The pool &amp; lawn</span></div>
-      <div class="g-tile"><img src="images/hillrooms.jpeg" alt="Hill-facing rooms"><span>Hill-facing rooms</span></div>
-      <div class="g-tile"><img src="images/hall.jpeg" alt="The dining hall"><span>The dining hall</span></div>
+      <div class="g-tile"><img src="images/pool.jpeg" alt="The pool & lawn" loading="lazy" decoding="async"><span>The pool &amp; lawn</span></div>
+      <div class="g-tile"><img src="images/hillrooms.jpeg" alt="Hill-facing rooms" loading="lazy" decoding="async"><span>Hill-facing rooms</span></div>
+      <div class="g-tile"><img src="images/hall.jpeg" alt="The dining hall" loading="lazy" decoding="async"><span>The dining hall</span></div>
     </div>
   </div>
 </section>
@@ -726,6 +710,7 @@
         <p>Seema Resort, on the highway at Neral, Maharashtra</p>
         <h3>Phone &amp; WhatsApp</h3>
         <p><a href="tel:+917559411323" style="color:var(--paper);">+91 75594 11323</a> — 8 AM to 10 PM, every day</p>
+        <p><a href="https://wa.me/917559411323" target="_blank" rel="noopener" style="color:var(--gold);">Message us on WhatsApp →</a></p>
         <h3>Email</h3>
         <p><a href="mailto:contact@seemaresort.in" style="color:var(--paper);">contact@seemaresort.in</a></p>
         <h3>Getting there</h3>
@@ -734,7 +719,8 @@
           <iframe
             src="https://maps.google.com/maps?q=19.0112567,73.3265305&z=16&output=embed"
             width="100%" height="240" style="border:0;display:block;"
-            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Seema Resort location on Google Maps">
           </iframe>
           <div style="padding:14px 16px;">
             Highway-touch location, right on the road at Neral — <a href="https://maps.app.goo.gl/tj6RLJuCBuRJt2n1A" target="_blank" rel="noopener" style="color:#E8A23A;">open in Google Maps</a>.
@@ -744,7 +730,7 @@
       <form class="book-form" id="bookingForm">
         <div>
           <label for="name">Name</label>
-          <input id="name" type="text" placeholder="Your full name" required>
+          <input id="name" type="text" placeholder="Your full name" autocomplete="name" required>
         </div>
         <div class="row-2">
           <div>
@@ -759,11 +745,11 @@
         <div class="row-2">
           <div>
             <label for="guests">Guests</label>
-            <input id="guests" type="number" min="1" placeholder="2" required>
+            <input id="guests" type="number" min="1" step="1" placeholder="2" required>
           </div>
           <div>
             <label for="phone">Phone</label>
-            <input id="phone" type="tel" placeholder="For a callback" required>
+            <input id="phone" type="tel" placeholder="For a callback" autocomplete="tel" inputmode="tel" required>
           </div>
         </div>
         <div>
@@ -849,9 +835,34 @@
   document.getElementById('year').textContent = new Date().getFullYear();
   const toggle = document.getElementById('menuToggle');
   const links = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => links.classList.toggle('open'));
+
+  function setMenu(open){
+    links.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.textContent = open ? '\u2715' : '\u2630';
+  }
+  toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+  links.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
 
   const RESORT_EMAIL = "contact@seemaresort.in";
+
+  // Prevent picking a check-in date in the past, and keep check-out
+  // pinned to at least the day after whatever check-in is selected.
+  const checkinInput = document.getElementById('checkin');
+  const checkoutInput = document.getElementById('checkout');
+  const todayStr = new Date().toISOString().split('T')[0];
+  checkinInput.min = todayStr;
+  checkoutInput.min = todayStr;
+  checkinInput.addEventListener('change', () => {
+    if (!checkinInput.value) return;
+    const nextDay = new Date(checkinInput.value + 'T00:00:00');
+    nextDay.setDate(nextDay.getDate() + 1);
+    const nextDayStr = nextDay.toISOString().split('T')[0];
+    checkoutInput.min = nextDayStr;
+    if (checkoutInput.value && checkoutInput.value <= checkinInput.value) {
+      checkoutInput.value = nextDayStr;
+    }
+  });
 
   document.getElementById('bookingForm').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -863,6 +874,11 @@
     const phone = document.getElementById('phone').value;
     const roomtype = document.getElementById('roomtype').value || "Not specified";
     const notes = document.getElementById('notes').value || "-";
+
+    if (checkout <= checkin) {
+      alert("Check-out date must be after your check-in date.");
+      return;
+    }
 
     const subject = `Booking Request - ${name}`;
     const body =
@@ -879,5 +895,7 @@ Notes: ${notes}`;
   });
 </script>
 
+</body>
+</html>
 </body>
 </html>
