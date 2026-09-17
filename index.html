@@ -314,6 +314,7 @@
 
   /* ---------- GOOD TO KNOW ---------- */
   .info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(42,38,34,0.12);}
+  @media(max-width:700px){#terms ul{columns:1;}}
   @media(max-width:900px){.info-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:520px){.info-grid{grid-template-columns:1fr;}}
   .info-card{background:var(--cream);padding:30px 26px;}
@@ -390,6 +391,7 @@
       <a href="#amenities">Amenities</a>
       <a href="#gallery">Gallery</a>
       <a href="#book">Location &amp; Booking</a>
+      <a href="#terms">Terms</a>
     </nav>
     <div style="display:flex;align-items:center;gap:14px;">
       <a class="call-btn" href="tel:+917559411323">Call to Book</a>
@@ -493,8 +495,8 @@
   <div class="wrap">
     <div class="section-head">
       <div class="kicker">Where you'll stay</div>
-      <h2>Four room types, all with full amenity access</h2>
-      <p>Every package includes a meal plan tied to your check-in slot, plus full access to the pool, lawns, and games.</p>
+      <h2>Featured rooms — plus more categories to choose from</h2>
+      <p>Every package includes a meal plan tied to your check-in slot, plus full access to the pool, lawns, and games. Showing our most popular picks below — we also have cottages, suites, dorms and studio rooms not listed here.</p>
     </div>
     <p class="rooms-note">Prices may vary on weekends.</p>
   </div>
@@ -502,10 +504,10 @@
 
     <div class="room-card">
       <div class="room-visual">
-      <img src="images/D4.jpg" alt="D4 Suite Cottage" style="width:100%;height:100%;object-fit:cover;">
+      <img src="images/D4.jpg" alt="Deluxe Suite Couple Cottage" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div class="room-body">
-        <h3>Bathtub Couple Suite Cottage</h3>
+        <h3>Deluxe Suite Couple Cottage</h3>
         <p class="tagline">Includes full access to all available resort amenities.</p>
         <div class="price-row">
           <div class="price-chip"><strong>₹7,500</strong><span>per couple, with meals</span></div>
@@ -594,6 +596,14 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="room-card" style="grid-column:1 / -1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;padding:34px 30px;background:var(--cream-soft);">
+      <div>
+        <h3 style="margin-bottom:6px;">Looking for something else?</h3>
+        <p style="color:#5a5344;margin:0;font-size:0.98rem;max-width:52ch;">We also have Standard Rooms, Premium Deluxe &amp; Couple Deluxe Cottages, Deluxe Cottages, Bathtub Family Suites, Dormitories, Studio Rooms and Quad Rooms — call us and we'll help you pick the right fit and rate.</p>
+      </div>
+      <a class="call-btn" href="tel:+917559411323" style="flex-shrink:0;">Call to know more</a>
     </div>
 
   </div>
@@ -760,7 +770,7 @@
           <label for="roomtype">Room preference</label>
           <select id="roomtype">
             <option value="">Select a room</option>
-            <option value="D4 Suite Cottage">Bathtub Couple Suite Cottage</option>
+            <option value="Deluxe Suite Couple Cottage">Deluxe Suite Couple Cottage</option>
             <option value="Elite Room">Elite Room</option>
             <option value="Couple Deluxe Premium Room">Couple Deluxe Premium Room</option>
             <option value="Family Executive Room">Family Executive Room</option>
@@ -772,8 +782,44 @@
         </div>
         <button type="submit">Send booking request</button>
         <p class="form-note">Submitting opens your email app with these details pre-filled — just hit send.</p>
+        <div style="margin-top:6px;padding:16px 18px;border:1px solid rgba(217,207,178,0.3);border-radius:3px;background:rgba(255,255,255,0.04);">
+          <p style="margin:0 0 8px;font-size:0.82rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.03em;">Before you book — please note</p>
+          <ul style="margin:0;padding-left:18px;color:#C9C1A6;font-size:0.85rem;line-height:1.7;">
+            <li>Valid government photo ID required for all guests at check-in</li>
+            <li>Couples must carry suitable ID proof; accommodation may otherwise be denied</li>
+            <li>Advances are non-refundable; postpone at least 3 days ahead to carry the amount forward</li>
+            <li>No-shows and cancellations within 24 hrs of check-in are non-refundable</li>
+            <li>Children 5–10 yrs: ₹1,200/child extra · Above 10 yrs: full adult rate</li>
+          </ul>
+          <p style="margin:10px 0 0;font-size:0.8rem;"><a href="#terms" style="color:var(--gold);">Read full Terms &amp; Conditions →</a></p>
+        </div>
       </form>
     </div>
+  </div>
+</section>
+
+<section class="section" id="terms" style="background:var(--cream-soft);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Fine print</div>
+      <h2>Terms &amp; Conditions</h2>
+    </div>
+    <ul style="columns:2;column-gap:48px;margin:0;padding-left:20px;color:#5a5344;font-size:0.95rem;line-height:1.9;">
+      <li style="break-inside:avoid;">A valid, government-issued photo ID is mandatory for all resident guests at the time of check-in.</li>
+      <li style="break-inside:avoid;">Accommodation may be denied to guests posing as a "couple" if suitable proof of identification is not presented at check-in.</li>
+      <li style="break-inside:avoid;">Early check-in and late check-out are strictly subject to room availability and may incur an additional fee. Please check with the reception desk for details.</li>
+      <li style="break-inside:avoid;">All advances are non-refundable. However, bookings postponed at least 3 days prior to the check-in date can have the full amount applied toward a future stay (subject to room availability).</li>
+      <li style="break-inside:avoid;">Cancellations made within 24 hours of check-in, or failure to arrive (no-show), are strictly non-refundable and will result in the voucher being fully redeemed.</li>
+      <li style="break-inside:avoid;">All special requests are subject to hotel availability at the time of arrival. These requests cannot be guaranteed and may incur additional charges.</li>
+      <li style="break-inside:avoid;">Proper swimming costumes are mandatory. Nylon, Lycra, or Polyester swimwear is preferred. Acceptable attire includes swimming trunks, shorts, swimsuits, swim leggings, and rash guards. Infants and young children must wear proper swim diapers if required.</li>
+      <li style="break-inside:avoid;">Pets are not allowed on the property.</li>
+      <li style="break-inside:avoid;">Any damage caused to the property, rooms, or resort amenities by the guest will be evaluated and fined accordingly.</li>
+      <li style="break-inside:avoid;">The amount paid for the room or covered by the reservation voucher does not include charges for optional services, extra facilities, or incidental expenses.</li>
+      <li style="break-inside:avoid;">Guests requiring a GST invoice must provide their valid GST number at the time of check-in to obtain a GST-compliant bill at check-out.</li>
+      <li style="break-inside:avoid;">Infants &amp; Toddlers (0 to 5 years): Stay completely free of charge.</li>
+      <li style="break-inside:avoid;">Children (5 to 10 years): An additional charge of ₹1,200/- per child applies.</li>
+      <li style="break-inside:avoid;">Guests Above 10 Years: Considered adults for pricing purposes and will be charged the standard adult rate.</li>
+    </ul>
   </div>
 </section>
 
