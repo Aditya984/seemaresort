@@ -135,11 +135,15 @@
     white-space:nowrap;
   }
   .call-btn:hover{background:var(--forest-deep);}
-  .brand-logo{display:flex;align-items:center;}
-  .logo-img{height:80;width:Auto;display:block;}
+  .brand-logo{display:flex;align-items:center;flex-shrink:0;}
+  .logo-img{
+    height:clamp(36px,7vw,56px);
+    width:auto;
+    max-width:40vw;
+    display:block;
+  }
   .menu-toggle{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--forest);padding:8px;line-height:1;}
   @media(max-width:400px){
-    .logo-img{height:38px;}
     .call-btn{padding:8px 12px;font-size:0.82rem;}
     .nav{gap:8px;}
   }
@@ -299,7 +303,8 @@
 
   /* ---------- GOOD TO KNOW ---------- */
   .info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(42,38,34,0.12);}
-  @media(max-width:700px){#terms ul{columns:1;}}
+  #terms ul.terms-list{columns:2;column-gap:48px;margin:0;padding-left:20px;color:#5a5344;font-size:0.95rem;line-height:1.9;}
+  @media(max-width:700px){#terms ul.terms-list{columns:1;}}
   @media(max-width:900px){.info-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:520px){.info-grid{grid-template-columns:1fr;}}
   .info-card{background:var(--cream);padding:30px 26px;}
@@ -790,7 +795,7 @@
       <div class="kicker">Fine print</div>
       <h2>Terms &amp; Conditions</h2>
     </div>
-    <ul style="columns:2;column-gap:48px;margin:0;padding-left:20px;color:#5a5344;font-size:0.95rem;line-height:1.9;">
+    <ul class="terms-list">
       <li style="break-inside:avoid;">A valid, government-issued photo ID is mandatory for all resident guests at the time of check-in.</li>
       <li style="break-inside:avoid;">Accommodation may be denied to guests posing as a "couple" if suitable proof of identification is not presented at check-in.</li>
       <li style="break-inside:avoid;">Early check-in and late check-out are strictly subject to room availability and may incur an additional fee. Please check with the reception desk for details.</li>
@@ -899,4 +904,3 @@ Notes: ${notes}`;
 </html>
 </body>
 </html>
-
