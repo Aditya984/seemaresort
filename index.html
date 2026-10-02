@@ -67,7 +67,7 @@
     "streetAddress": "Highway-touch location, Neral",
     "addressLocality": "Neral",
     "addressRegion": "Maharashtra",
-    "postalCode": "",
+    "postalCode": "410101",
     "addressCountry": "IN"
   },
   "geo": {
@@ -474,6 +474,102 @@
   /* ---------- FOOTER ---------- */
   footer{background:var(--forest-deep);border-top:1px solid rgba(217,207,178,0.15);padding:34px 0;color:#8f886f;font-size:0.85rem;}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+
+  /* ---------- UPGRADE LAYER ---------- */
+  :root{--r:14px;--shadow:0 10px 30px rgba(7,61,27,.10);--shadow-lg:0 18px 44px rgba(7,61,27,.18);}
+  section[id]{scroll-margin-top:84px;}
+  body{-webkit-font-smoothing:antialiased;}
+  header.site{background:rgba(247,248,241,.88);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);}
+  .nav{padding:10px 0;}
+  .logo-img{height:56px;width:auto;}
+  nav.links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--gold);transition:width .25s;}
+  nav.links a:hover::after{width:100%;}
+  .call-btn,.btn-primary,.btn-ghost,form.book-form button{border-radius:999px;transition:transform .2s,box-shadow .2s,background .2s;}
+  .btn-primary:hover,.call-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(7,61,27,.28);}
+
+  /* Hero with real photo */
+  .hero{background:linear-gradient(100deg,rgba(7,61,27,.88) 0%,rgba(7,61,27,.55) 55%,rgba(7,61,27,.25) 100%),url(images/pool.jpeg) center/cover no-repeat;color:#fff;min-height:82vh;display:flex;align-items:center;}
+  .hero-inner{grid-template-columns:1fr;padding:90px 32px 80px;width:100%;}
+  .eyebrow-line{display:inline-block;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);padding:6px 14px;border-radius:999px;font-size:.85rem;backdrop-filter:blur(6px);}
+  .hero h1{color:#fff;font-size:clamp(2.6rem,6vw,4.4rem);text-shadow:0 2px 24px rgba(0,0,0,.25);}
+  .hero h1 i{color:var(--gold);}
+  .hero p.lede{color:#EEF2E4;font-size:1.2rem;}
+  .hero-ctas{margin-bottom:34px;}
+  .hero .btn-primary{background:var(--gold);color:var(--forest-deep);}
+  .hero .btn-primary:hover{background:#f3b24f;}
+  .hero .btn-ghost{border-color:#fff;color:#fff;}
+  .hero .btn-ghost:hover{background:rgba(255,255,255,.14);}
+  .hero-chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px;}
+  .hero-chips li{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:8px 16px;border-radius:999px;font-size:.9rem;font-weight:600;backdrop-filter:blur(6px);}
+
+  /* Rooms as modern cards */
+  .rooms-grid{background:none;gap:30px;}
+  .room-card,.room-card:nth-child(even){background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;}
+  .room-card[style*="grid-column"]{flex-direction:row;}
+  .room-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
+  .room-visual{height:260px;}
+  .room-body{flex:1;display:flex;flex-direction:column;}
+  .room-body .meal-slots{margin-bottom:22px;}
+  .room-cta{margin-top:auto;display:flex;gap:10px;}
+  .room-cta a{flex:1;text-align:center;padding:12px;border-radius:999px;font-weight:700;font-size:.92rem;text-decoration:none;}
+  .room-cta .wa{background:#1FA855;color:#fff;}
+  .room-cta .wa:hover{background:#178a45;}
+  .room-cta .ask{border:1.5px solid var(--forest);color:var(--forest);}
+  .room-cta .ask:hover{background:var(--forest);color:#fff;}
+  .price-chip{border-radius:10px;}
+  .price-chip:first-child{background:var(--forest);}
+  .price-chip:first-child strong,.price-chip:first-child span{color:#fff;}
+  .room-visual .carousel-dots span{width:8px;height:8px;}
+
+  /* Cards everywhere */
+  .slot-card{border-radius:var(--r);box-shadow:var(--shadow);border:none;}
+  .amenities-grid,.info-grid{background:none;gap:20px;max-width:1180px;margin:0 auto;padding:0 32px;}
+  .amenity-card,.info-card{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);transition:transform .3s;}
+  .amenity-card:hover,.info-card:hover{transform:translateY(-4px);}
+  .amenity-card h3::before{display:block;font-size:1.8rem;margin-bottom:8px;}
+  .amenity-card:nth-child(1) h3::before{content:"\1F3B1";}
+  .amenity-card:nth-child(2) h3::before{content:"\1F3CA";}
+  .amenity-card:nth-child(3) h3::before{content:"\1F3E8";}
+  .g-tile{border-radius:var(--r);box-shadow:var(--shadow);}
+  .g-tile img{transition:transform .6s;}
+  .g-tile:hover img{transform:scale(1.07);}
+  .gallery{grid-template-columns:repeat(3,1fr);}
+  @media(max-width:700px){.gallery{grid-template-columns:1fr;}.g-tile{aspect-ratio:4/3;}}
+  .quote-block{background:linear-gradient(135deg,var(--forest),var(--forest-deep));text-align:center;}
+  .quote-block blockquote{margin:0 auto 20px;}
+  .map-box{border-radius:var(--r);overflow:hidden;}
+  form.book-form input,form.book-form textarea,form.book-form select{border-radius:10px;}
+  form.book-form input:focus,form.book-form textarea:focus,form.book-form select:focus{outline:2px solid var(--gold);outline-offset:1px;}
+  #emailBtn{background:transparent;color:var(--paper);border:1.5px solid rgba(217,207,178,.5);margin-top:0;}
+  #emailBtn:hover{background:rgba(255,255,255,.08);color:var(--paper);}
+  #waBtn{background:#25D366;color:#073D1B;}
+  #waBtn:hover{background:#1fb858;}
+
+  /* FAQ */
+  .faq{max-width:820px;}
+  .faq details{background:#fff;border-radius:12px;box-shadow:var(--shadow);margin-bottom:12px;padding:0 22px;}
+  .faq summary{cursor:pointer;font-weight:700;padding:18px 0;list-style:none;display:flex;justify-content:space-between;gap:12px;color:var(--forest-deep);}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:"+";font-size:1.4rem;color:var(--gold-dark);line-height:1;}
+  .faq details[open] summary::after{content:"\2212";}
+  .faq details p{margin:0 0 18px;color:#524C40;}
+
+  /* Scroll reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* Mobile action bar */
+  .mobile-bar{display:none;}
+  @media(max-width:860px){
+    body{padding-bottom:70px;}
+    .hero{min-height:74vh;}
+    .mobile-bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.95);backdrop-filter:blur(10px);box-shadow:0 -6px 24px rgba(0,0,0,.12);}
+    .mobile-bar a{flex:1;text-align:center;padding:13px;border-radius:999px;font-weight:700;text-decoration:none;font-size:.95rem;}
+    .mobile-bar .c{background:var(--forest);color:#fff;}
+    .mobile-bar .w{background:#25D366;color:#073D1B;}
+    .amenities-grid,.info-grid{padding:0 20px;}
+    .hero-inner{padding:70px 20px 60px;}
+  }
 </style>
 </head>
 <body>
@@ -486,6 +582,7 @@
       <a href="#amenities">Amenities</a>
       <a href="#gallery">Gallery</a>
       <a href="#book">Location &amp; Booking</a>
+      <a href="#faq">FAQ</a>
       <a href="#terms">Terms</a>
     </nav>
     <div style="display:flex;align-items:center;gap:14px;">
@@ -495,29 +592,19 @@
   </div>
 </header>
 
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-inner">
     <div>
-      <div class="eyebrow-line">Highway-touch resort in Neral, Maharashtra</div>
+      <div class="eyebrow-line">Highway-touch resort · Neral, near Matheran</div>
       <h1>Right on the highway.<br><i>Best resort in Neral.</i></h1>
-      <p class="lede">Seema Resort sits directly on the highway at Neral — easy to spot, easy to stop at, and just as easy to stay the night.</p>
+      <p class="lede">Pool, cottages and unlimited buffet meals, just 1.5&ndash;2 hours from Mumbai &amp; Pune. Easy to spot, easy to stop at, and even easier to stay the night.</p>
       <div class="hero-ctas">
         <a class="btn-primary" href="#book">Check availability</a>
-        <a class="btn-ghost" href="#rooms">See rooms &amp; rates</a>
+        <a class="btn-ghost" href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20I%27d%20like%20to%20check%20availability." target="_blank" rel="noopener">Chat on WhatsApp</a>
       </div>
-    </div>
-    <div class="hero-art">
-      <svg viewBox="0 0 560 460" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="430" cy="90" r="46" fill="#E8A23A" opacity="0.9"/>
-        <path d="M0 300 Q140 180 280 260 T560 220 L560 460 L0 460 Z" fill="#8CC63F"/>
-        <path d="M0 350 Q160 250 300 320 T560 280 L560 460 L0 460 Z" fill="#5C9A34"/>
-        <path d="M0 400 Q180 330 320 380 T560 350 L560 460 L0 460 Z" fill="#0B5A28"/>
-        <path d="M60 460 C140 340 180 300 240 300 C300 300 340 340 420 460 Z" fill="#073D1B" opacity="0.9"/>
-        <path d="M150 460 C210 380 250 350 300 350 C350 350 390 390 460 460 Z" fill="#0B5A28"/>
-        <path d="M230 460 C260 430 270 415 300 415 C325 415 340 435 370 460" stroke="#FBFBF6" stroke-width="6" fill="none" stroke-dasharray="2 16" stroke-linecap="round"/>
-        <rect x="205" y="392" width="34" height="26" rx="1" fill="#C6821F"/>
-        <polygon points="200,392 222,376 244,392" fill="#8F5E15"/>
-      </svg>
+      <ul class="hero-chips">
+        <li>Meals included</li><li>Swimming pool</li><li>Free parking</li><li>AC rooms</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -900,8 +987,9 @@
           <label for="notes">Anything else?</label>
           <textarea id="notes" rows="3" placeholder="Occasion, check-in slot, special requests..."></textarea>
         </div>
-        <button type="submit">Send booking request</button>
-        <p class="form-note">Submitting opens your email app with these details pre-filled — just hit send.</p>
+        <button type="submit" id="waBtn">Send request on WhatsApp</button>
+        <button type="submit" id="emailBtn">Or send by email</button>
+        <p class="form-note">WhatsApp is the fastest way to get a reply. Either option opens with your details pre-filled — just hit send.</p>
         <div style="margin-top:6px;padding:16px 18px;border:1px solid rgba(217,207,178,0.3);border-radius:3px;background:rgba(255,255,255,0.04);">
           <p style="margin:0 0 8px;font-size:0.82rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.03em;">Before you book — please note</p>
           <ul style="margin:0;padding-left:18px;color:#C9C1A6;font-size:0.85rem;line-height:1.7;">
@@ -915,6 +1003,20 @@
         </div>
       </form>
     </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap faq">
+    <div class="section-head">
+      <div class="kicker">Quick answers</div>
+      <h2>Frequently asked questions</h2>
+    </div>
+    <details><summary>How far is Seema Resort from Mumbai and Pune?</summary><p>We are right on the highway at Neral, about 1.5&ndash;2 hours by car from both Mumbai and Pune.</p></details>
+    <details><summary>Is the resort near Matheran?</summary><p>Yes. We sit at the foot of Matheran in Neral, a convenient base for the hill station.</p></details>
+    <details><summary>What are the check-in and check-out timings?</summary><p>Slot 1: 12:00 PM to 10:00 AM next day. Slot 2: 5:00 PM to 3:00 PM next day (AP meal-inclusive plan only).</p></details>
+    <details><summary>Are meals included in the room price?</summary><p>Yes. Rates include an unlimited veg and non-veg buffet for your stay.</p></details>
+    <details><summary>What room types do you offer?</summary><p>Standard and Elite Rooms, Premium Deluxe and Couple Deluxe Cottages, Bathtub Suites, Family Executive Rooms, Studio Rooms, Quad Rooms and Dormitories. Call or WhatsApp us for the full list.</p></details>
   </div>
 </section>
 
@@ -1024,8 +1126,11 @@ Phone: ${phone}
 Room preference: ${roomtype}
 Notes: ${notes}`;
 
-    const mailtoLink = `mailto:${RESORT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
+    if (e.submitter && e.submitter.id === 'emailBtn') {
+      window.location.href = `mailto:${RESORT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    } else {
+      window.open(`https://wa.me/917559411323?text=${encodeURIComponent(subject + '\n' + body)}`, '_blank', 'noopener');
+    }
   });
 </script>
 
@@ -1066,5 +1171,27 @@ Notes: ${notes}`;
   });
 </script>
 
+<div class="mobile-bar"><a class="c" href="tel:+917559411323">Call now</a><a class="w" href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20I%27d%20like%20to%20check%20availability." target="_blank" rel="noopener">WhatsApp</a></div>
+<script>
+  // Per-room enquiry buttons
+  document.querySelectorAll('.room-card').forEach(function(card){
+    var body = card.querySelector('.room-body');
+    if (!body) return;
+    var name = card.querySelector('h3').textContent.trim();
+    var msg = encodeURIComponent('Hi Seema Resort, I am interested in the ' + name + '. Is it available?');
+    var cta = document.createElement('div');
+    cta.className = 'room-cta';
+    cta.innerHTML = '<a class="wa" target="_blank" rel="noopener" href="https://wa.me/917559411323?text=' + msg + '">Book on WhatsApp</a><a class="ask" href="#book">Check dates</a>';
+    body.appendChild(cta);
+  });
+  // Scroll reveal
+  var targets = document.querySelectorAll('.room-card,.slot-card,.amenity-card,.info-card,.g-tile,.section-head,.faq details,.stop');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:.12});
+    targets.forEach(function(t,i){ t.classList.add('reveal'); t.style.transitionDelay=((i%3)*80)+'ms'; io.observe(t); });
+  }
+</script>
 </body>
 </html>
