@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-IN">
 <head>
+<script>document.documentElement.classList.add("js")</script>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0GT1BMGPNV"></script>
 <script>
@@ -41,6 +42,7 @@
 <meta name="twitter:description" content="Seema's Resort &amp; Restaurant on the Neral-Karjat Highway: pool, cottages, family rooms &amp; dorms with AP meal plan. 1.5–2 hrs from Mumbai &amp; Pune.">
 <meta name="twitter:image" content="https://seemaresort.in/images/pool.jpeg">
 
+<link rel="preload" as="image" href="images/pool.jpeg" fetchpriority="high">
 <link rel="icon" type="image/png" href="images/LogoMainNoBG.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -164,460 +166,413 @@
 }
 </script>
 <style>
-  :root{
-    --forest:#0B5A28;
-    --forest-deep:#073D1B;
-    --leaf:#5C9A34;
-    --leaf-light:#8CC63F;
-    --gold:#E8A23A;
-    --gold-dark:#C6821F;
-    --cream:#F7F8F1;
-    --cream-soft:#EEF2E4;
-    --charcoal:#20281D;
-    --paper:#FBFBF6;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--cream);
-    color:var(--charcoal);
-    font-family:'Karla',sans-serif;
-    font-size:17px;
-    line-height:1.6;
-  }
-  h1,h2,h3{
-    font-family:'Fraunces',serif;
-    font-weight:700;
-    margin:0;
-    letter-spacing:-0.01em;
-  }
-  a{color:inherit;}
-  img,svg{display:block;max-width:100%;}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
-  @media(max-width:640px){.wrap{padding:0 20px;}}
+/* =========================================================
+   1. TOKENS
+   ========================================================= */
+:root{
+  --forest:#0B5A28; --forest-deep:#073D1B; --leaf-light:#8CC63F;
+  --gold:#E8A23A; --gold-dark:#C6821F;
+  --cream:#F7F8F1; --cream-soft:#EEF2E4; --paper:#FBFBF6;
+  --charcoal:#20281D; --ink-soft:#3F4538; --muted:#5D6254;
+  --on-dark:#E6E9D6; --on-dark-muted:#C3CBB0;
+  --line:rgba(32,40,29,.12);
+  --wa:#25D366; --wa-dark:#12803D;
 
-  /* Reduced motion */
-  @media (prefers-reduced-motion: reduce){
-    *{animation:none !important;transition:none !important;}
-    html{scroll-behavior:auto;}
-  }
+  --font-display:'Fraunces',Georgia,serif;
+  --font-body:'Karla',system-ui,-apple-system,'Segoe UI',sans-serif;
 
-  /* ---------- NAV ---------- */
-  header.site{
-    position:sticky;top:0;z-index:50;
-    background:var(--cream);
-    border-bottom:1px solid rgba(42,38,34,0.1);
-  }
-  .nav{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:18px 0;
-  }
-  .brand{
-    font-family:'Fraunces',serif;
-    font-weight:700;
-    font-size:1.35rem;
-    display:flex;align-items:baseline;gap:8px;
-  }
-  .brand em{
-    font-style:italic;font-weight:500;color:var(--gold);
-  }
-  nav.links{display:flex;gap:32px;font-size:0.96rem;font-weight:500;}
-  nav.links a{text-decoration:none;position:relative;padding-bottom:3px;}
-  nav.links a:hover{color:var(--forest);}
-  .call-btn{
-    background:var(--forest);color:var(--paper);
-    padding:10px 20px;border-radius:3px;
-    text-decoration:none;font-weight:600;font-size:0.92rem;
-    white-space:nowrap;
-  }
-  .call-btn:hover{background:var(--forest-deep);}
-  .brand-logo{display:flex;align-items:center;flex-shrink:0;}
-  .logo-img{
-    height:clamp(100px,7vw,56px);
-    width:auto;
-    max-width:60vw;
-    display:block;
-  }
-  .menu-toggle{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--forest);padding:8px;line-height:1;}
-  @media(max-width:400px){
-    .call-btn{padding:8px 12px;font-size:0.82rem;}
-    .nav{gap:8px;}
-  }
-  @media(max-width:860px){
-    nav.links{
-      display:none;
-      position:absolute;top:100%;left:0;right:0;
-      background:var(--paper);
-      flex-direction:column;gap:0;
-      border-bottom:1px solid rgba(0,0,0,0.08);
-    }
-    nav.links.open{display:flex;}
-    nav.links a{padding:16px 20px;border-top:1px solid rgba(0,0,0,0.06);}
-    .menu-toggle{display:block;}
-  }
+  --r-sm:10px; --r:16px; --r-pill:999px;
+  --shadow-sm:0 2px 8px rgba(7,61,27,.06);
+  --shadow:0 10px 30px rgba(7,61,27,.10);
+  --shadow-lg:0 20px 48px rgba(7,61,27,.18);
 
-  /* ---------- HERO ---------- */
-  .hero{
-    position:relative;
-    overflow:hidden;
-    background:linear-gradient(180deg,#EAF3E0 0%,#F0F5E8 40%,var(--cream) 100%);
-  }
-  .hero-inner{
-    position:relative;z-index:2;
-    padding:76px 32px 0;
-    max-width:1180px;margin:0 auto;
-    display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;
-  }
-  @media(max-width:900px){
-    .hero-inner{grid-template-columns:1fr;padding-top:48px;}
-  }
-  .eyebrow-line{
-    font-size:0.95rem;color:var(--forest);font-weight:600;margin-bottom:18px;
-  }
-  .hero h1{
-    font-size:clamp(2.4rem,5vw,3.6rem);
-    line-height:1.05;
-    color:var(--forest-deep);
-    margin-bottom:22px;
-  }
-  .hero h1 i{font-style:italic;font-weight:500;color:var(--forest);}
-  .hero p.lede{
-    font-size:1.14rem;max-width:46ch;color:#3c372f;margin-bottom:30px;
-  }
-  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px;}
-  .btn-primary{
-    background:var(--forest);color:var(--paper);
-    padding:14px 26px;border-radius:3px;text-decoration:none;
-    font-weight:600;font-size:0.98rem;display:inline-block;
-  }
-  .btn-primary:hover{background:var(--forest-deep);}
-  .btn-ghost{
-    border:1.5px solid var(--forest);color:var(--forest);
-    padding:13px 25px;border-radius:3px;text-decoration:none;
-    font-weight:600;font-size:0.98rem;display:inline-block;
-  }
-  .btn-ghost:hover{background:rgba(36,56,45,0.06);}
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --t:.25s var(--ease);
+  --gutter:clamp(20px,4vw,32px);
+  --section-y:clamp(64px,9vw,104px);
+  --header-h:76px;
+}
 
-  .hero-art{align-self:end;}
-  .hero-art svg{width:100%;height:auto;}
+/* =========================================================
+   2. BASE
+   ========================================================= */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--header-h);-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--cream);color:var(--charcoal);
+  font:400 clamp(16px,.3vw + 15px,17.5px)/1.65 var(--font-body);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;margin:0;letter-spacing:-.01em;line-height:1.15;text-wrap:balance}
+h4{margin:0}
+p{margin:0;text-wrap:pretty}
+ul{margin:0}
+a{color:inherit;text-underline-offset:3px}
+img,svg{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
 
-  /* ---------- ROUTE STRIP ---------- */
-  .route{
-    background:var(--forest-deep);
-    color:var(--paper);
-    padding:52px 0 58px;
-  }
-  .route .wrap{position:relative;}
-  .route-head{
-    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
-    font-size:1.3rem;color:#D9CFB2;margin-bottom:38px;
-  }
-  .route-track{
-    display:flex;align-items:flex-start;justify-content:space-between;
-    position:relative;gap:12px;
-  }
-  .route-track::before{
-    content:"";position:absolute;top:9px;left:0;right:0;height:2px;
-    background:repeating-linear-gradient(90deg,rgba(217,164,65,0.55) 0 10px, transparent 10px 20px);
-  }
-  .stop{position:relative;flex:1;padding-top:32px;min-width:0;}
-  .stop::before{
-    content:"";position:absolute;top:0;left:0;width:20px;height:20px;
-    border-radius:50%;background:var(--gold);border:3px solid var(--forest-deep);
-  }
-  .stop.here::before{background:var(--leaf-light);width:22px;height:22px;}
-  .stop h3{font-family:'Karla',sans-serif;font-weight:700;font-size:1rem;color:var(--paper);margin-bottom:6px;}
-  .stop span{font-size:0.9rem;color:#BFB89C;}
-  @media(max-width:720px){
-    .route-track{flex-direction:column;gap:28px;}
-    .route-track::before{width:2px;height:100%;top:0;left:9px;right:auto;
-      background:repeating-linear-gradient(180deg,rgba(217,164,65,0.55) 0 10px, transparent 10px 20px);}
-    .stop{padding-top:0;padding-left:36px;}
-    .stop::before{top:2px;left:0;}
-  }
+.wrap{width:100%;max-width:1180px;margin-inline:auto;padding-inline:var(--gutter)}
+.skip-link{
+  position:absolute;left:12px;top:-64px;z-index:100;padding:10px 18px;
+  background:var(--forest-deep);color:#fff;border-radius:var(--r-pill);font-weight:700;text-decoration:none;
+  transition:top var(--t);
+}
+.skip-link:focus{top:12px}
 
-  /* ---------- SECTION HEADS ---------- */
-  .section{padding:88px 0;}
-  .section-head{max-width:640px;margin-bottom:52px;}
-  .section-head h2{font-size:clamp(1.9rem,3.4vw,2.5rem);color:var(--forest-deep);margin-bottom:14px;}
-  .section-head p{color:#524C40;font-size:1.05rem;}
-  .kicker{color:var(--forest);font-weight:600;font-size:0.92rem;margin-bottom:10px;font-family:'Fraunces',serif;font-style:italic;}
+/* Shared button behaviour */
+.call-btn,.btn-primary,.btn-ghost,.book-form button,.room-cta a,.mobile-bar a{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border-radius:var(--r-pill);font-weight:700;line-height:1.2;text-decoration:none;cursor:pointer;
+  transition:transform var(--t),box-shadow var(--t),background-color var(--t),color var(--t),border-color var(--t);
+}
+.call-btn:active,.btn-primary:active,.btn-ghost:active,.book-form button:active,.room-cta a:active,.mobile-bar a:active{transform:scale(.97)}
+.call-btn,.btn-primary{background:var(--forest);color:var(--paper)}
+.call-btn:hover,.btn-primary:hover{background:var(--forest-deep);transform:translateY(-2px);box-shadow:0 8px 20px rgba(7,61,27,.28)}
+.call-btn{padding:11px 22px;font-size:.92rem;white-space:nowrap}
+.btn-primary,.btn-ghost{padding:14px 28px;font-size:1rem}
+.btn-ghost{border:2px solid var(--forest);color:var(--forest);padding:12px 26px}
+.btn-ghost:hover{background:rgba(11,90,40,.08);transform:translateY(-2px)}
+.link-strong{color:var(--forest);font-weight:600}
+.link-gold{color:var(--gold)}
+.link-gold:hover{color:#F3B24F}
 
-  /* ---------- CHECK-IN SLOTS ---------- */
-  .slot-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-  @media(max-width:640px){.slot-grid{grid-template-columns:1fr;}}
-  .slot-card{
-    background:var(--paper);border:1px solid rgba(42,38,34,0.1);border-radius:4px;
-    padding:28px 26px;
+/* =========================================================
+   3. HEADER & NAVIGATION
+   ========================================================= */
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,248,241,.86);
+  -webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);
+  border-bottom:1px solid transparent;
+  transition:box-shadow var(--t),border-color var(--t),background-color var(--t);
+}
+header.site.is-scrolled{background:rgba(247,248,241,.96);border-color:var(--line);box-shadow:0 6px 24px rgba(7,61,27,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:10px}
+.brand-logo{display:flex;align-items:center;flex-shrink:0;border-radius:8px}
+.logo-img{height:56px;width:auto;max-width:50vw;transition:transform var(--t)}
+.brand-logo:hover .logo-img{transform:scale(1.04)}
+nav.links{display:flex;gap:clamp(18px,2.4vw,32px);font-size:.96rem;font-weight:500}
+nav.links a{position:relative;padding-block:6px;text-decoration:none;transition:color var(--t)}
+nav.links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform var(--t)}
+nav.links a:hover{color:var(--forest)}
+nav.links a:hover::after,nav.links a:focus-visible::after{transform:scaleX(1)}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.menu-toggle{
+  display:none;width:44px;height:44px;align-items:center;justify-content:center;
+  background:none;border:0;border-radius:50%;font-size:1.5rem;line-height:1;color:var(--forest);cursor:pointer;
+  transition:background-color var(--t),transform var(--t);
+}
+.menu-toggle:hover{background:rgba(11,90,40,.08)}
+.menu-toggle:active{transform:scale(.92)}
+@media(max-width:400px){.call-btn{padding:9px 14px;font-size:.84rem}}
+@media(max-width:860px){
+  .menu-toggle{display:inline-flex}
+  nav.links{
+    position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;
+    background:var(--paper);border-bottom:1px solid var(--line);box-shadow:var(--shadow);
+    opacity:0;visibility:hidden;transform:translateY(-8px);
+    transition:opacity var(--t),transform var(--t),visibility 0s linear .25s;
   }
-  .slot-card h3{font-size:1.05rem;color:var(--forest);margin-bottom:16px;}
-  .slot-flow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
-  .slot-point{flex:1;min-width:120px;}
-  .slot-point .label{font-size:0.78rem;color:#8a836f;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;}
-  .slot-point .time{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--forest-deep);font-weight:700;}
-  .slot-point .part{font-size:0.85rem;color:#5a5344;}
-  .slot-arrow{color:var(--gold-dark);font-size:1.3rem;}
+  nav.links.open{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+  nav.links a{padding:16px var(--gutter);border-top:1px solid var(--line)}
+  nav.links a::after{display:none}
+  nav.links a:hover{background:var(--cream-soft)}
+}
 
-  /* ---------- ROOMS ---------- */
-  .rooms-note{font-size:0.92rem;color:#7a7364;font-style:italic;margin-top:0;margin-bottom:40px;}
-  .rooms-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(42,38,34,0.1);}
-  @media(max-width:820px){.rooms-grid{grid-template-columns:1fr;}}
-  .room-card{background:var(--paper);}
-  .room-card:nth-child(even){background:#FBF7EE;}
-  .room-visual{
-    height:230px;position:relative;overflow:hidden;
-    display:flex;align-items:center;justify-content:center;
-    background:var(--cream-soft);
+/* =========================================================
+   4. HERO & ROUTE STRIP
+   ========================================================= */
+.hero{
+  position:relative;display:flex;align-items:center;min-height:clamp(520px,82vh,780px);color:#fff;
+  background:linear-gradient(100deg,rgba(7,61,27,.9) 0%,rgba(7,61,27,.58) 55%,rgba(7,61,27,.28) 100%),
+             url(images/pool.jpeg) center/cover no-repeat;
+}
+.hero-inner{padding-block:clamp(72px,10vw,110px)}
+.hero-inner>div{max-width:680px}
+/* one orchestrated page-load sequence */
+.hero-inner>div>*{animation:rise .8s var(--ease) backwards}
+.hero-inner>div>:nth-child(2){animation-delay:.08s}
+.hero-inner>div>:nth-child(3){animation-delay:.16s}
+.hero-inner>div>:nth-child(4){animation-delay:.24s}
+.hero-inner>div>:nth-child(5){animation-delay:.32s}
+.eyebrow-line{
+  display:inline-block;margin-bottom:18px;padding:6px 14px;font-size:.85rem;font-weight:600;color:#fff;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:var(--r-pill);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+}
+.hero h1{font-size:clamp(2.4rem,5.5vw + .5rem,4.4rem);line-height:1.05;color:#fff;margin-bottom:22px;text-shadow:0 2px 24px rgba(0,0,0,.25)}
+.hero h1 i{font-style:italic;font-weight:500;color:var(--gold)}
+.hero .lede{max-width:48ch;margin-bottom:30px;font-size:clamp(1.05rem,.4vw + 1rem,1.2rem);color:var(--cream-soft)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px}
+.hero .btn-primary{background:var(--gold);color:var(--forest-deep)}
+.hero .btn-primary:hover{background:#F3B24F}
+.hero .btn-ghost{border-color:#fff;color:#fff}
+.hero .btn-ghost:hover{background:rgba(255,255,255,.14)}
+.hero-chips{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.hero-chips li{
+  padding:8px 16px;font-size:.9rem;font-weight:600;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:var(--r-pill);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+}
+@media(max-width:700px){
+  .hero{min-height:74vh;background:linear-gradient(180deg,rgba(7,61,27,.72),rgba(7,61,27,.82)),url(images/pool.jpeg) center/cover no-repeat}
+  .hero-ctas>a{flex:1 1 100%}
+}
+
+.route{background:var(--forest-deep);color:var(--paper);padding-block:clamp(44px,6vw,60px)}
+.route-head{font-weight:500;font-style:italic;font-size:clamp(1.15rem,1rem + .6vw,1.35rem);color:var(--on-dark);margin-bottom:clamp(28px,4vw,38px)}
+.route-track{display:flex;justify-content:space-between;gap:12px;position:relative}
+.route-track::before{content:"";position:absolute;top:9px;left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,rgba(232,162,58,.6) 0 10px,transparent 10px 20px)}
+.stop{position:relative;flex:1;min-width:0;padding-top:32px}
+.stop::before{content:"";position:absolute;top:0;left:0;width:20px;height:20px;border-radius:50%;background:var(--gold);border:3px solid var(--forest-deep)}
+.stop.here::before{width:22px;height:22px;background:var(--leaf-light);box-shadow:0 0 0 6px rgba(140,198,63,.18)}
+.stop h3{margin-bottom:4px;font-family:var(--font-body);font-size:1rem;color:var(--paper)}
+.stop span{font-size:.92rem;color:var(--on-dark-muted)}
+@media(max-width:720px){
+  .route-track{flex-direction:column;gap:28px}
+  .route-track::before{top:0;bottom:0;left:9px;right:auto;width:2px;height:auto;background:repeating-linear-gradient(180deg,rgba(232,162,58,.6) 0 10px,transparent 10px 20px)}
+  .stop{padding:0 0 0 36px}
+  .stop::before{top:2px}
+}
+
+/* =========================================================
+   5. SECTIONS & TYPOGRAPHY
+   ========================================================= */
+.section{padding-block:var(--section-y)}
+.section--soft{background:var(--cream-soft)}
+.section--flush-bottom{padding-bottom:0}
+.section-head{max-width:680px;margin-bottom:clamp(32px,5vw,52px)}
+.section-head--compact{margin-bottom:clamp(24px,4vw,36px)}
+.section-head--flush{margin-bottom:16px}
+.section-head h2{margin-bottom:14px;font-size:clamp(1.9rem,2.6vw + 1rem,2.6rem);color:var(--forest-deep)}
+.section-head p{max-width:62ch;font-size:1.05rem;color:var(--ink-soft)}
+.kicker{margin-bottom:10px;font-family:var(--font-display);font-style:italic;font-weight:600;font-size:.95rem;color:var(--forest)}
+.rooms-note{margin-bottom:clamp(24px,4vw,40px);font-size:.95rem;font-style:italic;color:var(--muted)}
+.section-head .rooms-note{margin-bottom:0;font-style:normal}
+
+/* ---------- Check-in slots ---------- */
+.slot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px}
+.slot-card{padding:28px 26px;background:#fff;border-radius:var(--r);box-shadow:var(--shadow);transition:transform var(--t),box-shadow var(--t)}
+.slot-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.slot-card h3{margin-bottom:16px;font-size:1.05rem;color:var(--forest)}
+.slot-flow{display:flex;align-items:center;flex-wrap:wrap;gap:14px}
+.slot-point{flex:1;min-width:120px}
+.slot-point .label{margin-bottom:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+.slot-point .time{font-family:var(--font-display);font-size:1.35rem;font-weight:700;color:var(--forest-deep)}
+.slot-point .part{font-size:.88rem;color:var(--muted)}
+.slot-arrow{font-size:1.3rem;color:var(--gold-dark)}
+.slot-note{margin-top:14px;font-size:.85rem;font-weight:600;color:var(--forest)}
+
+/* ---------- Rooms ---------- */
+.rooms-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,30px)}
+@media(max-width:820px){.rooms-grid{grid-template-columns:1fr}}
+.room-card{display:flex;flex-direction:column;overflow:hidden;background:#fff;border-radius:var(--r);box-shadow:var(--shadow);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.room-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.room-visual{position:relative;height:clamp(220px,26vw,280px);overflow:hidden;background:var(--cream-soft)}
+.carousel-track{display:flex;height:100%;transition:transform .9s cubic-bezier(.65,0,.35,1);touch-action:pan-y}
+.carousel-track img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;object-position:center}
+.carousel-dots{position:absolute;left:0;right:0;bottom:10px;z-index:2;display:flex;justify-content:center;gap:6px}
+.carousel-dots button{
+  position:relative;width:8px;height:8px;padding:0;border:0;border-radius:var(--r-pill);
+  background:rgba(255,255,255,.55);cursor:pointer;
+  transition:width var(--t),background-color var(--t);
+}
+.carousel-dots button::after{content:"";position:absolute;inset:-10px -4px}  /* larger tap target */
+.carousel-dots button:hover{background:rgba(255,255,255,.85)}
+.carousel-dots button.active{width:22px;background:#fff}
+.room-body{display:flex;flex:1;flex-direction:column;padding:clamp(22px,3vw,28px)}
+.room-body h3{margin-bottom:6px;font-size:1.35rem;color:var(--forest-deep)}
+.room-body .tagline{margin-bottom:16px;font-size:.95rem;color:var(--muted)}
+.price-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.price-chip{padding:10px 16px;background:var(--cream-soft);border-radius:var(--r-sm)}
+.price-chip strong{display:block;font-family:var(--font-display);font-size:1.2rem;line-height:1.3;color:var(--forest-deep)}
+.price-chip span{font-size:.78rem;color:var(--muted)}
+.price-chip:first-child{background:var(--forest)}
+.price-chip:first-child strong,.price-chip:first-child span{color:#fff}
+.meal-slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px;margin-bottom:22px;padding-top:16px;border-top:1px solid var(--line)}
+.meal-slot h4{margin-bottom:6px;font-size:.84rem;font-weight:700;color:var(--forest)}
+.meal-flag{font-size:.74rem;font-weight:600}
+.meal-slot p{font-size:.88rem;line-height:1.5;color:var(--muted)}
+.room-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.room-cta a{flex:1 1 140px;padding:12px;font-size:.92rem}
+.room-cta .wa{background:var(--wa-dark);color:#fff}
+.room-cta .wa:hover{background:#0E6B32;transform:translateY(-2px);box-shadow:0 8px 18px rgba(18,128,61,.3)}
+.room-cta .ask{border:2px solid var(--forest);color:var(--forest)}
+.room-cta .ask:hover{background:var(--forest);color:#fff;transform:translateY(-2px)}
+.room-more{
+  grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;
+  padding:clamp(24px,4vw,34px) clamp(22px,4vw,32px);background:var(--cream-soft);border:1px solid var(--line);border-radius:var(--r);
+}
+.room-more h3{margin-bottom:6px;font-size:1.3rem;color:var(--forest-deep)}
+.room-more p{max-width:56ch;font-size:.98rem;color:var(--ink-soft)}
+.room-more .call-btn{flex-shrink:0}
+
+/* ---------- Amenities & info cards ---------- */
+.amenities-grid,.info-grid{display:grid;gap:20px}
+.amenities-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.info-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.amenity-card,.info-card{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.amenity-card:hover,.info-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.amenity-card{padding:clamp(26px,3vw,34px) clamp(22px,3vw,30px)}
+.amenity-card h3{margin-bottom:14px;font-size:1.15rem;color:var(--forest-deep)}
+.amenity-card h3::before{display:grid;place-items:center;width:52px;height:52px;margin-bottom:16px;font-size:1.6rem;background:var(--cream-soft);border-radius:14px}
+.amenity-card:nth-child(1) h3::before{content:"\1F3B1"}
+.amenity-card:nth-child(2) h3::before{content:"\1F3CA"}
+.amenity-card:nth-child(3) h3::before{content:"\1F3E8"}
+.amenity-card ul{padding-left:18px;font-size:.96rem;line-height:1.9;color:var(--ink-soft)}
+.amenity-card li::marker{color:var(--forest)}
+.info-card{padding:clamp(24px,3vw,30px) 26px}
+.info-card h3{margin-bottom:12px;font-size:1.05rem;color:var(--forest-deep)}
+.info-card ul{padding-left:16px;font-size:.93rem;line-height:1.75;color:var(--ink-soft)}
+.info-card li::marker{color:var(--gold-dark)}
+
+/* ---------- Gallery ---------- */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(14px,2vw,20px)}
+.g-tile{position:relative;display:flex;align-items:flex-end;aspect-ratio:4/5;padding:18px;overflow:hidden;background:var(--cream-soft);border-radius:var(--r);box-shadow:var(--shadow)}
+.g-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.g-tile:hover img{transform:scale(1.06)}
+.g-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.5))}
+.g-tile span{position:relative;z-index:2;font-weight:700;font-size:.95rem;color:#fff}
+@media(max-width:700px){.g-tile{aspect-ratio:4/3}}
+
+/* ---------- Guest reviews ---------- */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:22px;align-items:stretch}
+.rev-card{display:flex;flex-direction:column;gap:14px;margin:0;padding:26px 24px;background:#fff;border-radius:var(--r);box-shadow:var(--shadow);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.rev-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.rev-stars{font-size:1.15rem;letter-spacing:2px;color:var(--gold)}
+.rev-card blockquote{flex:1;margin:0;font-size:.97rem;line-height:1.65;color:var(--ink-soft)}
+.rev-card blockquote.rev-clamp{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+.rev-card figcaption{display:flex;align-items:center;gap:12px;margin-top:auto}
+.rev-card figcaption strong{display:block;font-size:.95rem;color:var(--forest-deep)}
+.rev-card figcaption small,.rev-dialog .rev-who small{font-size:.82rem;color:var(--muted)}
+.rev-av{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:38px;height:38px;font-weight:700;color:#fff;background:var(--forest);border-radius:50%}
+.rev-more{align-self:flex-start;margin-top:-4px;padding:4px 0;background:none;border:0;font-weight:700;font-size:.92rem;color:var(--forest);text-decoration:underline;text-underline-offset:3px;cursor:pointer;transition:color var(--t)}
+.rev-more:hover{color:var(--gold-dark)}
+.reviews-cta{margin-top:34px}
+.rev-dialog{position:relative;width:calc(100% - 32px);max-width:560px;max-height:85vh;overflow:auto;padding:30px 28px 26px;color:var(--charcoal);border:0;border-radius:var(--r);box-shadow:var(--shadow-lg)}
+.rev-dialog[open]{animation:pop .3s var(--ease)}
+.rev-dialog::backdrop{background:rgba(7,61,27,.6);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.rev-dialog[open]::backdrop{animation:fade .3s ease}
+.rev-dialog .rev-stars{margin-bottom:12px}
+.rev-dialog .rev-text{margin-bottom:20px;font-size:1rem;line-height:1.7;color:var(--ink-soft)}
+.rev-dialog .rev-who{display:flex;align-items:center;gap:12px}
+.rev-dialog .rev-who strong{display:block;color:var(--forest-deep)}
+.rev-dialog-close{position:absolute;top:8px;right:10px;width:40px;height:40px;background:none;border:0;border-radius:50%;font-size:1.3rem;line-height:1;color:var(--forest);cursor:pointer;transition:background-color var(--t)}
+.rev-dialog-close:hover{background:var(--cream-soft)}
+
+/* =========================================================
+   6. LOCATION & BOOKING
+   ========================================================= */
+.book{background:var(--forest-deep);color:var(--paper)}
+.book .section-head h2{color:var(--paper)}
+.book .section-head p{color:var(--on-dark-muted)}
+.book-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,56px)}
+@media(max-width:860px){.book-grid{grid-template-columns:1fr}}
+.book-info h3{margin-bottom:6px;font-size:1.1rem;color:var(--gold)}
+.book-info p{margin-bottom:26px;font-size:.98rem;color:var(--on-dark)}
+.book-info a{transition:color var(--t)}
+.book-info p a:not(.link-gold){color:var(--paper)}
+.book-info p a:not(.link-gold):hover{color:var(--gold)}
+.map-box{overflow:hidden;font-size:.9rem;color:var(--on-dark-muted);border:1px solid rgba(230,233,214,.3);border-radius:var(--r)}
+.map-box iframe{display:block;width:100%;height:clamp(220px,32vw,280px);border:0}
+.map-caption{padding:14px 16px}
+
+.book-form{display:flex;flex-direction:column;gap:14px;color-scheme:dark}
+.book-form label{display:block;margin-bottom:4px;font-size:.88rem;color:var(--on-dark-muted)}
+.row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:480px){.row-2{grid-template-columns:1fr}}
+.book-form input,.book-form select,.book-form textarea{
+  width:100%;padding:12px 14px;font-size:1rem;color:var(--paper);
+  background:rgba(255,255,255,.07);border:1px solid rgba(230,233,214,.35);border-radius:var(--r-sm);
+  transition:border-color var(--t),background-color var(--t),box-shadow var(--t);
+}
+.book-form select{background-color:var(--forest-deep)}
+.book-form select option{background:var(--forest-deep);color:var(--paper)}
+.book-form textarea{resize:vertical;min-height:90px}
+.book-form input::placeholder,.book-form textarea::placeholder{color:#AAB39A}
+.book-form input:hover,.book-form select:hover,.book-form textarea:hover{border-color:rgba(230,233,214,.6)}
+.book-form input:focus,.book-form select:focus,.book-form textarea:focus{outline:none;border-color:var(--gold);background-color:rgba(255,255,255,.1);box-shadow:0 0 0 3px rgba(232,162,58,.35)}
+.book-form button{width:100%;padding:14px;font-size:1rem;border:0}
+#waBtn{margin-top:8px;background:var(--wa);color:var(--forest-deep)}
+#waBtn:hover{background:#3BE07C;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.25)}
+#emailBtn{background:transparent;color:var(--paper);border:1.5px solid rgba(230,233,214,.5)}
+#emailBtn:hover{background:rgba(255,255,255,.1);border-color:var(--paper)}
+.form-note{margin-top:2px;font-size:.85rem;color:var(--on-dark-muted)}
+.booking-notice{margin-top:6px;padding:16px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(230,233,214,.3);border-radius:var(--r-sm)}
+.notice-title{margin-bottom:8px;font-size:.88rem;font-weight:700;color:var(--gold)}
+.booking-notice ul{padding-left:18px;font-size:.88rem;line-height:1.7;color:var(--on-dark-muted)}
+.notice-link{margin-top:10px;font-size:.84rem}
+
+/* =========================================================
+   7. FAQ & TERMS
+   ========================================================= */
+.faq{max-width:820px}
+.faq details{margin-bottom:12px;padding-inline:22px;background:#fff;border-radius:12px;box-shadow:var(--shadow-sm);transition:box-shadow var(--t)}
+.faq details:hover,.faq details[open]{box-shadow:var(--shadow)}
+.faq summary{display:flex;justify-content:space-between;gap:12px;padding-block:18px;font-weight:700;color:var(--forest-deep);list-style:none;cursor:pointer;transition:color var(--t)}
+.faq summary:hover{color:var(--forest)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex-shrink:0;font-size:1.5rem;line-height:1;color:var(--gold-dark);transition:transform var(--t)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details[open] p{animation:fade .35s ease}
+.faq details p{margin-bottom:18px;color:var(--ink-soft)}
+.terms-list{columns:2;column-gap:48px;padding-left:20px;font-size:.96rem;line-height:1.9;color:var(--ink-soft)}
+.terms-list li{break-inside:avoid}
+@media(max-width:700px){.terms-list{columns:1}}
+
+/* =========================================================
+   8. FOOTER & MOBILE ACTION BAR
+   ========================================================= */
+footer{padding-block:34px;font-size:.88rem;color:var(--on-dark-muted);background:var(--forest-deep);border-top:1px solid rgba(230,233,214,.15)}
+footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.footer-social{display:flex;align-items:center;gap:14px}
+.footer-social a{display:inline-flex;padding:4px;border-radius:50%;transition:transform var(--t),background-color var(--t)}
+.footer-social a:hover{transform:translateY(-2px) scale(1.1);background:rgba(255,255,255,.9)}
+@media(max-width:700px){footer .wrap{flex-direction:column;text-align:center}}
+
+.mobile-bar{display:none}
+@media(max-width:860px){
+  body{padding-bottom:76px}
+  .mobile-bar{
+    display:flex;gap:10px;position:fixed;inset:auto 0 0;z-index:60;
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));
+    background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    box-shadow:0 -6px 24px rgba(0,0,0,.12);
   }
-  .room-visual img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
-  .room-visual span.tag{
-    position:relative;z-index:1;color:#fff;font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;
-  }
-  /* ---------- ROOM IMAGE CAROUSEL ---------- */
-  .room-visual .carousel-track{
-    display:flex;
-    width:100%; height:100%;
-    transition:transform 0.9s ease-in-out;
-  }
-  .room-visual .carousel-track img{
-    flex:0 0 100%;
-    width:100%; height:100%;
-    object-fit:cover; object-position:center;
-    display:block;
-  }
-  .room-visual .carousel-dots{
-    position:absolute; bottom:8px; left:0; right:0;
-    display:flex; justify-content:center; gap:6px;
-    z-index:2;
-  }
-  .room-visual .carousel-dots span{
-    width:6px; height:6px; border-radius:50%;
-    background:rgba(255,255,255,0.55);
-    transition:background 0.3s;
-  }
-  .room-visual .carousel-dots span.active{
-    background:#fff;
-  }
-  .room-visual span.soon{
-    position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.32);color:#fff;
-    font-size:0.72rem;padding:4px 10px;border-radius:12px;font-weight:600;
-  }
-  .room-body{padding:26px 26px 30px;}
-  .room-body h3{font-size:1.3rem;color:var(--forest-deep);margin-bottom:6px;}
-  .room-body .tagline{color:#5a5344;font-size:0.92rem;margin:0 0 16px;}
-  .price-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;}
-  .price-chip{background:var(--cream-soft);padding:10px 16px;border-radius:3px;}
-  .price-chip strong{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--forest-deep);display:block;line-height:1.3;}
-  .price-chip span{font-size:0.76rem;color:#7a7364;}
-  .meal-slots{display:grid;grid-template-columns:1fr 1fr;gap:16px;border-top:1px solid rgba(42,38,34,0.1);padding-top:16px;}
-  @media(max-width:480px){.meal-slots{grid-template-columns:1fr;}}
-  .meal-slot h4{font-size:0.8rem;font-weight:700;color:var(--forest);margin:0 0 6px;}
-  .meal-slot p{font-size:0.85rem;color:#5a5344;margin:0;line-height:1.5;}
+  .mobile-bar a{flex:1;padding:13px 6px;font-size:.9rem}
+  .mobile-bar .c{background:var(--forest);color:#fff}
+  .mobile-bar .c2{background:#fff;color:var(--forest);border:1.5px solid var(--forest)}
+  .mobile-bar .w{background:var(--wa);color:var(--forest-deep)}
+}
 
-  /* ---------- AMENITIES ---------- */
-  .amenities-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(42,38,34,0.12);}
-  @media(max-width:760px){.amenities-grid{grid-template-columns:1fr;}}
-  .amenity-card{background:var(--cream);padding:34px 30px;}
-  .amenity-card h3{font-size:1.12rem;margin-bottom:14px;color:var(--forest-deep);}
-  .amenity-card ul{margin:0;padding-left:18px;color:#5a5344;font-size:0.95rem;line-height:1.9;}
-  .amenity-card ul li::marker{color:var(--forest);}
+/* =========================================================
+   9. MOTION
+   Elements are only hidden when JS is running (html.js), so the
+   page is fully visible without JavaScript.
+   ========================================================= */
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
 
-  /* ---------- GOOD TO KNOW ---------- */
-  .info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(42,38,34,0.12);}
-  #terms ul.terms-list{columns:2;column-gap:48px;margin:0;padding-left:20px;color:#5a5344;font-size:0.95rem;line-height:1.9;}
-  @media(max-width:700px){#terms ul.terms-list{columns:1;}}
-  @media(max-width:900px){.info-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:520px){.info-grid{grid-template-columns:1fr;}}
-  .info-card{background:var(--cream);padding:30px 26px;}
-  .info-card h3{font-size:1.02rem;margin-bottom:12px;color:var(--forest-deep);}
-  .info-card ul{margin:0;padding-left:16px;color:#5a5344;font-size:0.9rem;line-height:1.75;}
-  .info-card ul li::marker{color:var(--gold-dark);}
+.js :is(.room-card,.room-more,.slot-card,.amenity-card,.info-card,.g-tile,.section-head,.faq details,.stop,.rev-card){opacity:0}
+.js :is(.room-card,.room-more,.slot-card,.amenity-card,.info-card,.g-tile,.section-head,.faq details,.stop,.rev-card).is-visible{
+  opacity:1;animation:rise .7s var(--ease) var(--d,0ms) backwards;
+}
 
-  /* ---------- GALLERY ---------- */
-  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-  @media(max-width:860px){.gallery{grid-template-columns:repeat(2,1fr);}}
-  .g-tile{
-    aspect-ratio:4/5;border-radius:2px;position:relative;overflow:hidden;
-    display:flex;align-items:flex-end;padding:16px;
-    background:var(--cream-soft);
-  }
-  .g-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;}
-  .g-tile span{position:relative;z-index:2;color:#fff;font-weight:600;font-size:0.92rem;}
-  .g-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.45));}
-  .g-note{margin-top:18px;font-size:0.88rem;color:#7a7364;}
-
-  /* ---------- QUOTE ---------- */
-  .quote-block{
-    background:var(--forest);color:var(--paper);padding:70px 0;
-  }
-  .quote-block blockquote{
-    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
-    font-size:clamp(1.4rem,2.6vw,1.9rem);max-width:760px;margin:0 0 20px;
-    line-height:1.4;
-  }
-  .quote-block cite{font-style:normal;font-weight:600;font-size:0.95rem;opacity:0.85;}
-
-  /* ---------- LOCATION / BOOK ---------- */
-  .book{background:var(--forest-deep);color:var(--paper);}
-  .book .section-head h2{color:var(--paper);}
-  .book .section-head p{color:#C9C1A6;}
-  .book-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
-  @media(max-width:860px){.book-grid{grid-template-columns:1fr;}}
-  .book-info h3{font-size:1.1rem;margin-bottom:6px;color:var(--gold);}
-  .book-info p{color:#D9D2B8;margin:0 0 26px;font-size:0.96rem;}
-  .map-box{
-    border:1px solid rgba(217,207,178,0.3);border-radius:3px;
-    padding:22px;font-size:0.88rem;color:#C9C1A6;
-  }
-  form.book-form{display:flex;flex-direction:column;gap:14px;}
-  form.book-form label{font-size:0.85rem;color:#C9C1A6;margin-bottom:4px;display:block;}
-  form.book-form input, form.book-form textarea, form.book-form select{
-    width:100%;padding:12px 14px;border-radius:3px;border:1px solid rgba(217,207,178,0.35);
-    background:rgba(255,255,255,0.06);color:var(--paper);font-family:'Karla',sans-serif;font-size:0.95rem;
-  }
-  form.book-form select{background-color:var(--forest-deep);}
-  form.book-form select option{background:var(--forest-deep);color:var(--paper);}
-  form.book-form input::placeholder, form.book-form textarea::placeholder{color:#8f886f;}
-  .row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-  @media(max-width:480px){.row-2{grid-template-columns:1fr;}}
-  form.book-form button{
-    margin-top:8px;background:var(--gold);color:var(--forest-deep);border:none;
-    padding:14px;border-radius:3px;font-weight:700;font-size:0.98rem;cursor:pointer;font-family:'Karla',sans-serif;
-  }
-  form.book-form button:hover{background:var(--gold-dark);color:var(--forest-deep);}
-  .form-note{font-size:0.82rem;color:#8f886f;margin-top:4px;}
-
-  /* ---------- FOOTER ---------- */
-  footer{background:var(--forest-deep);border-top:1px solid rgba(217,207,178,0.15);padding:34px 0;color:#8f886f;font-size:0.85rem;}
-  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-
-  /* ---------- UPGRADE LAYER ---------- */
-  :root{--r:14px;--shadow:0 10px 30px rgba(7,61,27,.10);--shadow-lg:0 18px 44px rgba(7,61,27,.18);}
-  section[id]{scroll-margin-top:84px;}
-  body{-webkit-font-smoothing:antialiased;}
-  header.site{background:rgba(247,248,241,.88);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);}
-  .nav{padding:10px 0;}
-  .logo-img{height:56px;width:auto;}
-  nav.links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--gold);transition:width .25s;}
-  nav.links a:hover::after{width:100%;}
-  .call-btn,.btn-primary,.btn-ghost,form.book-form button{border-radius:999px;transition:transform .2s,box-shadow .2s,background .2s;}
-  .btn-primary:hover,.call-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(7,61,27,.28);}
-
-  /* Hero with real photo */
-  .hero{background:linear-gradient(100deg,rgba(7,61,27,.88) 0%,rgba(7,61,27,.55) 55%,rgba(7,61,27,.25) 100%),url(images/pool.jpeg) center/cover no-repeat;color:#fff;min-height:82vh;display:flex;align-items:center;}
-  .hero-inner{grid-template-columns:1fr;padding:90px 32px 80px;width:100%;}
-  .eyebrow-line{display:inline-block;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);padding:6px 14px;border-radius:999px;font-size:.85rem;backdrop-filter:blur(6px);}
-  .hero h1{color:#fff;font-size:clamp(2.6rem,6vw,4.4rem);text-shadow:0 2px 24px rgba(0,0,0,.25);}
-  .hero h1 i{color:var(--gold);}
-  .hero p.lede{color:#EEF2E4;font-size:1.2rem;}
-  .hero-ctas{margin-bottom:34px;}
-  .hero .btn-primary{background:var(--gold);color:var(--forest-deep);}
-  .hero .btn-primary:hover{background:#f3b24f;}
-  .hero .btn-ghost{border-color:#fff;color:#fff;}
-  .hero .btn-ghost:hover{background:rgba(255,255,255,.14);}
-  .hero-chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px;}
-  .hero-chips li{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:8px 16px;border-radius:999px;font-size:.9rem;font-weight:600;backdrop-filter:blur(6px);}
-
-  /* Rooms as modern cards */
-  .rooms-grid{background:none;gap:30px;}
-  .room-card,.room-card:nth-child(even){background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;}
-  .room-card[style*="grid-column"]{flex-direction:row;}
-  .room-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
-  .room-visual{height:260px;}
-  .room-body{flex:1;display:flex;flex-direction:column;}
-  .room-body .meal-slots{margin-bottom:22px;}
-  .room-cta{margin-top:auto;display:flex;gap:10px;}
-  .room-cta a{flex:1;text-align:center;padding:12px;border-radius:999px;font-weight:700;font-size:.92rem;text-decoration:none;}
-  .room-cta .wa{background:#1FA855;color:#fff;}
-  .room-cta .wa:hover{background:#178a45;}
-  .room-cta .ask{border:1.5px solid var(--forest);color:var(--forest);}
-  .room-cta .ask:hover{background:var(--forest);color:#fff;}
-  .price-chip{border-radius:10px;}
-  .price-chip:first-child{background:var(--forest);}
-  .price-chip:first-child strong,.price-chip:first-child span{color:#fff;}
-  .room-visual .carousel-dots span{width:8px;height:8px;}
-
-  /* Cards everywhere */
-  .slot-card{border-radius:var(--r);box-shadow:var(--shadow);border:none;}
-  .amenities-grid,.info-grid{background:none;gap:20px;max-width:1180px;margin:0 auto;padding:0 32px;}
-  .amenity-card,.info-card{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);transition:transform .3s;}
-  .amenity-card:hover,.info-card:hover{transform:translateY(-4px);}
-  .amenity-card h3::before{display:block;font-size:1.8rem;margin-bottom:8px;}
-  .amenity-card:nth-child(1) h3::before{content:"\1F3B1";}
-  .amenity-card:nth-child(2) h3::before{content:"\1F3CA";}
-  .amenity-card:nth-child(3) h3::before{content:"\1F3E8";}
-  .g-tile{border-radius:var(--r);box-shadow:var(--shadow);}
-  .g-tile img{transition:transform .6s;}
-  .g-tile:hover img{transform:scale(1.07);}
-  .gallery{grid-template-columns:repeat(3,1fr);}
-  @media(max-width:700px){.gallery{grid-template-columns:1fr;}.g-tile{aspect-ratio:4/3;}}
-  .quote-block{background:linear-gradient(135deg,var(--forest),var(--forest-deep));text-align:center;}
-  .quote-block blockquote{margin:0 auto 20px;}
-  .map-box{border-radius:var(--r);overflow:hidden;}
-  form.book-form input,form.book-form textarea,form.book-form select{border-radius:10px;}
-  form.book-form input:focus,form.book-form textarea:focus,form.book-form select:focus{outline:2px solid var(--gold);outline-offset:1px;}
-  #emailBtn{background:transparent;color:var(--paper);border:1.5px solid rgba(217,207,178,.5);margin-top:0;}
-  #emailBtn:hover{background:rgba(255,255,255,.08);color:var(--paper);}
-  #waBtn{background:#25D366;color:#073D1B;}
-  #waBtn:hover{background:#1fb858;}
-
-  /* FAQ */
-  .faq{max-width:820px;}
-  .faq details{background:#fff;border-radius:12px;box-shadow:var(--shadow);margin-bottom:12px;padding:0 22px;}
-  .faq summary{cursor:pointer;font-weight:700;padding:18px 0;list-style:none;display:flex;justify-content:space-between;gap:12px;color:var(--forest-deep);}
-  .faq summary::-webkit-details-marker{display:none;}
-  .faq summary::after{content:"+";font-size:1.4rem;color:var(--gold-dark);line-height:1;}
-  .faq details[open] summary::after{content:"\2212";}
-  .faq details p{margin:0 0 18px;color:#524C40;}
-
-  /* Scroll reveal */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
-  .reveal.in{opacity:1;transform:none;}
-
-  /* Mobile action bar */
-  .mobile-bar{display:none;}
-  @media(max-width:860px){
-    body{padding-bottom:70px;}
-    .hero{min-height:74vh;}
-    .mobile-bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.95);backdrop-filter:blur(10px);box-shadow:0 -6px 24px rgba(0,0,0,.12);}
-    .mobile-bar a{flex:1;text-align:center;padding:13px 6px;border-radius:999px;font-weight:700;text-decoration:none;font-size:.88rem;}
-    .mobile-bar .c{background:var(--forest);color:#fff;}
-    .mobile-bar .w{background:#25D366;color:#073D1B;}
-    .mobile-bar .c2{background:#fff;color:var(--forest);border:1.5px solid var(--forest);}
-    .amenities-grid,.info-grid{padding:0 20px;}
-    .hero-inner{padding:70px 20px 60px;}
-  }
-
-
-  /* Guest reviews */
-  .rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px;align-items:stretch;}
-  .rev-card{margin:0;background:#fff;border-radius:var(--r);box-shadow:var(--shadow);padding:26px 24px;display:flex;flex-direction:column;gap:14px;}
-  .rev-stars{color:var(--gold);font-size:1.15rem;letter-spacing:2px;}
-  .rev-card blockquote{margin:0;font-size:.97rem;line-height:1.65;color:#3c372f;flex:1;}
-  .rev-card figcaption{display:flex;align-items:center;gap:12px;margin-top:auto;}
-  .rev-card figcaption strong{display:block;font-size:.95rem;color:var(--forest-deep);}
-  .rev-card figcaption small{color:#7a7364;font-size:.8rem;}
-  .rev-av{width:38px;height:38px;border-radius:50%;background:var(--forest);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
-  .rev-card blockquote.rev-clamp{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;}
-  .rev-more{align-self:flex-start;background:none;border:none;padding:0;margin:-4px 0 0;font:inherit;font-weight:700;font-size:.9rem;color:var(--forest);cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
-  .rev-more:hover{color:var(--gold-dark);}
-  .rev-dialog{border:none;border-radius:var(--r);padding:30px 28px 26px;width:calc(100% - 32px);max-width:560px;max-height:85vh;overflow:auto;box-shadow:var(--shadow-lg);color:var(--charcoal);}
-  .rev-dialog::backdrop{background:rgba(7,61,27,.6);}
-  .rev-dialog .rev-stars{margin-bottom:12px;}
-  .rev-dialog .rev-text{font-size:1rem;line-height:1.7;color:#3c372f;margin:0 0 20px;}
-  .rev-dialog-close{position:absolute;top:10px;right:12px;background:none;border:none;font-size:1.5rem;line-height:1;color:var(--forest);cursor:pointer;padding:8px;}
-  .rev-dialog .rev-who{display:flex;align-items:center;gap:12px;}
-  .rev-dialog .rev-who strong{display:block;color:var(--forest-deep);}
-  .rev-dialog .rev-who small{color:#7a7364;font-size:.8rem;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site">
   <div class="wrap nav">
     <a href="#top" class="brand-logo"><img src="images/LogoMainNoBG.png" alt="Seema's Resort" class="logo-img" width="100" height="100" fetchpriority="high"></a>
-    <nav class="links" id="navLinks">
+    <nav class="links" id="navLinks" aria-label="Primary">
       <a href="#rooms">Rooms</a>
       <a href="#amenities">Amenities</a>
       <a href="#gallery">Gallery</a>
@@ -625,15 +580,16 @@
       <a href="#faq">FAQ</a>
       <a href="#terms">Terms</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:14px;">
+    <div class="nav-actions">
       <a class="call-btn" href="tel:+917559411323">Call to Book</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <button type="button" class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false">&#9776;</button>
     </div>
   </div>
 </header>
 
+<main id="main">
 <section class="hero" id="top">
-  <div class="hero-inner">
+  <div class="hero-inner wrap">
     <div>
       <div class="eyebrow-line">Highway-touch resort · Neral, near Matheran</div>
       <h1>Right on the highway.<br><i>Best resort in Neral, near Karjat.</i></h1>
@@ -651,7 +607,7 @@
 
 <section class="route">
   <div class="wrap">
-    <div class="route-head">No detour required — we're right on the road</div>
+    <h2 class="route-head">No detour required — we're right on the road</h2>
     <div class="route-track">
       <div class="stop">
         <h3>Mumbai / Pune</h3>
@@ -669,9 +625,9 @@
   </div>
 </section>
 
-<section class="section" id="timings" style="padding-bottom:0;">
+<section class="section section--flush-bottom" id="timings">
   <div class="wrap">
-    <div class="section-head" style="margin-bottom:36px;">
+    <div class="section-head section-head--compact">
       <div class="kicker">Two ways to check in</div>
       <h2>Pick whichever slot fits your drive</h2>
     </div>
@@ -707,7 +663,7 @@
             <div class="part">Afternoon, next day</div>
           </div>
         </div>
-        <p style="font-size:0.82rem;color:var(--forest);font-weight:600;margin:14px 0 0;">Available only with the AP (meal-inclusive) plan</p>
+        <p class="slot-note">Available only with the AP (meal-inclusive) plan</p>
       </div>
     </div>
   </div>
@@ -715,14 +671,14 @@
 
 <section class="section" id="rooms">
   <div class="wrap">
-    <div class="section-head" style="margin-bottom:16px;">
+    <div class="section-head section-head--flush">
       <div class="kicker">Where you'll stay</div>
       <h2>Featured rooms — plus more categories to choose from</h2>
       <p>Choose the AP (meal-inclusive) plan for an unlimited buffet tied to your check-in slot, or book room only — meals are not included in room-only rates. Every stay includes full access to the pool, lawns, and games. Showing our most popular picks below — we also have cottages, suites, dorms and studio rooms not listed here.</p>
     </div>
-    <p class="rooms-note">Rates shown are starting rates and can change on weekends and holidays. <a href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20what%20are%20the%20rates%20for%20my%20dates%3F" target="_blank" rel="noopener" style="color:var(--forest);font-weight:600;">WhatsApp us your dates</a> for the exact price.</p>
+    <p class="rooms-note">Rates shown are starting rates and can change on weekends and holidays. <a href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20what%20are%20the%20rates%20for%20my%20dates%3F" target="_blank" rel="noopener" class="link-strong">WhatsApp us your dates</a> for the exact price.</p>
   </div>
-  <div class="rooms-grid wrap" style="padding:0 32px;">
+  <div class="rooms-grid wrap">
 
     <div class="room-card">
       <div class="room-visual carousel" data-carousel>
@@ -749,9 +705,13 @@
             <p>Lunch, high-tea, dinner and next-day breakfast before check-out.</p>
           </div>
           <div class="meal-slot">
-            <h4>Slot 2 · 5 PM – 3 PM <span style="font-weight:600;color:var(--forest);font-size:0.72rem;">(AP plan only)</span></h4>
+            <h4>Slot 2 · 5 PM – 3 PM <span class="meal-flag">(AP plan only)</span></h4>
             <p>High-tea, dinner, breakfast and lunch before check-out.</p>
           </div>
+        </div>
+        <div class="room-cta">
+          <a class="wa" href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20I%20am%20interested%20in%20the%20Deluxe%20Suite%20Couple%20Cottage.%20Is%20it%20available%3F" target="_blank" rel="noopener">Book on WhatsApp</a>
+          <a class="ask" href="#book">Check dates</a>
         </div>
       </div>
     </div>
@@ -777,9 +737,13 @@
             <p>Lunch, high-tea, dinner and next-day breakfast before check-out.</p>
           </div>
           <div class="meal-slot">
-            <h4>Slot 2 · 5 PM – 3 PM <span style="font-weight:600;color:var(--forest);font-size:0.72rem;">(AP plan only)</span></h4>
+            <h4>Slot 2 · 5 PM – 3 PM <span class="meal-flag">(AP plan only)</span></h4>
             <p>High-tea, dinner, breakfast and lunch before check-out.</p>
           </div>
+        </div>
+        <div class="room-cta">
+          <a class="wa" href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20I%20am%20interested%20in%20the%20Elite%20Room.%20Is%20it%20available%3F" target="_blank" rel="noopener">Book on WhatsApp</a>
+          <a class="ask" href="#book">Check dates</a>
         </div>
       </div>
     </div>
@@ -805,9 +769,13 @@
             <p>Lunch, high-tea, dinner and next-day breakfast before check-out.</p>
           </div>
           <div class="meal-slot">
-            <h4>Slot 2 · 5 PM – 3 PM <span style="font-weight:600;color:var(--forest);font-size:0.72rem;">(AP plan only)</span></h4>
+            <h4>Slot 2 · 5 PM – 3 PM <span class="meal-flag">(AP plan only)</span></h4>
             <p>High-tea, dinner, breakfast and lunch before check-out.</p>
           </div>
+        </div>
+        <div class="room-cta">
+          <a class="wa" href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20I%20am%20interested%20in%20the%20Couple%20Deluxe%20Premium%20Room.%20Is%20it%20available%3F" target="_blank" rel="noopener">Book on WhatsApp</a>
+          <a class="ask" href="#book">Check dates</a>
         </div>
       </div>
     </div>
@@ -837,32 +805,36 @@
             <p>Lunch, high-tea, dinner and next-day breakfast before check-out.</p>
           </div>
           <div class="meal-slot">
-            <h4>Slot 2 · 5 PM – 3 PM <span style="font-weight:600;color:var(--forest);font-size:0.72rem;">(AP plan only)</span></h4>
+            <h4>Slot 2 · 5 PM – 3 PM <span class="meal-flag">(AP plan only)</span></h4>
             <p>High-tea, dinner, breakfast and lunch before check-out.</p>
           </div>
+        </div>
+        <div class="room-cta">
+          <a class="wa" href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20I%20am%20interested%20in%20the%20Family%20Executive%20Room.%20Is%20it%20available%3F" target="_blank" rel="noopener">Book on WhatsApp</a>
+          <a class="ask" href="#book">Check dates</a>
         </div>
       </div>
     </div>
 
-    <div class="room-card" style="grid-column:1 / -1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;padding:34px 30px;background:var(--cream-soft);">
+    <div class="room-more">
       <div>
-        <h3 style="margin-bottom:6px;">Looking for something else?</h3>
-        <p style="color:#5a5344;margin:0;font-size:0.98rem;max-width:52ch;">We also have Premium Deluxe &amp; Couple Deluxe Cottages, Deluxe Cottages, Bathtub Family Suites, Dormitories, Studio Rooms and Quad Rooms — call us and we'll help you pick the right fit and rate.</p>
+        <h3>Looking for something else?</h3>
+        <p>We also have Premium Deluxe &amp; Couple Deluxe Cottages, Deluxe Cottages, Bathtub Family Suites, Dormitories, Studio Rooms and Quad Rooms — call us and we'll help you pick the right fit and rate.</p>
       </div>
-      <a class="call-btn" href="tel:+917559411323" style="flex-shrink:0;">Call to know more</a>
+      <a class="call-btn" href="tel:+917559411323">Call to know more</a>
     </div>
 
   </div>
 </section>
 
-<section class="section" id="amenities" style="background:var(--cream-soft);">
+<section class="section section--soft" id="amenities">
   <div class="wrap">
     <div class="section-head">
       <div class="kicker">Amenities &amp; features</div>
       <h2>Enough to fill a weekend without leaving the property</h2>
     </div>
   </div>
-  <div class="amenities-grid">
+  <div class="amenities-grid wrap">
     <div class="amenity-card">
       <h3>Indoor Games</h3>
       <ul>
@@ -907,7 +879,7 @@
       <p class="rooms-note">Seema&rsquo;s Resort &amp; Restaurant sits on the Neral-Karjat Highway near Panchwati, at the foot of Matheran and about 1.5&ndash;2 hours from Mumbai and Pune. Whether it&rsquo;s a weekend with the family, a couple&rsquo;s break or a team outing near Karjat, we have a room to fit.</p>
     </div>
   </div>
-  <div class="info-grid">
+  <div class="info-grid wrap">
     <div class="info-card">
       <h3>Family weekend stays</h3>
       <ul>
@@ -942,7 +914,7 @@
       <h2>The fine print, before you book</h2>
     </div>
   </div>
-  <div class="info-grid">
+  <div class="info-grid wrap">
     <div class="info-card">
       <h3>Dining &amp; Meals</h3>
       <ul>
@@ -987,9 +959,9 @@
   </div>
 </section>
 
-<section class="section" id="reviews" style="background:var(--cream-soft);">
+<section class="section section--soft" id="reviews">
   <div class="wrap">
-    <div class="section-head" style="margin-bottom:36px;">
+    <div class="section-head section-head--compact">
       <div class="kicker">Guest reviews</div>
       <h2>What our guests say on Google</h2>
     </div>
@@ -1040,7 +1012,7 @@
         <figcaption><span class="rev-av">A</span><span><strong>Abhinandan Sharma</strong><small>Google review</small></span></figcaption>
       </figure>
     </div>
-    <p style="margin:34px 0 0;"><a class="btn-primary" href="https://maps.app.goo.gl/tj6RLJuCBuRJt2n1A" target="_blank" rel="noopener">Read all reviews on Google</a></p>
+    <p class="reviews-cta"><a class="btn-primary" href="https://maps.app.goo.gl/tj6RLJuCBuRJt2n1A" target="_blank" rel="noopener">Read all reviews on Google</a></p>
   </div>
 </section>
 
@@ -1056,21 +1028,21 @@
         <h3>Address</h3>
         <p>Seema's Resort &amp; Restaurant Near Panchwati, Neral-Karjat Highway, Neral - 410101</p>
         <h3>Phone &amp; WhatsApp</h3>
-        <p><a href="tel:+917559411323" style="color:var(--paper);">+91 75594 11323</a> &nbsp;/&nbsp; <a href="tel:+917745852323" style="color:var(--paper);">+91 77458 52323</a> — 8 AM to 10 PM, every day</p>
-        <p><a href="https://wa.me/917559411323" target="_blank" rel="noopener" style="color:var(--gold);">Message us on WhatsApp →</a></p>
+        <p><a href="tel:+917559411323">+91 75594 11323</a> &nbsp;/&nbsp; <a href="tel:+917745852323">+91 77458 52323</a> — 8 AM to 10 PM, every day</p>
+        <p><a href="https://wa.me/917559411323" target="_blank" rel="noopener" class="link-gold">Message us on WhatsApp →</a></p>
         <h3>Email</h3>
-        <p><a href="mailto:contact@seemaresort.in" style="color:var(--paper);">contact@seemaresort.in</a></p>
+        <p><a href="mailto:contact@seemaresort.in">contact@seemaresort.in</a></p>
         <h3>Getting there</h3>
         <p>Neral Railway Station is about 3 km away — auto-rickshaws are easily available from the station.</p>
-        <div class="map-box" style="padding:0;overflow:hidden;">
+        <div class="map-box">
           <iframe
-            src="https://maps.google.com/maps?q=19.0112567,73.3265305&z=16&output=embed"
-            width="100%" height="240" style="border:0;display:block;"
+            src="https://maps.google.com/maps?q=19.0112567,73.3265305&amp;z=16&amp;output=embed"
+            width="100%" height="240"
             allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
             title="Seema Resort location on Google Maps">
           </iframe>
-          <div style="padding:14px 16px;">
-            Seema's Resort &amp; Restaurant Near Panchwati, Neral-Karjat Highway, Neral - 410101 — <a href="https://maps.app.goo.gl/tj6RLJuCBuRJt2n1A" target="_blank" rel="noopener" style="color:#E8A23A;">open in Google Maps</a>.
+          <div class="map-caption">
+            Seema's Resort &amp; Restaurant Near Panchwati, Neral-Karjat Highway, Neral - 410101 — <a href="https://maps.app.goo.gl/tj6RLJuCBuRJt2n1A" target="_blank" rel="noopener" class="link-gold">open in Google Maps</a>.
           </div>
         </div>
       </div>
@@ -1116,16 +1088,16 @@
         <button type="submit" id="waBtn">Send request on WhatsApp</button>
         <button type="submit" id="emailBtn">Or send by email</button>
         <p class="form-note">WhatsApp is the fastest way to get a reply. Either option opens with your details pre-filled — just hit send.</p>
-        <div style="margin-top:6px;padding:16px 18px;border:1px solid rgba(217,207,178,0.3);border-radius:3px;background:rgba(255,255,255,0.04);">
-          <p style="margin:0 0 8px;font-size:0.82rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.03em;">Before you book — please note</p>
-          <ul style="margin:0;padding-left:18px;color:#C9C1A6;font-size:0.85rem;line-height:1.7;">
+        <div class="booking-notice">
+          <p class="notice-title">Before you book — please note</p>
+          <ul>
             <li>Valid government photo ID required for all guests at check-in</li>
             <li>Couples must carry suitable ID proof; accommodation may otherwise be denied</li>
             <li>Advances are non-refundable; postpone at least 3 days ahead to carry the amount forward</li>
             <li>No-shows and cancellations within 24 hrs of check-in are non-refundable</li>
             <li>Children 5–10 yrs: ₹1,200/child extra · Above 10 yrs: full adult rate</li>
           </ul>
-          <p style="margin:10px 0 0;font-size:0.8rem;"><a href="#terms" style="color:var(--gold);">Read full Terms &amp; Conditions →</a></p>
+          <p class="notice-link"><a href="#terms" class="link-gold">Read full Terms &amp; Conditions →</a></p>
         </div>
       </form>
     </div>
@@ -1148,50 +1120,51 @@
   </div>
 </section>
 
-<section class="section" id="terms" style="background:var(--cream-soft);">
+<section class="section section--soft" id="terms">
   <div class="wrap">
     <div class="section-head">
       <div class="kicker">Fine print</div>
       <h2>Terms &amp; Conditions</h2>
     </div>
     <ul class="terms-list">
-      <li style="break-inside:avoid;">A valid, government-issued photo ID is mandatory for all resident guests at the time of check-in.</li>
-      <li style="break-inside:avoid;">Accommodation may be denied to guests posing as a "couple" if suitable proof of identification is not presented at check-in.</li>
-      <li style="break-inside:avoid;">Early check-in and late check-out are strictly subject to room availability and may incur an additional fee. Please check with the reception desk for details.</li>
-      <li style="break-inside:avoid;">All advances are non-refundable. However, bookings postponed at least 3 days prior to the check-in date can have the full amount applied toward a future stay (subject to room availability).</li>
-      <li style="break-inside:avoid;">Cancellations made within 24 hours of check-in, or failure to arrive (no-show), are strictly non-refundable and will result in the voucher being fully redeemed.</li>
-      <li style="break-inside:avoid;">All special requests are subject to hotel availability at the time of arrival. These requests cannot be guaranteed and may incur additional charges.</li>
-      <li style="break-inside:avoid;">Proper swimming costumes are mandatory. Nylon, Lycra, or Polyester swimwear is preferred. Acceptable attire includes swimming trunks, shorts, swimsuits, swim leggings, and rash guards. Infants and young children must wear proper swim diapers if required.</li>
-      <li style="break-inside:avoid;">Pets are not allowed on the property.</li>
-      <li style="break-inside:avoid;">Any damage caused to the property, rooms, or resort amenities by the guest will be evaluated and fined accordingly.</li>
-      <li style="break-inside:avoid;">The amount paid for the room or covered by the reservation voucher does not include charges for optional services, extra facilities, or incidental expenses.</li>
-      <li style="break-inside:avoid;">Guests requiring a GST invoice must provide their valid GST number at the time of check-in to obtain a GST-compliant bill at check-out.</li>
-      <li style="break-inside:avoid;">Infants &amp; Toddlers (0 to 5 years): Stay completely free of charge.</li>
-      <li style="break-inside:avoid;">Children (5 to 10 years): An additional charge of ₹1,200/- per child applies.</li>
-      <li style="break-inside:avoid;">Guests Above 10 Years: Considered adults for pricing purposes and will be charged the standard adult rate.</li>
+      <li>A valid, government-issued photo ID is mandatory for all resident guests at the time of check-in.</li>
+      <li>Accommodation may be denied to guests posing as a "couple" if suitable proof of identification is not presented at check-in.</li>
+      <li>Early check-in and late check-out are strictly subject to room availability and may incur an additional fee. Please check with the reception desk for details.</li>
+      <li>All advances are non-refundable. However, bookings postponed at least 3 days prior to the check-in date can have the full amount applied toward a future stay (subject to room availability).</li>
+      <li>Cancellations made within 24 hours of check-in, or failure to arrive (no-show), are strictly non-refundable and will result in the voucher being fully redeemed.</li>
+      <li>All special requests are subject to hotel availability at the time of arrival. These requests cannot be guaranteed and may incur additional charges.</li>
+      <li>Proper swimming costumes are mandatory. Nylon, Lycra, or Polyester swimwear is preferred. Acceptable attire includes swimming trunks, shorts, swimsuits, swim leggings, and rash guards. Infants and young children must wear proper swim diapers if required.</li>
+      <li>Pets are not allowed on the property.</li>
+      <li>Any damage caused to the property, rooms, or resort amenities by the guest will be evaluated and fined accordingly.</li>
+      <li>The amount paid for the room or covered by the reservation voucher does not include charges for optional services, extra facilities, or incidental expenses.</li>
+      <li>Guests requiring a GST invoice must provide their valid GST number at the time of check-in to obtain a GST-compliant bill at check-out.</li>
+      <li>Infants &amp; Toddlers (0 to 5 years): Stay completely free of charge.</li>
+      <li>Children (5 to 10 years): An additional charge of ₹1,200/- per child applies.</li>
+      <li>Guests Above 10 Years: Considered adults for pricing purposes and will be charged the standard adult rate.</li>
     </ul>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
     <span>© <span id="year"></span> Seema Resort. Best resort in Neral.</span>
     <span>Highway touch, at the foot of Matheran.</span>
-    <span style="display:flex;align-items:center;gap:14px;">
-      <a href="https://www.instagram.com/seemas_resort/" target="_blank" rel="noopener" aria-label="Seema Resort on Instagram" style="display:inline-flex;">
+    <span class="footer-social">
+      <a href="https://www.instagram.com/seemas_resort/" target="_blank" rel="noopener" aria-label="Seema Resort on Instagram">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="2" y="2" width="20" height="20" rx="5" stroke="#E1306C" stroke-width="2"/>
           <circle cx="12" cy="12" r="4.5" stroke="#E1306C" stroke-width="2"/>
           <circle cx="17.4" cy="6.6" r="1.2" fill="#E1306C"/>
         </svg>
       </a>
-      <a href="https://www.facebook.com/Seemaresort/" target="_blank" rel="noopener" aria-label="Seema Resort on Facebook" style="display:inline-flex;">
+      <a href="https://www.facebook.com/Seemaresort/" target="_blank" rel="noopener" aria-label="Seema Resort on Facebook">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="12" cy="12" r="10" stroke="#1877F2" stroke-width="2"/>
           <path d="M13.5 21.8V13.9H16L16.4 10.9H13.5V9C13.5 8.1 13.7 7.5 15 7.5H16.5V4.8C16.2 4.8 15.3 4.7 14.2 4.7C11.9 4.7 10.4 6.1 10.4 8.7V10.9H7.9V13.9H10.4V21.8" stroke="#1877F2" stroke-width="1.6" stroke-linejoin="round"/>
         </svg>
       </a>
-      <a href="https://share.google/HcRE6eb77J1XFDzAg" target="_blank" rel="noopener" aria-label="Seema Resort on Google" style="display:inline-flex;">
+      <a href="https://share.google/HcRE6eb77J1XFDzAg" target="_blank" rel="noopener" aria-label="Seema Resort on Google">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="12" cy="12" r="10" stroke="#4285F4" stroke-width="2"/>
           <text x="12" y="16.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#4285F4">G</text>
@@ -1201,170 +1174,226 @@
   </div>
 </footer>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  const toggle = document.getElementById('menuToggle');
-  const links = document.getElementById('navLinks');
+<nav class="mobile-bar" aria-label="Quick contact">
+  <a class="c" href="tel:+917559411323">Call now</a>
+  <a class="c2" href="tel:+917745852323">Call us</a>
+  <a class="w" href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20I%27d%20like%20to%20check%20availability." target="_blank" rel="noopener">WhatsApp</a>
+</nav>
 
-  function setMenu(open){
-    links.classList.toggle('open', open);
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    toggle.textContent = open ? '\u2715' : '\u2630';
-  }
-  toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
-  links.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
-
-  const RESORT_EMAIL = "contact@seemaresort.in";
-
-  // Prevent picking a check-in date in the past, and keep check-out
-  // pinned to at least the day after whatever check-in is selected.
-  const checkinInput = document.getElementById('checkin');
-  const checkoutInput = document.getElementById('checkout');
-  const todayStr = new Date().toISOString().split('T')[0];
-  checkinInput.min = todayStr;
-  checkoutInput.min = todayStr;
-  checkinInput.addEventListener('change', () => {
-    if (!checkinInput.value) return;
-    const nextDay = new Date(checkinInput.value + 'T00:00:00');
-    nextDay.setDate(nextDay.getDate() + 1);
-    const nextDayStr = nextDay.toISOString().split('T')[0];
-    checkoutInput.min = nextDayStr;
-    if (checkoutInput.value && checkoutInput.value <= checkinInput.value) {
-      checkoutInput.value = nextDayStr;
-    }
-  });
-
-  document.getElementById('bookingForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const name = document.getElementById('name').value;
-    const checkin = document.getElementById('checkin').value;
-    const checkout = document.getElementById('checkout').value;
-    const guests = document.getElementById('guests').value;
-    const phone = document.getElementById('phone').value;
-    const roomtype = document.getElementById('roomtype').value || "Not specified";
-    const notes = document.getElementById('notes').value || "-";
-
-    if (checkout <= checkin) {
-      alert("Check-out date must be after your check-in date.");
-      return;
-    }
-
-    const subject = `Booking Request - ${name}`;
-    const body =
-`Name: ${name}
-Check-in: ${checkin}
-Check-out: ${checkout}
-Guests: ${guests}
-Phone: ${phone}
-Room preference: ${roomtype}
-Notes: ${notes}`;
-
-    if (e.submitter && e.submitter.id === 'emailBtn') {
-      window.location.href = `mailto:${RESORT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    } else {
-      window.open(`https://wa.me/917559411323?text=${encodeURIComponent(subject + '\n' + body)}`, '_blank', 'noopener');
-    }
-  });
-</script>
-
-<script>
-  // ---------- ROOM IMAGE AUTO CAROUSEL ----------
-  document.querySelectorAll('[data-carousel]').forEach(function(carousel){
-    const track = carousel.querySelector('.carousel-track');
-    const slides = track.querySelectorAll('img');
-    const dotsWrap = carousel.querySelector('.carousel-dots');
-    const dots = dotsWrap ? dotsWrap.querySelectorAll('span') : [];
-    const total = slides.length;
-
-    // Nothing to slide - hide the dots and stop here.
-    if (total <= 1){
-      if (dotsWrap) dotsWrap.style.display = 'none';
-      return;
-    }
-
-    let index = 0;
-    let direction = 1; // 1 = forward, -1 = backward
-
-    function showSlide(i){
-      track.style.transform = `translateX(-${i * 100}%)`;
-      dots.forEach((d, di) => d.classList.toggle('active', di === i));
-    }
-
-    setInterval(function(){
-      index += direction;
-      if (index >= total - 1){
-        index = total - 1;
-        direction = -1;
-      } else if (index <= 0){
-        index = 0;
-        direction = 1;
-      }
-      showSlide(index);
-    }, 3000);
-  });
-</script>
-
-<div class="mobile-bar"><a class="c" href="tel:+917559411323">Call now</a><a class="c2" href="tel:+917745852323">Call us</a><a class="w" href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20I%27d%20like%20to%20check%20availability." target="_blank" rel="noopener">WhatsApp</a></div>
-<script>
-  // Per-room enquiry buttons
-  document.querySelectorAll('.room-card').forEach(function(card){
-    var body = card.querySelector('.room-body');
-    if (!body) return;
-    var name = card.querySelector('h3').textContent.trim();
-    var msg = encodeURIComponent('Hi Seema Resort, I am interested in the ' + name + '. Is it available?');
-    var cta = document.createElement('div');
-    cta.className = 'room-cta';
-    cta.innerHTML = '<a class="wa" target="_blank" rel="noopener" href="https://wa.me/917559411323?text=' + msg + '">Book on WhatsApp</a><a class="ask" href="#book">Check dates</a>';
-    body.appendChild(cta);
-  });
-  // Scroll reveal
-  var targets = document.querySelectorAll('.room-card,.slot-card,.amenity-card,.info-card,.g-tile,.section-head,.faq details,.stop');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){ var el=e.target; el.classList.add('in'); io.unobserve(el); setTimeout(function(){ el.classList.remove('reveal','in'); el.style.transitionDelay=''; },1000); } });
-    },{threshold:.12});
-    targets.forEach(function(t,i){ t.classList.add('reveal'); t.style.transitionDelay=((i%3)*80)+'ms'; io.observe(t); });
-  }
-</script>
 <dialog class="rev-dialog" id="revDialog" aria-label="Full review">
   <button type="button" class="rev-dialog-close" id="revClose" aria-label="Close">&#10005;</button>
   <div class="rev-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
   <p class="rev-text" id="revText"></p>
   <div class="rev-who"><span class="rev-av" id="revAv"></span><span><strong id="revName"></strong><small>Google review</small></span></div>
 </dialog>
+
 <script>
-  // Long Google reviews: card shows a few lines; "See full review" opens the full, unchanged text in a popup
-  (function(){
-    var cards = document.querySelectorAll('.rev-card');
-    var dlg = document.getElementById('revDialog');
-    function check(card){
-      var bq = card.querySelector('blockquote');
-      var btn = card.querySelector('.rev-more');
-      bq.classList.add('rev-clamp');
-      var overflow = bq.scrollHeight > bq.clientHeight + 1;
-      if (overflow && !btn){
-        btn = document.createElement('button');
-        btn.type = 'button'; btn.className = 'rev-more'; btn.textContent = 'See full review';
-        btn.addEventListener('click', function(){
-          document.getElementById('revText').innerHTML = bq.innerHTML;
-          document.getElementById('revName').textContent = card.querySelector('figcaption strong').textContent;
-          document.getElementById('revAv').textContent = card.querySelector('.rev-av').textContent;
-          if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open','');
-        });
-        bq.insertAdjacentElement('afterend', btn);
-      } else if (!overflow){
-        bq.classList.remove('rev-clamp');
-        if (btn) btn.remove();
-      }
+(() => {
+  'use strict';
+
+  const $  = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const WHATSAPP_NUMBER = '917559411323';
+  const RESORT_EMAIL = 'contact@seemaresort.in';
+
+  /* ---------- Scroll reveal (runs first so nothing stays hidden if a later block fails) ---------- */
+  const revealTargets = $$('.room-card,.room-more,.slot-card,.amenity-card,.info-card,.g-tile,.section-head,.faq details,.stop,.rev-card');
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+    revealTargets.forEach((el) => {
+      const position = [...el.parentElement.children].indexOf(el);
+      el.style.setProperty('--d', `${(position % 3) * 80}ms`);
+      revealObserver.observe(el);
+    });
+  } else {
+    revealTargets.forEach((el) => el.classList.add('is-visible'));
+  }
+
+  /* ---------- Footer year ---------- */
+  $('#year').textContent = new Date().getFullYear();
+
+  /* ---------- Header shadow once scrolled ---------- */
+  const header = $('header.site');
+  let scrollTicking = false;
+  const updateHeader = () => {
+    header.classList.toggle('is-scrolled', window.scrollY > 8);
+    scrollTicking = false;
+  };
+  addEventListener('scroll', () => {
+    if (!scrollTicking) { scrollTicking = true; requestAnimationFrame(updateHeader); }
+  }, { passive: true });
+  updateHeader();
+
+  /* ---------- Mobile menu ---------- */
+  const menuToggle = $('#menuToggle');
+  const navLinks = $('#navLinks');
+  const setMenu = (open) => {
+    navLinks.classList.toggle('open', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.textContent = open ? '\u2715' : '\u2630';
+  };
+  menuToggle.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
+  navLinks.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('open') && !e.target.closest('.nav')) setMenu(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('open')) { setMenu(false); menuToggle.focus(); }
+  });
+  matchMedia('(min-width: 861px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
+
+  /* ---------- Booking form → WhatsApp / email ---------- */
+  const form = $('#bookingForm');
+  const checkin = $('#checkin');
+  const checkout = $('#checkout');
+  // Local-time YYYY-MM-DD (toISOString() is UTC and can be a day behind in India)
+  const toDateValue = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+  checkin.min = checkout.min = toDateValue(new Date());
+  checkin.addEventListener('change', () => {
+    if (!checkin.value) return;
+    const nextDay = new Date(`${checkin.value}T00:00:00`);
+    nextDay.setDate(nextDay.getDate() + 1);
+    const nextDayValue = toDateValue(nextDay);
+    checkout.min = nextDayValue;
+    if (checkout.value && checkout.value <= checkin.value) checkout.value = nextDayValue;
+    checkout.setCustomValidity('');
+  });
+  checkout.addEventListener('input', () => checkout.setCustomValidity(''));
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (checkout.value <= checkin.value) {
+      checkout.setCustomValidity('Check-out date must be after your check-in date.');
+      checkout.reportValidity();
+      return;
     }
-    function run(){ cards.forEach(check); }
-    run();
-    window.addEventListener('load', run);
-    var t; window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(run, 150); });
-    document.getElementById('revClose').addEventListener('click', function(){ dlg.close(); });
-    dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
-  })();
+    const value = (id, fallback = '') => $(`#${id}`).value.trim() || fallback;
+    const name = value('name');
+    const subject = `Booking Request - ${name}`;
+    const body = [
+      `Name: ${name}`,
+      `Check-in: ${checkin.value}`,
+      `Check-out: ${checkout.value}`,
+      `Guests: ${value('guests')}`,
+      `Phone: ${value('phone')}`,
+      `Room preference: ${value('roomtype', 'Not specified')}`,
+      `Notes: ${value('notes', '-')}`,
+    ].join('\n');
+
+    if (e.submitter && e.submitter.id === 'emailBtn') {
+      location.href = `mailto:${RESORT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    } else {
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`${subject}\n${body}`)}`, '_blank', 'noopener');
+    }
+  });
+
+  /* ---------- Room image carousels ---------- */
+  $$('[data-carousel]').forEach((carousel) => {
+    const track = $('.carousel-track', carousel);
+    const slides = $$('img', track);
+    const dotsWrap = $('.carousel-dots', carousel);
+
+    if (slides.length < 2) { if (dotsWrap) dotsWrap.remove(); return; }
+
+    let index = 0, direction = 1, timer = null, inView = false, paused = false;
+
+    const dots = slides.map((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Show photo ${i + 1} of ${slides.length}`);
+      dot.addEventListener('click', () => { goTo(i); restart(); });
+      return dot;
+    });
+    dotsWrap.replaceChildren(...dots);
+
+    function goTo(i) {
+      index = (i + slides.length) % slides.length;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, di) => {
+        dot.classList.toggle('active', di === index);
+        dot.setAttribute('aria-current', di === index ? 'true' : 'false');
+      });
+    }
+    // Ping-pong: forward to the last photo, then back to the first
+    function step() {
+      if (index >= slides.length - 1) direction = -1;
+      else if (index <= 0) direction = 1;
+      goTo(index + direction);
+    }
+    const stop = () => { clearInterval(timer); timer = null; };
+    const start = () => { if (!timer && inView && !paused && !reduceMotion) timer = setInterval(step, 3000); };
+    const restart = () => { stop(); start(); };
+
+    // Pause while hovered / focused / being swiped
+    const pause = () => { paused = true; stop(); };
+    const resume = () => { paused = false; start(); };
+    carousel.addEventListener('mouseenter', pause);
+    carousel.addEventListener('mouseleave', resume);
+    carousel.addEventListener('focusin', pause);
+    carousel.addEventListener('focusout', resume);
+
+    // Swipe on touch screens
+    let touchX = null;
+    carousel.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+    carousel.addEventListener('touchend', (e) => {
+      if (touchX === null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      touchX = null;
+      if (Math.abs(dx) > 40) { goTo(index + (dx < 0 ? 1 : -1)); restart(); }
+    }, { passive: true });
+
+    // Only animate while on screen; preload the other photos the first time it's seen
+    new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      if (inView) { slides.forEach((img) => { img.loading = 'eager'; }); start(); } else { stop(); }
+    }, { threshold: 0.25 }).observe(carousel);
+
+    goTo(0);
+  });
+
+  /* ---------- Guest reviews: long reviews open in a dialog ---------- */
+  const dialog = $('#revDialog');
+  const clampReview = (card) => {
+    const quote = $('blockquote', card);
+    let button = $('.rev-more', card);
+    quote.classList.add('rev-clamp');
+    const overflowing = quote.scrollHeight > quote.clientHeight + 1;
+
+    if (overflowing && !button) {
+      button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'rev-more';
+      button.textContent = 'See full review';
+      button.addEventListener('click', () => {
+        $('#revText').innerHTML = quote.innerHTML;
+        $('#revName').textContent = $('figcaption strong', card).textContent;
+        $('#revAv').textContent = $('.rev-av', card).textContent;
+        dialog.showModal();
+      });
+      quote.insertAdjacentElement('afterend', button);
+    } else if (!overflowing) {
+      quote.classList.remove('rev-clamp');
+      if (button) button.remove();
+    }
+  };
+  const reviewCards = $$('.rev-card');
+  const clampAll = () => reviewCards.forEach(clampReview);
+  clampAll();
+  addEventListener('load', clampAll);
+  let resizeTimer;
+  addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(clampAll, 150); });
+  $('#revClose').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+})();
 </script>
 </body>
 </html>
