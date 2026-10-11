@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<!-- Sitemap for Seema's Resort & Restaurant, Neral-Karjat Highway -->
+<!-- Update <lastmod> after major changes to index.html -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
   <url>
-    <loc>https://seemaresort.in/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <loc>https://www.seemaresort.in/</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.seemaresort.in/images/pool.jpeg</image:loc>
+      <image:title>Swimming pool at Seema's Resort, Neral</image:title>
+    </image:image>
   </url>
+
 </urlset>
