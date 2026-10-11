@@ -1,32 +1,91 @@
-# Seema Resort Website
+# Seema's Resort Website
 
-A modern, responsive, single-page static website for Seema's Resort, located on the Neral-Karjat Highway near Matheran, Maharashtra[cite: 1]. The site is designed for high performance, ease of use, and direct booking conversions via WhatsApp and Email[cite: 1].
+Official website for **Seema's Resort & Restaurant**, on the Neral-Karjat Highway near Matheran, Maharashtra.
 
-## Project Overview
+**Live site:** https://www.seemaresort.in
 
-This project consists of a frontend web interface built natively with HTML, CSS, and vanilla JavaScript[cite: 1]. It serves as the digital storefront for the resort, showcasing room categories, property amenities, booking rules, location details, and guest reviews[cite: 1]. 
+A fast, mobile-first, single-page static site built to turn visitors into direct enquiries through WhatsApp, phone and email.
+
+---
 
 ## Features
 
-*   **Responsive Design:** Fully mobile-optimized layout with a sticky navigation bar, a bottom mobile action bar, and adaptive CSS Grid and Flexbox layouts[cite: 1].
-*   **SEO & Discoverability:** Includes standard meta tags, Open Graph tags (for Facebook/WhatsApp previews), Twitter Cards, and comprehensive Schema.org JSON-LD structured data for both `LodgingBusiness` and `FAQPage`[cite: 1].
-*   **Analytics Tracking:** Pre-configured with a Google Tag Manager (gtag.js) script for traffic monitoring[cite: 1].
-*   **Interactive UI Components:** Features a custom vanilla JavaScript image carousel for room galleries, scroll-reveal animations using `IntersectionObserver`, native HTML `<details>` and `<summary>` tags for FAQs, and a native `<dialog>` modal for expanding long guest reviews[cite: 1].
-*   **Direct Booking Integration:** A built-in HTML form that captures user dates, guest counts, and room preferences, then dynamically generates a pre-filled WhatsApp message or Email request without requiring a backend database[cite: 1].
-*   **Performance & Accessibility:** Implements `prefers-reduced-motion` media queries for accessibility, and utilizes native lazy loading (`loading="lazy"`) and asynchronous decoding (`decoding="async"`) for optimized image delivery[cite: 1].
+- **Mobile-first layout** with a sticky header and a bottom action bar (Call / WhatsApp) on phones
+- **Room cards with image carousels**, each with a "Book on WhatsApp" button pre-filled for that room
+- **Booking form with no backend**: collects dates, guests and room preference, then opens a pre-filled WhatsApp message or email
+- **Guest reviews** with a pop-up to read long reviews, linked to the resort's Google reviews
+- **FAQ section** using native `<details>` elements
+- **Embedded Google Map** and links to Instagram, Facebook and Google
+- **SEO ready**: meta tags, Open Graph and Twitter cards, canonical URL, `LodgingBusiness` and `FAQPage` structured data, `sitemap.xml` and `robots.txt`
+- **Google Analytics** for traffic tracking
+- **Performance and accessibility**: lazy-loaded images, scroll-reveal animations that respect `prefers-reduced-motion`
 
-## File Structure
+## Tech Stack
 
-| File | Description |
-| :--- | :--- |
-| `index.html` | The main, single-page HTML document containing all text content, inline CSS (`<style>`), and frontend JS logic (`<script>`)[cite: 1]. |
-| `robots.txt` | Standard search engine directive file explicitly allowing all user-agents to crawl the site and linking to the sitemap[cite: 2]. |
-| `sitemap.xml` | An XML sitemap indicating the main URL and its change frequency to assist search engine indexing[cite: 3]. |
+HTML, CSS and vanilla JavaScript in a single file. No framework, no build step, no database.
 
-## Setup & Deployment
+## Repository Structure
 
-Because this is a completely static website with no backend dependencies, deployment is straightforward:
+```
+seemaresort/
+├── index.html      # The whole site: content, inline CSS and JS
+├── images/         # Photos and logo used by the site
+├── CNAME           # Custom domain for GitHub Pages
+├── sitemap.xml     # Sitemap for search engines
+├── robots.txt      # Crawler rules, points to the sitemap
+├── SECURITY.md     # How to report a security issue
+└── README.md       # This file
+```
 
-1.  **Asset Management:** Ensure all image assets referenced in the `index.html` markup (e.g., `images/pool.jpeg`, `images/LogoMainNoBG.png`, `images/hall.jpeg`) are placed in an `images/` directory at the root level alongside the HTML file[cite: 1].
-2.  **Hosting:** Upload the root directory containing `index.html`, `robots.txt`, and `sitemap.xml` to any static web hosting service (such as GitHub Pages, Netlify, Vercel, or an Apache/Nginx server).
-3.  **Local Testing:** Simply open the `index.html` file in any modern web browser to view and test the site locally.
+## Editing the Site
+
+1. Open `index.html` in GitHub and click the pencil icon, or edit it locally.
+2. Make the change (rooms, rates, FAQs, text, links).
+3. Commit to `main`. GitHub Pages republishes within a couple of minutes.
+4. After major changes, update the `lastmod` date in `sitemap.xml`.
+
+**Contact details** are set in more than one place. If the phone number or email changes, update all of these in `index.html`:
+
+- `WHATSAPP_NUMBER` and `RESORT_EMAIL` at the top of the script
+- every `tel:` and `wa.me` link
+- the structured data block in the `<head>`
+- the contact section and footer
+
+**FAQs:** if you change an FAQ, update the matching `FAQPage` structured data in the `<head>`.
+
+## Images
+
+- Keep all images in `images/`.
+- Compress photos before uploading, ideally **under 250 KB each**, so the site loads fast on mobile.
+- Avoid spaces in file names.
+- Use descriptive alt text, for example: `Family Executive Room at Seema Resort Neral - bedroom view`.
+- The link preview image (WhatsApp, Facebook) is `images/pool.jpeg`.
+
+## Deployment
+
+The site is hosted on **GitHub Pages** from the `main` branch.
+
+- Custom domain: `www.seemaresort.in` (set in the `CNAME` file)
+- Domain and email are managed at Hostinger. DNS records point to GitHub Pages, so do not change them unless hosting moves.
+- Check publishing status under **Settings → Pages**.
+
+To run locally, open `index.html` in any browser.
+
+## Documentation
+
+More guides (updating content, images, booking and contact, hosting, SEO) are in the repository **Wiki**.
+
+## Contact
+
+- **Phone:** +91 75594 11323, +91 77458 52323 (8 AM to 10 PM, every day)
+- **WhatsApp:** +91 75594 11323
+- **Email:** contact@seemaresort.in
+- **Address:** Seema's Resort & Restaurant, Near Panchwati, Neral-Karjat Highway, Neral - 410101
+
+## Security
+
+To report a security issue, see [SECURITY.md](SECURITY.md). Please do not open a public issue.
+
+## License
+
+All rights reserved. The text, images and branding belong to Seema's Resort. Do not reuse without permission.
