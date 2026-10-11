@@ -547,6 +547,30 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
 }
 
 /* =========================================================
+   TEST ONLY: GAME SECTION (remove with the #play section + script)
+   ========================================================= */
+.play-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.play-tab{padding:10px 22px;border-radius:var(--r-pill);border:2px solid var(--forest);background:transparent;color:var(--forest);font-weight:700;cursor:pointer;transition:var(--t)}
+.play-tab[aria-selected="true"]{background:var(--forest);color:var(--paper)}
+.play-tab:hover{transform:translateY(-2px)}
+.play-card{max-width:460px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(16px,3vw,24px)}
+.play-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;font-weight:700;color:var(--forest-deep)}
+.play-bar button{padding:8px 18px;border-radius:var(--r-pill);border:2px solid var(--gold-dark);background:var(--gold);color:var(--forest-deep);font-weight:700;cursor:pointer}
+.play-bar button:hover{background:#F3B24F}
+.mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.mem-card{aspect-ratio:1;border-radius:var(--r-sm);border:0;font-size:clamp(1.6rem,6vw,2.2rem);line-height:1;cursor:pointer;background:var(--forest);color:transparent;transition:transform .3s var(--ease),background .2s;display:grid;place-items:center}
+.mem-card:hover{transform:translateY(-2px)}
+.mem-card.up,.mem-card.done{background:var(--cream-soft);color:inherit;border:2px solid var(--leaf-light)}
+.mem-card.done{opacity:.6;cursor:default}
+.ttt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ttt-cell{aspect-ratio:1;border-radius:var(--r-sm);border:2px solid var(--line);background:var(--cream-soft);font:700 clamp(2rem,9vw,2.8rem)/1 var(--font-display);color:var(--forest);cursor:pointer}
+.ttt-cell:not(:disabled):hover{background:#E3EBD2}
+.ttt-cell[data-v="O"]{color:var(--gold-dark)}
+.ttt-cell.win{background:var(--leaf-light);color:var(--forest-deep)}
+.play-msg{margin-top:14px;min-height:1.6em;font-weight:700;color:var(--ink-soft)}
+.play[hidden],.play-pane[hidden]{display:none}
+
+/* =========================================================
    9. MOTION
    Elements are only hidden when JS is running (html.js), so the
    page is fully visible without JavaScript.
@@ -576,6 +600,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
       <a href="#rooms">Rooms</a>
       <a href="#amenities">Amenities</a>
       <a href="#gallery">Gallery</a>
+      <a href="#play">Games</a>
       <a href="#book">Location &amp; Booking</a>
       <a href="#faq">FAQ</a>
       <a href="#terms">Terms</a>
@@ -1016,6 +1041,34 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   </div>
 </section>
 
+<!-- TEST ONLY: GAME SECTION START -->
+<section class="section" id="play">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Need a break?</div>
+      <h2>Bored on the drive or by the pool? Play a quick game</h2>
+      <p>Two tiny games, no sign-up. Take a breather and come back to planning your stay.</p>
+    </div>
+    <div class="play-tabs" role="tablist" aria-label="Choose a game">
+      <button class="play-tab" role="tab" id="tab-mem" aria-selected="true" aria-controls="pane-mem" type="button">Memory Match</button>
+      <button class="play-tab" role="tab" id="tab-ttt" aria-selected="false" aria-controls="pane-ttt" type="button">Tic-Tac-Toe</button>
+    </div>
+    <div class="play-card">
+      <div class="play-pane" id="pane-mem" role="tabpanel" aria-labelledby="tab-mem">
+        <div class="play-bar"><span>Moves: <span id="memMoves">0</span></span><button type="button" id="memReset">Restart</button></div>
+        <div class="mem-grid" id="memGrid"></div>
+        <p class="play-msg" id="memMsg" aria-live="polite">Find all 8 pairs.</p>
+      </div>
+      <div class="play-pane" id="pane-ttt" role="tabpanel" aria-labelledby="tab-ttt" hidden>
+        <div class="play-bar"><span>You are X</span><button type="button" id="tttReset">Restart</button></div>
+        <div class="ttt-grid" id="tttGrid"></div>
+        <p class="play-msg" id="tttMsg" aria-live="polite">Your move.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- TEST ONLY: GAME SECTION END -->
+
 <section class="section book" id="book">
   <div class="wrap">
     <div class="section-head">
@@ -1395,5 +1448,105 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
 })();
 </script>
+<!-- TEST ONLY: GAME SCRIPT START -->
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var reveal=document.querySelector('#play .section-head');
+  if(reveal&&!('IntersectionObserver' in window))reveal.classList.add('is-visible');
+
+  /* Tabs */
+  var tabs=[['tab-mem','pane-mem'],['tab-ttt','pane-ttt']];
+  tabs.forEach(function(t){
+    $(t[0]).addEventListener('click',function(){
+      tabs.forEach(function(o){
+        var on=o===t;
+        $(o[0]).setAttribute('aria-selected',on);
+        $(o[1]).hidden=!on;
+      });
+    });
+  });
+
+  /* Memory Match */
+  var icons=['\uD83C\uDFCA','\uD83C\uDF34','\uD83C\uDF5B','\uD83C\uDF04','\uD83C\uDFE8','\uD83D\uDE97','\u2615','\uD83D\uDD25'];
+  var first=null,lock=false,moves=0,found=0;
+  function memStart(){
+    var deck=icons.concat(icons).sort(function(){return Math.random()-.5});
+    var grid=$('memGrid');grid.innerHTML='';
+    first=null;lock=false;moves=0;found=0;
+    $('memMoves').textContent='0';$('memMsg').textContent='Find all 8 pairs.';
+    deck.forEach(function(ic){
+      var b=document.createElement('button');
+      b.type='button';b.className='mem-card';b.dataset.icon=ic;
+      b.setAttribute('aria-label','Hidden card');
+      b.addEventListener('click',function(){flip(b)});
+      grid.appendChild(b);
+    });
+  }
+  function show(b){b.classList.add('up');b.textContent=b.dataset.icon;b.setAttribute('aria-label','Card '+b.dataset.icon)}
+  function hide(b){b.classList.remove('up');b.textContent='';b.setAttribute('aria-label','Hidden card')}
+  function flip(b){
+    if(lock||b===first||b.classList.contains('done'))return;
+    show(b);
+    if(!first){first=b;return}
+    moves++;$('memMoves').textContent=moves;
+    if(first.dataset.icon===b.dataset.icon){
+      first.classList.add('done');b.classList.add('done');first=null;found++;
+      if(found===icons.length)$('memMsg').textContent='You did it in '+moves+' moves. Nicely done!';
+    }else{
+      lock=true;var a=first;first=null;
+      setTimeout(function(){hide(a);hide(b);lock=false},750);
+    }
+  }
+  $('memReset').addEventListener('click',memStart);
+  memStart();
+
+  /* Tic-Tac-Toe (you = X, computer = O) */
+  var L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  var board,over,cells=[];
+  function winner(b){
+    for(var i=0;i<L.length;i++){var l=L[i];if(b[l[0]]&&b[l[0]]===b[l[1]]&&b[l[1]]===b[l[2]])return{p:b[l[0]],l:l}}
+    return null;
+  }
+  function paint(){
+    cells.forEach(function(c,i){c.textContent=board[i];c.dataset.v=board[i];c.disabled=over||!!board[i];c.classList.remove('win');c.setAttribute('aria-label','Square '+(i+1)+(board[i]?', '+board[i]:', empty'))});
+    var w=winner(board);
+    if(w)w.l.forEach(function(i){cells[i].classList.add('win')});
+  }
+  function finish(){
+    var w=winner(board);
+    if(w){over=true;$('tttMsg').textContent=w.p==='X'?'You win!':'Computer wins. Try again?'}
+    else if(board.every(Boolean)){over=true;$('tttMsg').textContent="It's a draw."}
+    paint();return over;
+  }
+  function pick(){
+    var i,e=board.map(function(v,k){return v?-1:k}).filter(function(k){return k>=0});
+    function tryFor(p){for(var j=0;j<L.length;j++){var l=L[j],v=l.map(function(k){return board[k]});
+      if(v.filter(function(x){return x===p}).length===2&&v.indexOf('')>-1)return l[v.indexOf('')]}return -1}
+    i=tryFor('O');if(i<0)i=tryFor('X');
+    if(i<0&&!board[4])i=4;
+    if(i<0)i=e[Math.floor(Math.random()*e.length)];
+    return i;
+  }
+  function tttStart(){
+    board=Array(9).fill('');over=false;
+    var g=$('tttGrid');g.innerHTML='';cells=[];
+    for(var i=0;i<9;i++)(function(i){
+      var c=document.createElement('button');c.type='button';c.className='ttt-cell';
+      c.addEventListener('click',function(){
+        if(over||board[i])return;
+        board[i]='X';if(finish())return;
+        board[pick()]='O';
+        if(!finish())$('tttMsg').textContent='Your move.';
+      });
+      g.appendChild(c);cells.push(c);
+    })(i);
+    $('tttMsg').textContent='Your move.';paint();
+  }
+  $('tttReset').addEventListener('click',tttStart);
+  tttStart();
+})();
+</script>
+<!-- TEST ONLY: GAME SCRIPT END -->
 </body>
 </html>
