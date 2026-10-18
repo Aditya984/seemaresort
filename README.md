@@ -29,7 +29,8 @@ HTML, CSS and vanilla JavaScript in a single file. No framework, no build step, 
 ```
 seemaresort/
 ├── index.html      # The whole site: content, inline CSS and JS
-├── images/         # Photos and logo used by the site
+├── 404.html        # Friendly "page not found" page
+├── images/         # Photos, logo, favicons and the link-preview image
 ├── CNAME           # Custom domain for GitHub Pages
 ├── sitemap.xml     # Sitemap for search engines
 ├── robots.txt      # Crawler rules, points to the sitemap
@@ -59,7 +60,7 @@ seemaresort/
 - Compress photos before uploading, ideally **under 250 KB each**, so the site loads fast on mobile.
 - Avoid spaces in file names.
 - Use descriptive alt text, for example: `Family Executive Room at Seema Resort Neral - bedroom view`.
-- The link preview image (WhatsApp, Facebook) is `images/pool.jpeg`.
+- The link preview image (WhatsApp, Facebook) is `images/og-image.jpg` (1200x630). Replace it with the same size if you change it.
 
 ## Deployment
 
