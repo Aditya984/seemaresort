@@ -499,6 +499,11 @@ nav.links a:hover::after,nav.links a:focus-visible::after{transform:scaleX(1)}
 #waBtn{margin-top:8px;background:var(--wa);color:var(--forest-deep)}
 #waBtn:hover{background:#3BE07C;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.25)}
 #emailBtn{background:transparent;color:var(--paper);border:1.5px solid rgba(230,233,214,.5)}
+.form-status{margin:0;font-size:.95rem;min-height:0}
+.form-status:not(:empty){padding:12px 14px;border-radius:10px;background:rgba(255,255,255,.1)}
+.form-status.ok{color:#bff0c8}
+.form-status.err{color:#ffd3c9}
+#emailBtn:disabled{opacity:.6;cursor:wait}
 #emailBtn:hover{background:rgba(255,255,255,.1);border-color:var(--paper)}
 .form-note{margin-top:2px;font-size:.85rem;color:var(--on-dark-muted)}
 .booking-notice{margin-top:6px;padding:16px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(230,233,214,.3);border-radius:var(--r-sm)}
@@ -1102,6 +1107,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
         </div>
       </div>
       <form class="book-form" id="bookingForm">
+        <input type="text" id="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
         <div>
           <label for="name">Name</label>
           <input id="name" type="text" placeholder="Your full name" autocomplete="name" required>
@@ -1142,7 +1148,8 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
         </div>
         <button type="submit" id="waBtn">Send request on WhatsApp</button>
         <button type="submit" id="emailBtn">Or send by email</button>
-        <p class="form-note">WhatsApp is the fastest way to get a reply. Either option opens with your details pre-filled — just hit send.</p>
+        <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+        <p class="form-note">WhatsApp is the fastest way to get a reply. Or send by email and we will get back to you shortly.</p>
         <div class="booking-notice">
           <p class="notice-title">Before you book — please note</p>
           <ul>
@@ -1252,6 +1259,8 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
 
   const WHATSAPP_NUMBER = '917559411323';
   const RESORT_EMAIL = 'contact@seemaresort.in';
+  // Public key from web3forms.com (delivers to RESORT_EMAIL). Safe to keep in front-end code.
+  const WEB3FORMS_KEY = 'a557294a-9f1e-4645-b3a1-9b9c3a5671f0';
 
   /* ---------- Scroll reveal (runs first so nothing stays hidden if a later block fails) ---------- */
   const revealTargets = $$('.room-card,.room-more,.slot-card,.amenity-card,.info-card,.g-tile,.section-head,.faq details,.stop,.rev-card');
@@ -1324,8 +1333,20 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   });
   checkout.addEventListener('input', () => checkout.setCustomValidity(''));
 
-  form.addEventListener('submit', (e) => {
+  const statusEl = $('#formStatus');
+  const emailBtn = $('#emailBtn');
+  const phoneInput = $('#phone');
+  phoneInput.addEventListener('input', () => phoneInput.setCustomValidity(''));
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    statusEl.textContent = '';
+    statusEl.className = 'form-status';
+    if (!/^\+?[0-9][0-9\s-]{8,14}$/.test(phoneInput.value.trim())) {
+      phoneInput.setCustomValidity('Please enter a valid phone number.');
+      phoneInput.reportValidity();
+      return;
+    }
     if (checkout.value <= checkin.value) {
       checkout.setCustomValidity('Check-out date must be after your check-in date.');
       checkout.reportValidity();
@@ -1345,7 +1366,40 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
     ].join('\n');
 
     if (e.submitter && e.submitter.id === 'emailBtn') {
-      location.href = `mailto:${RESORT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if ($('#company').value) return; // honeypot filled: bot
+      const label = emailBtn.textContent;
+      emailBtn.disabled = true;
+      emailBtn.textContent = 'Sending…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject,
+            from_name: "Seema's Resort Website",
+            replyto: RESORT_EMAIL,
+            Name: name,
+            'Check-in': checkin.value,
+            'Check-out': checkout.value,
+            Guests: value('guests'),
+            Phone: value('phone'),
+            'Room preference': value('roomtype', 'Not specified'),
+            Notes: value('notes', '-'),
+          }),
+        });
+        const data = await res.json();
+        if (!data.success) throw new Error(data.message || 'Send failed');
+        statusEl.textContent = "Thank you! We've received your request and will contact you shortly.";
+        statusEl.classList.add('ok');
+        form.reset();
+      } catch (err) {
+        statusEl.textContent = 'Sorry, we could not send that. Please use WhatsApp or call +91 75594 11323.';
+        statusEl.classList.add('err');
+      } finally {
+        emailBtn.disabled = false;
+        emailBtn.textContent = label;
+      }
     } else {
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`${subject}\n${body}`)}`, '_blank', 'noopener');
     }
