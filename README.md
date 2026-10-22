@@ -41,6 +41,7 @@ seemaresort/
 ├── sitemap.xml     # Sitemap for search engines (includes image entries)
 ├── robots.txt      # Crawler rules, points to the sitemap
 ├── SECURITY.md     # How to report a security issue
+├── CHANGELOG.md    # What changed and when
 └── README.md       # This file
 ```
 
@@ -110,7 +111,7 @@ To run locally, open `index.html` in any browser.
 
 ## Documentation
 
-More guides (updating content, images, booking and contact, hosting, SEO) are in the repository **Wiki**.
+More guides (updating content, images, booking and contact, hosting, SEO) are in the repository **Wiki**. A history of what changed and when is in [CHANGELOG.md](CHANGELOG.md).
 
 ## Contact
 
