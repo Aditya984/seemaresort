@@ -1,17 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Sitemap for Seema's Resort & Restaurant, Neral-Karjat Highway -->
+<!-- Sitemap for Seema's Resort &amp; Restaurant, Neral-Karjat Highway -->
 <!-- Update <lastmod> after major changes to index.html -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
     <loc>https://www.seemaresort.in/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.seemaresort.in/images/pool.jpeg</image:loc>
-      <image:title>Swimming pool at Seema's Resort, Neral</image:title>
+      <image:title>Swimming Pool &amp; Lawn at Seema's Resort &amp; Restaurant, Neral near Matheran</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.seemaresort.in/images/hillrooms.jpeg</image:loc>
+      <image:title>Hill-Facing Rooms at Seema's Resort Neral near Matheran &amp; Karjat</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.seemaresort.in/images/hall.jpeg</image:loc>
+      <image:title>AC Dining Hall &amp; Restaurant with Unlimited Veg &amp; Non-Veg Buffet at Seema's Resort Neral</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.seemaresort.in/images/D47.jpeg</image:loc>
+      <image:title>Deluxe Suite Couple Cottage Bedroom - Couple Cottage in Neral near Matheran</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.seemaresort.in/images/D42.jpg</image:loc>
+      <image:title>Deluxe Suite Couple Cottage Interior at Seema's Resort Neral near Karjat</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.seemaresort.in/images/D46.jpg</image:loc>
+      <image:title>Deluxe Suite Couple Cottage Seating Area at Seema's Resort Neral</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.seemaresort.in/images/D48.jpg</image:loc>
+      <image:title>Deluxe Suite Couple Cottage Exterior - Resort Cottage on Neral-Karjat Highway</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.seemaresort.in/images/S1.jpg</image:loc>
+      <image:title>Elite Room at Seema's Resort Neral - Comfortable Resort Room near Matheran</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.seemaresort.in/images/C2.png</image:loc>
+      <image:title>Couple Deluxe Premium Room in Neral - Romantic Weekend Stay near Karjat &amp; Matheran</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.seemaresort.in/images/201.jpg</image:loc>
+      <image:title>Family Executive Room Bedroom at Seema's Resort Neral - Family Stay near Mumbai &amp; Pune</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.seemaresort.in/images/compressed_2012.jpg</image:loc>
+      <image:title>Family Executive Room Interior at Seema's Resort Neral near Matheran</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.seemaresort.in/images/compressed_2013.jpg</image:loc>
+      <image:title>Family Executive Room Seating Area - Family Resort Room in Neral</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.seemaresort.in/images/compressed_2014.jpg</image:loc>
+      <image:title>Family Executive Room Exterior at Seema's Resort Neral near Karjat</image:title>
     </image:image>
   </url>
 

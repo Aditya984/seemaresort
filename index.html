@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-IN">
 <head>
-<script>document.documentElement.classList.add("js")</script>
+<script>
+/* Crawler-safe motion flag.
+   html.motion is added ONLY for real browsers that allow motion. Crawlers, headless/automated
+   browsers and prefers-reduced-motion users never get it, so for them every piece of text stays
+   at full opacity from the first paint (no scroll-reveal, no entrance animation). */
+(function(){
+  var d=document.documentElement; d.classList.add("js");
+  var ua=navigator.userAgent||"";
+  var bot=/bot|crawl|spider|slurp|google|bing|yandex|baidu|duckduck|lighthouse|pagespeed|headless|prerender|preview/i.test(ua)||navigator.webdriver===true;
+  var calm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(!bot&&!calm&&"IntersectionObserver" in window)d.classList.add("motion");
+})();
+</script>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0GT1BMGPNV"></script>
 <script>
@@ -14,11 +26,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0B5A28">
-<title>Seema's Resort Neral | Best Resort Near Karjat &amp; Matheran</title>
-<meta name="description" content="Seema's Resort &amp; Restaurant on the Neral-Karjat Highway: pool, cottages, family rooms &amp; dorms with AP meal plan. 1.5–2 hrs from Mumbai &amp; Pune.">
+<title>Seema's Resort Neral | Best Pool Resort &amp; Cottages Near Matheran &amp; Karjat</title>
+<meta name="description" content="Book Seema's Resort &amp; Restaurant on Neral-Karjat Highway near Matheran (1.5 hrs from Mumbai &amp; Pune). AC cottages, couple suites, family rooms, dorms, swimming pool, rain dance &amp; unlimited buffet (AP plan).">
 <meta name="keywords" content="Seema Resort, resort in Neral, best resort in Neral, resort near Matheran, resort near Mumbai, resort near Pune, highway resort Maharashtra, family resort near Mumbai, couple resort Neral, resort with swimming pool Neral, cottages in Neral, weekend getaway near Mumbai, weekend getaway near Pune, resort with meals included Neral, Matheran hill station resort, budget resort Neral, dormitory resort Maharashtra, resort near Neral railway station, one day picnic spot near Mumbai, resort for family outing Neral">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="author" content="Seema Resort">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Seema's Resort &amp; Restaurant">
 <meta name="geo.region" content="IN-MH">
 <meta name="geo.placename" content="Neral, Maharashtra">
 <meta name="geo.position" content="19.0112567;73.3265305">
@@ -27,20 +39,20 @@
 
 <!-- Open Graph / Facebook, WhatsApp, Instagram link previews -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Seema Resort">
-<meta property="og:title" content="Seema's Resort Neral | Pool Resort Near Karjat &amp; Matheran">
-<meta property="og:description" content="Seema's Resort &amp; Restaurant on the Neral-Karjat Highway: pool, cottages, family rooms &amp; dorms with AP meal plan. 1.5–2 hrs from Mumbai &amp; Pune.">
+<meta property="og:site_name" content="Seema's Resort &amp; Restaurant">
+<meta property="og:title" content="Seema's Resort Neral | Best Pool Resort &amp; Cottages Near Matheran &amp; Karjat">
+<meta property="og:description" content="Book Seema's Resort &amp; Restaurant on Neral-Karjat Highway near Matheran (1.5 hrs from Mumbai &amp; Pune). AC cottages, couple suites, family rooms, dorms, swimming pool, rain dance &amp; unlimited buffet (AP plan).">
 <meta property="og:url" content="https://www.seemaresort.in/">
 <meta property="og:image" content="https://www.seemaresort.in/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Swimming pool at Seema's Resort, Neral">
+<meta property="og:image:alt" content="Swimming pool at Seema's Resort &amp; Restaurant, Neral near Matheran &amp; Karjat">
 <meta property="og:locale" content="en_IN">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Seema's Resort Neral | Pool Resort Near Karjat &amp; Matheran">
-<meta name="twitter:description" content="Seema's Resort &amp; Restaurant on the Neral-Karjat Highway: pool, cottages, family rooms &amp; dorms with AP meal plan. 1.5–2 hrs from Mumbai &amp; Pune.">
+<meta name="twitter:title" content="Seema's Resort Neral | Best Pool Resort &amp; Cottages Near Matheran &amp; Karjat">
+<meta name="twitter:description" content="Book Seema's Resort &amp; Restaurant on Neral-Karjat Highway near Matheran (1.5 hrs from Mumbai &amp; Pune). AC cottages, couple suites, family rooms, dorms, swimming pool, rain dance &amp; unlimited buffet (AP plan).">
 <meta name="twitter:image" content="https://www.seemaresort.in/images/og-image.jpg">
 
 <link rel="preload" as="image" href="images/pool.jpeg" fetchpriority="high">
@@ -50,21 +62,37 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Structured data: LodgingBusiness -->
+<!-- Structured data: Resort + LodgingBusiness + Restaurant (rooms, offers, reviews) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["LodgingBusiness", "Resort"],
-  "name": "Seema Resort",
-  "alternateName": "Seema's Resort",
-  "description": "Seema Resort is a highway-touch resort in Neral, Maharashtra, on the Neral-Karjat Highway near Karjat and Matheran, 1.5-2 hours from Mumbai and Pune, offering cottages, suites, family rooms and dormitories with a swimming pool, indoor & outdoor games, optional meal plans, and easy highway access — a popular pick for weekend getaways and family outings.",
+  "@type": [
+    "Resort",
+    "LodgingBusiness",
+    "Restaurant"
+  ],
+  "@id": "https://www.seemaresort.in/#resort",
+  "name": "Seema's Resort & Restaurant",
+  "alternateName": [
+    "Seema Resort",
+    "Seema's Resort Neral"
+  ],
+  "description": "Seema's Resort & Restaurant is a highway-touch pool resort in Neral, Maharashtra, on the Neral-Karjat Highway near Panchwati, at the foot of Matheran and 1.5-2 hours from Mumbai and Pune. It offers AC cottages, couple suites, family rooms and dormitories with a swimming pool, rain dance, indoor & outdoor games, an in-house restaurant with an unlimited veg & non-veg buffet on the AP meal plan, and group and corporate outing options.",
   "url": "https://www.seemaresort.in/",
-  "telephone": ["+91-75594-11323", "+91-77458-52323"],
+  "logo": "https://www.seemaresort.in/images/LogoMainNoBG.png",
+  "telephone": [
+    "+91-75594-11323",
+    "+91-77458-52323"
+  ],
   "email": "contact@seemaresort.in",
   "image": [
     "https://www.seemaresort.in/images/pool.jpeg",
     "https://www.seemaresort.in/images/hillrooms.jpeg",
-    "https://www.seemaresort.in/images/hall.jpeg"
+    "https://www.seemaresort.in/images/hall.jpeg",
+    "https://www.seemaresort.in/images/D47.jpeg",
+    "https://www.seemaresort.in/images/S1.jpg",
+    "https://www.seemaresort.in/images/C2.png",
+    "https://www.seemaresort.in/images/201.jpg"
   ],
   "address": {
     "@type": "PostalAddress",
@@ -83,23 +111,516 @@
   "priceRange": "₹2800 - ₹7500",
   "currenciesAccepted": "INR",
   "paymentAccepted": "Cash, UPI, Card",
-  "areaServed": ["Neral", "Matheran", "Mumbai", "Pune", "Karjat"],
+  "servesCuisine": [
+    "Indian",
+    "Maharashtrian",
+    "Vegetarian",
+    "Non-Vegetarian Buffet"
+  ],
+  "areaServed": [
+    "Neral",
+    "Matheran",
+    "Mumbai",
+    "Pune",
+    "Karjat"
+  ],
   "checkinTime": "12:00",
   "checkoutTime": "10:00",
+  "petsAllowed": false,
   "sameAs": [
     "https://www.instagram.com/seemas_resort/",
     "https://www.facebook.com/Seemaresort/",
     "https://share.google/HcRE6eb77J1XFDzAg"
   ],
   "amenityFeature": [
-    {"@type": "LocationFeatureSpecification", "name": "Swimming Pool", "value": true},
-    {"@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true},
-    {"@type": "LocationFeatureSpecification", "name": "Free Parking", "value": true},
-    {"@type": "LocationFeatureSpecification", "name": "AC Rooms", "value": true},
-    {"@type": "LocationFeatureSpecification", "name": "Meal Plan Available (AP)", "value": true},
-    {"@type": "LocationFeatureSpecification", "name": "Indoor Games", "value": true},
-    {"@type": "LocationFeatureSpecification", "name": "Outdoor Games", "value": true},
-    {"@type": "LocationFeatureSpecification", "name": "AC Dining Hall", "value": true}
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Swimming Pool",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Free WiFi",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Free Parking",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "AC Rooms",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Meal Plan Available (AP)",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Indoor Games",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Outdoor Games",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "AC Dining Hall",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Rain Dance",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Kids' Pool",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Kids' Play Area",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Dormitories for Groups",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Hill-Facing Rooms",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Unlimited Veg & Non-Veg Buffet",
+      "value": true
+    }
+  ],
+  "containsPlace": [
+    {
+      "@type": "HotelRoom",
+      "@id": "https://www.seemaresort.in/#room-deluxe-suite-couple-cottage",
+      "name": "Deluxe Suite Couple Cottage",
+      "description": "Deluxe Suite Couple Cottage at Seema's Resort & Restaurant, Neral. Includes full access to the pool, lawns and games.",
+      "image": "https://www.seemaresort.in/images/D47.jpeg",
+      "url": "https://www.seemaresort.in/#rooms",
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "value": 2
+      }
+    },
+    {
+      "@type": "HotelRoom",
+      "@id": "https://www.seemaresort.in/#room-elite-room",
+      "name": "Elite Room",
+      "description": "Elite Room at Seema's Resort & Restaurant, Neral. Includes full access to the pool, lawns and games.",
+      "image": "https://www.seemaresort.in/images/S1.jpg",
+      "url": "https://www.seemaresort.in/#rooms",
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "value": 2
+      }
+    },
+    {
+      "@type": "HotelRoom",
+      "@id": "https://www.seemaresort.in/#room-couple-deluxe-premium-room",
+      "name": "Couple Deluxe Premium Room",
+      "description": "Couple Deluxe Premium Room at Seema's Resort & Restaurant, Neral. Includes full access to the pool, lawns and games.",
+      "image": "https://www.seemaresort.in/images/C2.png",
+      "url": "https://www.seemaresort.in/#rooms",
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "value": 2
+      }
+    },
+    {
+      "@type": "HotelRoom",
+      "@id": "https://www.seemaresort.in/#room-family-executive-room",
+      "name": "Family Executive Room",
+      "description": "Family Executive Room for up to 4 guests at Seema's Resort & Restaurant, Neral. Includes full access to the pool, lawns and games.",
+      "image": "https://www.seemaresort.in/images/201.jpg",
+      "url": "https://www.seemaresort.in/#rooms",
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "value": 4
+      }
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Rooms & Rates at Seema's Resort & Restaurant, Neral",
+    "itemListElement": [
+      {
+        "@type": "OfferCatalog",
+        "name": "Deluxe Suite Couple Cottage",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Deluxe Suite Couple Cottage – AP plan (meals included)",
+            "price": 7500,
+            "priceCurrency": "INR",
+            "url": "https://www.seemaresort.in/#rooms",
+            "description": "Starting rate per couple on the AP meal plan, including an unlimited veg & non-veg buffet. Rates can change on weekends and holidays.",
+            "itemOffered": {
+              "@type": "HotelRoom",
+              "@id": "https://www.seemaresort.in/#room-deluxe-suite-couple-cottage",
+              "name": "Deluxe Suite Couple Cottage"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Deluxe Suite Couple Cottage – room only",
+            "price": 6000,
+            "priceCurrency": "INR",
+            "url": "https://www.seemaresort.in/#rooms",
+            "description": "Starting room-only rate per couple. Meals are not included. Rates can change on weekends and holidays.",
+            "itemOffered": {
+              "@type": "HotelRoom",
+              "@id": "https://www.seemaresort.in/#room-deluxe-suite-couple-cottage",
+              "name": "Deluxe Suite Couple Cottage"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Elite Room",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Elite Room – AP plan (meals included)",
+            "price": 5500,
+            "priceCurrency": "INR",
+            "url": "https://www.seemaresort.in/#rooms",
+            "description": "Starting rate per couple on the AP meal plan, including an unlimited veg & non-veg buffet. Rates can change on weekends and holidays.",
+            "itemOffered": {
+              "@type": "HotelRoom",
+              "@id": "https://www.seemaresort.in/#room-elite-room",
+              "name": "Elite Room"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Elite Room – room only",
+            "price": 4000,
+            "priceCurrency": "INR",
+            "url": "https://www.seemaresort.in/#rooms",
+            "description": "Starting room-only rate per couple. Meals are not included. Rates can change on weekends and holidays.",
+            "itemOffered": {
+              "@type": "HotelRoom",
+              "@id": "https://www.seemaresort.in/#room-elite-room",
+              "name": "Elite Room"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Couple Deluxe Premium Room",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Couple Deluxe Premium Room – AP plan (meals included)",
+            "price": 6500,
+            "priceCurrency": "INR",
+            "url": "https://www.seemaresort.in/#rooms",
+            "description": "Starting rate per couple on the AP meal plan, including an unlimited veg & non-veg buffet. Rates can change on weekends and holidays.",
+            "itemOffered": {
+              "@type": "HotelRoom",
+              "@id": "https://www.seemaresort.in/#room-couple-deluxe-premium-room",
+              "name": "Couple Deluxe Premium Room"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Couple Deluxe Premium Room – room only",
+            "price": 4500,
+            "priceCurrency": "INR",
+            "url": "https://www.seemaresort.in/#rooms",
+            "description": "Starting room-only rate per couple. Meals are not included. Rates can change on weekends and holidays.",
+            "itemOffered": {
+              "@type": "HotelRoom",
+              "@id": "https://www.seemaresort.in/#room-couple-deluxe-premium-room",
+              "name": "Couple Deluxe Premium Room"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Family Executive Room",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Family Executive Room – AP plan (meals included)",
+            "price": 2800,
+            "priceCurrency": "INR",
+            "url": "https://www.seemaresort.in/#rooms",
+            "description": "Starting rate per person on the AP meal plan, including an unlimited veg & non-veg buffet. Rates can change on weekends and holidays.",
+            "itemOffered": {
+              "@type": "HotelRoom",
+              "@id": "https://www.seemaresort.in/#room-family-executive-room",
+              "name": "Family Executive Room"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Family Executive Room – room only",
+            "price": 4500,
+            "priceCurrency": "INR",
+            "url": "https://www.seemaresort.in/#rooms",
+            "description": "Starting room-only rate per room. Meals are not included. Rates can change on weekends and holidays.",
+            "itemOffered": {
+              "@type": "HotelRoom",
+              "@id": "https://www.seemaresort.in/#room-family-executive-room",
+              "name": "Family Executive Room"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "name": "Deluxe Suite Couple Cottage – AP plan (meals included)",
+      "price": 7500,
+      "priceCurrency": "INR",
+      "url": "https://www.seemaresort.in/#rooms",
+      "description": "Starting rate per couple on the AP meal plan, including an unlimited veg & non-veg buffet. Rates can change on weekends and holidays.",
+      "itemOffered": {
+        "@type": "HotelRoom",
+        "@id": "https://www.seemaresort.in/#room-deluxe-suite-couple-cottage",
+        "name": "Deluxe Suite Couple Cottage"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Deluxe Suite Couple Cottage – room only",
+      "price": 6000,
+      "priceCurrency": "INR",
+      "url": "https://www.seemaresort.in/#rooms",
+      "description": "Starting room-only rate per couple. Meals are not included. Rates can change on weekends and holidays.",
+      "itemOffered": {
+        "@type": "HotelRoom",
+        "@id": "https://www.seemaresort.in/#room-deluxe-suite-couple-cottage",
+        "name": "Deluxe Suite Couple Cottage"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Elite Room – AP plan (meals included)",
+      "price": 5500,
+      "priceCurrency": "INR",
+      "url": "https://www.seemaresort.in/#rooms",
+      "description": "Starting rate per couple on the AP meal plan, including an unlimited veg & non-veg buffet. Rates can change on weekends and holidays.",
+      "itemOffered": {
+        "@type": "HotelRoom",
+        "@id": "https://www.seemaresort.in/#room-elite-room",
+        "name": "Elite Room"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Elite Room – room only",
+      "price": 4000,
+      "priceCurrency": "INR",
+      "url": "https://www.seemaresort.in/#rooms",
+      "description": "Starting room-only rate per couple. Meals are not included. Rates can change on weekends and holidays.",
+      "itemOffered": {
+        "@type": "HotelRoom",
+        "@id": "https://www.seemaresort.in/#room-elite-room",
+        "name": "Elite Room"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Couple Deluxe Premium Room – AP plan (meals included)",
+      "price": 6500,
+      "priceCurrency": "INR",
+      "url": "https://www.seemaresort.in/#rooms",
+      "description": "Starting rate per couple on the AP meal plan, including an unlimited veg & non-veg buffet. Rates can change on weekends and holidays.",
+      "itemOffered": {
+        "@type": "HotelRoom",
+        "@id": "https://www.seemaresort.in/#room-couple-deluxe-premium-room",
+        "name": "Couple Deluxe Premium Room"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Couple Deluxe Premium Room – room only",
+      "price": 4500,
+      "priceCurrency": "INR",
+      "url": "https://www.seemaresort.in/#rooms",
+      "description": "Starting room-only rate per couple. Meals are not included. Rates can change on weekends and holidays.",
+      "itemOffered": {
+        "@type": "HotelRoom",
+        "@id": "https://www.seemaresort.in/#room-couple-deluxe-premium-room",
+        "name": "Couple Deluxe Premium Room"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Family Executive Room – AP plan (meals included)",
+      "price": 2800,
+      "priceCurrency": "INR",
+      "url": "https://www.seemaresort.in/#rooms",
+      "description": "Starting rate per person on the AP meal plan, including an unlimited veg & non-veg buffet. Rates can change on weekends and holidays.",
+      "itemOffered": {
+        "@type": "HotelRoom",
+        "@id": "https://www.seemaresort.in/#room-family-executive-room",
+        "name": "Family Executive Room"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Family Executive Room – room only",
+      "price": 4500,
+      "priceCurrency": "INR",
+      "url": "https://www.seemaresort.in/#rooms",
+      "description": "Starting room-only rate per room. Meals are not included. Rates can change on weekends and holidays.",
+      "itemOffered": {
+        "@type": "HotelRoom",
+        "@id": "https://www.seemaresort.in/#room-family-executive-room",
+        "name": "Family Executive Room"
+      }
+    }
+  ],
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Manasi Kochrekar"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "reviewBody": "Had a wonderful stay! Everything from breakfast to dinner was really good, and the location was excellent—convenient and well-connected. Overall, a very pleasant experience"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Runali Kadam"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "reviewBody": "We had a pleasant stay at this hotel. The location was excellent and very convenient. My kid spent most of the time in the swimming pool and really enjoyed it a lot — that was definitely the highlight of our trip. The room was clean, spacious, and comfortable, which made our stay relaxing. We didn't try the food, so we can't comment on that part. Overall, the staff was courteous and the atmosphere was nice and family-friendly. We had a great experience and would consider staying here again."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "mandar kirange"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "reviewBody": "Superb arrangement, nice location and Cleanliness in property is awesome. Must visit place"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Sana Shah"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "reviewBody": "A peaceful paradise! Exceptionally clean, baby-friendly, and pocket-friendly luxury! We recently took a weekend staycation here with our 6-month-old baby boy, and it was the most peaceful, refreshing getaway we could have asked for. The entire property is surrounded by beautiful, lush green gardens, creating an incredibly calm and tranquil atmosphere.For parents traveling with an infant, cleanliness is the top priority. We were so impressed by how spotless and hygienic the rooms were. The environment was safe, clean, and extremely comfortable for our baby, which allowed us to relax with total peace of mind.The food was another major highlight. The resort offers multiple dining options, and every single meal was delicious, fresh, and full of variety.What truly sets this resort apart is the outstanding hospitality. The staff is incredibly cooperative, supportive, and thoughtful. They anticipated our needs as parents, took care of every little necessity for our baby, and made us feel genuinely pampered. Despite offering top-notch, luxurious amenities that give you a completely relaxing and mind-refreshing vibe, the pricing is surprisingly pocket-friendly and budget-friendly.It is the ultimate destination for a stress-free family staycation. We will definitely be back!"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "BHUVA PRITUL"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "reviewBody": "Best ever experienced. Good food Clean environment...lush green property.. Recommended to all"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Nishigandha Veer"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "reviewBody": "We originally planned to stay for just one day, but the experience was so wonderful that we ended up extending our stay! The service was exceptional, and the staff were incredibly helpful and cooperative throughout our visit. The resort has a beautiful ambience and is completely surrounded by lush greenery, making it the perfect escape. It's a fantastic place to spend quality time with family and friends. Highly recommended!"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Priya Patil"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "reviewBody": "The room was well-maintained and tidy, the food was excellent, and the property itself is commendable. The reception staff were very helpful. I highly recommend visiting SEEMA Resort."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Anjuman Mansuri"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "reviewBody": "Our experience Was so Good at this resort.the hospitality, food(veg and non veg both were Delicious),rooms,hygiene and everything was so Good... you can Book it without any Doubt..."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Abhinandan Sharma"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "reviewBody": "We had gone with a group of almost 40 people… fabulous service and great food quality… would highly recommend a stay here… very special mention for Rahul who really went out his way to give us a great service"
+    }
   ]
 }
 </script>
@@ -162,6 +683,38 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes. We host families, friends, corporate teams and larger groups. Call or WhatsApp us with your group size and dates and we will suggest the right rooms and rate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How far is Seema's Resort from Neral Railway Station and Matheran?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Seema's Resort & Restaurant is about 3 km from Neral Railway Station, roughly 5–10 minutes by auto-rickshaw. Neral is the starting point of the Matheran toy train, so please check the current toy train schedule before you travel. Dasturi Naka, the Matheran entry point where vehicles must stop, is a quick drive from the resort."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Seema's Resort couple-friendly and what ID is required?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Seema's Resort is couple-friendly and offers Couple Deluxe Premium Rooms and Deluxe Suite Couple Cottages. A valid government-issued photo ID is required for all guests at check-in, and couples must carry suitable ID proof."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What outdoor activities and games are available at the resort?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The resort has a swimming pool and kids' pool (open 9:00 AM – 6:00 PM), rain dance with music, cricket, football, badminton, a kids' play area and nature walks. Indoor games include a pool table, carrom, chess and ludo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you have dormitories for large family groups and corporate outings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We have spacious dormitories, Family Executive Rooms and quad rooms, plus an AC dining hall for group meals. Customised group rates are available together with the unlimited AP buffet plan. Call or WhatsApp us with your group size and dates."
       }
     }
   ]
@@ -291,20 +844,20 @@ nav.links a:hover::after,nav.links a:focus-visible::after{transform:scaleX(1)}
              url(images/pool.jpeg) center/cover no-repeat;
 }
 .hero-inner{padding-block:clamp(72px,10vw,110px)}
-.hero-inner>div{max-width:680px}
-/* one orchestrated page-load sequence */
-.hero-inner>div>*{animation:rise .8s var(--ease) backwards}
-.hero-inner>div>:nth-child(2){animation-delay:.08s}
-.hero-inner>div>:nth-child(3){animation-delay:.16s}
-.hero-inner>div>:nth-child(4){animation-delay:.24s}
-.hero-inner>div>:nth-child(5){animation-delay:.32s}
+.hero-inner>div{max-width:740px}
+/* one orchestrated page-load sequence (real browsers only: html.motion) */
+.motion .hero-inner>div>*{animation:rise .8s var(--ease) backwards}
+.motion .hero-inner>div>:nth-child(2){animation-delay:.08s}
+.motion .hero-inner>div>:nth-child(3){animation-delay:.16s}
+.motion .hero-inner>div>:nth-child(4){animation-delay:.24s}
+.motion .hero-inner>div>:nth-child(5){animation-delay:.32s}
 .eyebrow-line{
   display:inline-block;margin-bottom:18px;padding:6px 14px;font-size:.85rem;font-weight:600;color:#fff;
   background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:var(--r-pill);
   -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
 }
-.hero h1{font-size:clamp(2.4rem,5.5vw + .5rem,4.4rem);line-height:1.05;color:#fff;margin-bottom:22px;text-shadow:0 2px 24px rgba(0,0,0,.25)}
-.hero h1 i{font-style:italic;font-weight:500;color:var(--gold)}
+.hero h1{font-size:clamp(2.1rem,3.6vw + 1rem,3.6rem);line-height:1.08;color:#fff;margin-bottom:22px;text-shadow:0 2px 24px rgba(0,0,0,.25)}
+.hero h1 i{display:block;margin-top:12px;font-style:italic;font-weight:500;font-size:.52em;line-height:1.25;color:var(--gold)}
 .hero .lede{max-width:48ch;margin-bottom:30px;font-size:clamp(1.05rem,.4vw + 1rem,1.2rem);color:var(--cream-soft)}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px}
 .hero .btn-primary{background:var(--gold);color:var(--forest-deep)}
@@ -554,42 +1107,18 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
 }
 
 /* =========================================================
-   TEST ONLY: GAME SECTION (remove with the #play section + script)
-   ========================================================= */
-.play-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
-.play-tab{padding:10px 22px;border-radius:var(--r-pill);border:2px solid var(--forest);background:transparent;color:var(--forest);font-weight:700;cursor:pointer;transition:var(--t)}
-.play-tab[aria-selected="true"]{background:var(--forest);color:var(--paper)}
-.play-tab:hover{transform:translateY(-2px)}
-.play-card{max-width:460px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(16px,3vw,24px)}
-.play-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;font-weight:700;color:var(--forest-deep)}
-.play-bar button{padding:8px 18px;border-radius:var(--r-pill);border:2px solid var(--gold-dark);background:var(--gold);color:var(--forest-deep);font-weight:700;cursor:pointer}
-.play-bar button:hover{background:#F3B24F}
-.mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.mem-card{aspect-ratio:1;border-radius:var(--r-sm);border:0;font-size:clamp(1.6rem,6vw,2.2rem);line-height:1;cursor:pointer;background:var(--forest);color:transparent;transition:transform .3s var(--ease),background .2s;display:grid;place-items:center}
-.mem-card:hover{transform:translateY(-2px)}
-.mem-card.up,.mem-card.done{background:var(--cream-soft);color:inherit;border:2px solid var(--leaf-light)}
-.mem-card.done{opacity:.6;cursor:default}
-.ttt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.ttt-cell{aspect-ratio:1;border-radius:var(--r-sm);border:2px solid var(--line);background:var(--cream-soft);font:700 clamp(2rem,9vw,2.8rem)/1 var(--font-display);color:var(--forest);cursor:pointer}
-.ttt-cell:not(:disabled):hover{background:#E3EBD2}
-.ttt-cell[data-v="O"]{color:var(--gold-dark)}
-.ttt-cell.win{background:var(--leaf-light);color:var(--forest-deep)}
-.play-msg{margin-top:14px;min-height:1.6em;font-weight:700;color:var(--ink-soft)}
-.play[hidden],.play-pane[hidden]{display:none}
-
-/* =========================================================
    9. MOTION
-   Elements are only hidden when JS is running (html.js), so the
-   page is fully visible without JavaScript.
+   Crawler-safe: nothing is hidden in the static CSS. The inline <head> script adds
+   html.motion only for real, motion-friendly browsers (never crawlers, headless tools or
+   reduced-motion users). The JS then marks ONLY below-the-fold blocks with .reveal-wait.
+   Without html.motion every element is fully visible at first paint.
    ========================================================= */
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 @keyframes pop{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
 
-.js :is(.room-card,.room-more,.slot-card,.amenity-card,.info-card,.g-tile,.section-head,.faq details,.stop,.rev-card){opacity:0}
-.js :is(.room-card,.room-more,.slot-card,.amenity-card,.info-card,.g-tile,.section-head,.faq details,.stop,.rev-card).is-visible{
-  opacity:1;animation:rise .7s var(--ease) var(--d,0ms) backwards;
-}
+.motion .reveal-wait{opacity:0}
+.motion .reveal-wait.is-visible{opacity:1;animation:rise .7s var(--ease) var(--d,0ms) backwards}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -602,12 +1131,11 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
 
 <header class="site">
   <div class="wrap nav">
-    <a href="#top" class="brand-logo"><img src="images/LogoMainNoBG.png" alt="Seema's Resort" class="logo-img" width="100" height="100" fetchpriority="high"></a>
+    <a href="#top" class="brand-logo"><img src="images/LogoMainNoBG.png" alt="Seema's Resort &amp; Restaurant, Neral" class="logo-img" width="100" height="100" fetchpriority="high"></a>
     <nav class="links" id="navLinks" aria-label="Primary">
       <a href="#rooms">Rooms</a>
       <a href="#amenities">Amenities</a>
       <a href="#gallery">Gallery</a>
-      <a href="#play">Games</a>
       <a href="#book">Location &amp; Booking</a>
       <a href="#faq">FAQ</a>
       <a href="#terms">Terms</a>
@@ -624,7 +1152,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   <div class="hero-inner wrap">
     <div>
       <div class="eyebrow-line">Highway-touch resort · Neral, near Matheran</div>
-      <h1>Right on the highway.<br><i>Best resort in Neral, near Karjat.</i></h1>
+      <h1>Seema's Resort &amp; Restaurant, Neral<br><i>Best Pool Resort &amp; Cottages Near Matheran &amp; Karjat</i></h1>
       <p class="lede">Pool, cottages and an unlimited buffet meal plan on the Neral-Karjat Highway, just 1.5&ndash;2 hours from Mumbai &amp; Pune. Easy to spot, easy to stop at, and even easier to stay the night.</p>
       <div class="hero-ctas">
         <a class="btn-primary" href="#book">Check availability</a>
@@ -639,7 +1167,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
 
 <section class="route">
   <div class="wrap">
-    <h2 class="route-head">No detour required — we're right on the road</h2>
+    <h2 class="route-head">Highway-Touch Resort on Neral-Karjat Road — 1.5 to 2 Hrs from Mumbai &amp; Pune</h2>
     <div class="route-track">
       <div class="stop">
         <h3>Mumbai / Pune</h3>
@@ -661,7 +1189,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   <div class="wrap">
     <div class="section-head section-head--compact">
       <div class="kicker">Two ways to check in</div>
-      <h2>Pick whichever slot fits your drive</h2>
+      <h2>Flexible Check-In Slots &amp; Unlimited Buffet (AP Meal Plan)</h2>
     </div>
     <div class="slot-grid">
       <div class="slot-card">
@@ -705,7 +1233,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   <div class="wrap">
     <div class="section-head section-head--flush">
       <div class="kicker">Where you'll stay</div>
-      <h2>Featured rooms — plus more categories to choose from</h2>
+      <h2>AC Cottages, Couple Suites, Family Rooms &amp; Dormitories in Neral</h2>
       <p>Choose the AP (meal-inclusive) plan for an unlimited buffet tied to your check-in slot, or book room only — meals are not included in room-only rates. Every stay includes full access to the pool, lawns, and games. Showing our most popular picks below — we also have cottages, suites, dorms and studio rooms not listed here.</p>
     </div>
     <p class="rooms-note">Rates shown are starting rates and can change on weekends and holidays. <a href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20what%20are%20the%20rates%20for%20my%20dates%3F" target="_blank" rel="noopener" class="link-strong">WhatsApp us your dates</a> for the exact price.</p>
@@ -715,10 +1243,10 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
     <div class="room-card">
       <div class="room-visual carousel" data-carousel>
         <div class="carousel-track">
-          <img src="images/D47.jpeg" alt="Deluxe Suite Couple Cottage at Seema Resort Neral - bedroom view" loading="lazy" decoding="async">
-          <img src="images/D42.jpg" alt="Deluxe Suite Couple Cottage at Seema Resort Neral - interior" loading="lazy" decoding="async">
-          <img src="images/D46.jpg" alt="Deluxe Suite Couple Cottage at Seema Resort Neral - seating area" loading="lazy" decoding="async">
-          <img src="images/D48.jpg" alt="Deluxe Suite Couple Cottage at Seema Resort Neral - cottage exterior" loading="lazy" decoding="async">
+          <img src="images/D47.jpeg" alt="Deluxe Suite Couple Cottage bedroom at Seema's Resort Neral near Matheran &amp; Karjat" loading="lazy" decoding="async">
+          <img src="images/D42.jpg" alt="Deluxe Suite Couple Cottage interior at Seema's Resort Neral near Matheran &amp; Karjat" loading="lazy" decoding="async">
+          <img src="images/D46.jpg" alt="Deluxe Suite Couple Cottage seating area at Seema's Resort Neral near Matheran &amp; Karjat" loading="lazy" decoding="async">
+          <img src="images/D48.jpg" alt="Deluxe Suite Couple Cottage exterior at Seema's Resort Neral near Matheran &amp; Karjat" loading="lazy" decoding="async">
         </div>
         <div class="carousel-dots">
           <span class="active"></span><span></span><span></span><span></span>
@@ -751,7 +1279,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
     <div class="room-card">
       <div class="room-visual carousel" data-carousel>
         <div class="carousel-track">
-          <img src="images/S1.jpg" alt="Elite Room at Seema Resort Neral" loading="lazy" decoding="async">
+          <img src="images/S1.jpg" alt="Elite Room at Seema's Resort Neral near Matheran &amp; Karjat" loading="lazy" decoding="async">
           <!-- Add up to 3 more <img src="images/..."> here to enable the sliding gallery for this room -->
         </div>
         <div class="carousel-dots"><span class="active"></span></div>
@@ -783,7 +1311,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
       <div class="room-card">
       <div class="room-visual carousel" data-carousel>
         <div class="carousel-track">
-          <img src="images/C2.png" alt="Couple Deluxe Premium Room at Seema Resort Neral" loading="lazy" decoding="async">
+          <img src="images/C2.png" alt="Couple Deluxe Premium Room at Seema's Resort Neral near Matheran &amp; Karjat" loading="lazy" decoding="async">
           <!-- Add up to 3 more <img src="images/..."> here to enable the sliding gallery for this room -->
         </div>
         <div class="carousel-dots"><span class="active"></span></div>
@@ -815,10 +1343,10 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
     <div class="room-card">
       <div class="room-visual carousel" data-carousel>
         <div class="carousel-track">
-          <img src="images/201.jpg" alt="Family Executive Room at Seema Resort Neral - bedroom view" loading="lazy" decoding="async">
-          <img src="images/compressed_2012.jpg" alt="Family Executive Room at Seema Resort Neral - interior" loading="lazy" decoding="async">
-          <img src="images/compressed_2013.jpg" alt="Family Executive Room at Seema Resort Neral - seating area" loading="lazy" decoding="async">
-          <img src="images/compressed_2014.jpg" alt="Family Executive Room at Seema Resort Neral - cottage exterior" loading="lazy" decoding="async">
+          <img src="images/201.jpg" alt="Family Executive Room bedroom at Seema's Resort Neral near Matheran &amp; Karjat" loading="lazy" decoding="async">
+          <img src="images/compressed_2012.jpg" alt="Family Executive Room interior at Seema's Resort Neral near Matheran &amp; Karjat" loading="lazy" decoding="async">
+          <img src="images/compressed_2013.jpg" alt="Family Executive Room seating area at Seema's Resort Neral near Matheran &amp; Karjat" loading="lazy" decoding="async">
+          <img src="images/compressed_2014.jpg" alt="Family Executive Room exterior at Seema's Resort Neral near Matheran &amp; Karjat" loading="lazy" decoding="async">
         </div>
         <div class="carousel-dots">
           <span class="active"></span><span></span><span></span><span></span>
@@ -863,7 +1391,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   <div class="wrap">
     <div class="section-head">
       <div class="kicker">Amenities &amp; features</div>
-      <h2>Enough to fill a weekend without leaving the property</h2>
+      <h2>Resort with Swimming Pool, Rain Dance &amp; Outdoor Games in Neral</h2>
     </div>
   </div>
   <div class="amenities-grid wrap">
@@ -907,7 +1435,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   <div class="wrap">
     <div class="section-head">
       <div class="kicker">Stays for every kind of trip</div>
-      <h2>A resort near Karjat for families, couples and groups</h2>
+      <h2>Family Stays, Couple Getaways &amp; Group Outings Near Matheran &amp; Karjat</h2>
       <p class="rooms-note">Seema&rsquo;s Resort &amp; Restaurant sits on the Neral-Karjat Highway near Panchwati, at the foot of Matheran and about 1.5&ndash;2 hours from Mumbai and Pune. Whether it&rsquo;s a weekend with the family, a couple&rsquo;s break or a team outing near Karjat, we have a room to fit.</p>
     </div>
   </div>
@@ -943,7 +1471,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   <div class="wrap">
     <div class="section-head">
       <div class="kicker">Good to know</div>
-      <h2>The fine print, before you book</h2>
+      <h2>Buffet Dining, Pool Timings &amp; Resort Booking Policies</h2>
     </div>
   </div>
   <div class="info-grid wrap">
@@ -981,12 +1509,12 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   <div class="wrap">
     <div class="section-head">
       <div class="kicker">A first look</div>
-      <h2>Around the resort</h2>
+      <h2>Photos of Our Swimming Pool, Hill-Facing Rooms &amp; AC Dining Hall</h2>
     </div>
     <div class="gallery">
-      <div class="g-tile"><img src="images/pool.jpeg" alt="Swimming pool and lawn at Seema Resort, Neral" loading="lazy" decoding="async"><span>The pool &amp; lawn</span></div>
-      <div class="g-tile"><img src="images/hillrooms.jpeg" alt="Hill-facing rooms at Seema Resort near Matheran" loading="lazy" decoding="async"><span>Hill-facing rooms</span></div>
-      <div class="g-tile"><img src="images/hall.jpeg" alt="AC dining hall at Seema Resort, Neral" loading="lazy" decoding="async"><span>The dining hall</span></div>
+      <div class="g-tile"><img src="images/pool.jpeg" alt="Swimming pool and lawn at Seema's Resort Neral near Matheran &amp; Karjat" loading="lazy" decoding="async"><span>The pool &amp; lawn</span></div>
+      <div class="g-tile"><img src="images/hillrooms.jpeg" alt="Hill-facing rooms at Seema's Resort Neral near Matheran &amp; Karjat" loading="lazy" decoding="async"><span>Hill-facing rooms</span></div>
+      <div class="g-tile"><img src="images/hall.jpeg" alt="AC dining hall and restaurant at Seema's Resort Neral near Matheran &amp; Karjat" loading="lazy" decoding="async"><span>The dining hall</span></div>
     </div>
   </div>
 </section>
@@ -995,7 +1523,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   <div class="wrap">
     <div class="section-head section-head--compact">
       <div class="kicker">Guest reviews</div>
-      <h2>What our guests say on Google</h2>
+      <h2>Guest Reviews for Seema's Resort Neral</h2>
     </div>
     <div class="rev-grid">
       <figure class="rev-card">
@@ -1048,39 +1576,11 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   </div>
 </section>
 
-<!-- TEST ONLY: GAME SECTION START -->
-<section class="section" id="play">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Need a break?</div>
-      <h2>Bored on the drive or by the pool? Play a quick game</h2>
-      <p>Two tiny games, no sign-up. Take a breather and come back to planning your stay.</p>
-    </div>
-    <div class="play-tabs" role="tablist" aria-label="Choose a game">
-      <button class="play-tab" role="tab" id="tab-mem" aria-selected="true" aria-controls="pane-mem" type="button">Memory Match</button>
-      <button class="play-tab" role="tab" id="tab-ttt" aria-selected="false" aria-controls="pane-ttt" type="button">Tic-Tac-Toe</button>
-    </div>
-    <div class="play-card">
-      <div class="play-pane" id="pane-mem" role="tabpanel" aria-labelledby="tab-mem">
-        <div class="play-bar"><span>Moves: <span id="memMoves">0</span></span><button type="button" id="memReset">Restart</button></div>
-        <div class="mem-grid" id="memGrid"></div>
-        <p class="play-msg" id="memMsg" aria-live="polite">Find all 8 pairs.</p>
-      </div>
-      <div class="play-pane" id="pane-ttt" role="tabpanel" aria-labelledby="tab-ttt" hidden>
-        <div class="play-bar"><span>You are X</span><button type="button" id="tttReset">Restart</button></div>
-        <div class="ttt-grid" id="tttGrid"></div>
-        <p class="play-msg" id="tttMsg" aria-live="polite">Your move.</p>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- TEST ONLY: GAME SECTION END -->
-
 <section class="section book" id="book">
   <div class="wrap">
     <div class="section-head">
       <div class="kicker">Plan your stay</div>
-      <h2>Find us, then stop looking at the map</h2>
+      <h2>Location, Directions &amp; Direct Room Booking — Seema's Resort Neral</h2>
       <p>We're right on the Neral-Karjat Highway near Panchwati, so there's no detour — call ahead and someone can guide you in for the last stretch.</p>
     </div>
     <div class="book-grid">
@@ -1093,7 +1593,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
         <h3>Email</h3>
         <p><a href="mailto:contact@seemaresort.in">contact@seemaresort.in</a></p>
         <h3>Getting there</h3>
-        <p>Neral Railway Station is about 3 km away — auto-rickshaws are easily available from the station.</p>
+        <p>By road: we are right on the Neral-Karjat Highway near Panchwati, about 1.5&ndash;2 hours from Mumbai and Pune. By train: Neral Railway Station is about 3 km away (5&ndash;10 minutes by auto-rickshaw), and the Matheran toy train also starts from Neral.</p>
         <div class="map-box">
           <iframe
             src="https://maps.google.com/maps?q=19.0112567,73.3265305&amp;z=16&amp;output=embed"
@@ -1170,7 +1670,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   <div class="wrap faq">
     <div class="section-head">
       <div class="kicker">Quick answers</div>
-      <h2>Frequently asked questions</h2>
+      <h2>Frequently Asked Questions About Seema's Resort Neral</h2>
     </div>
     <details><summary>How far is Seema Resort from Mumbai and Pune?</summary><p>We are right on the highway at Neral, about 1.5&ndash;2 hours by car from both Mumbai and Pune.</p></details>
     <details><summary>Is the resort near Matheran?</summary><p>Yes. We sit at the foot of Matheran in Neral, a convenient base for the hill station.</p></details>
@@ -1179,6 +1679,10 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
     <details><summary>What room types do you offer?</summary><p>Standard and Elite Rooms, Premium Deluxe and Couple Deluxe Cottages, Bathtub Suites, Family Executive Rooms, Studio Rooms, Quad Rooms and Dormitories. Call or WhatsApp us for the full list.</p></details>
     <details><summary>Is Seema Resort near Karjat?</summary><p>Yes. Seema's Resort &amp; Restaurant is on the Neral-Karjat Highway near Panchwati in Neral, so it is easy to reach from Karjat as well as Matheran.</p></details>
     <details><summary>Does Seema Resort take group and corporate bookings?</summary><p>Yes. We host families, friends, corporate teams and larger groups. Call or WhatsApp us with your group size and dates and we will suggest the right rooms and rate.</p></details>
+    <details><summary>How far is Seema's Resort from Neral Railway Station and Matheran?</summary><p>Seema's Resort &amp; Restaurant is about 3 km from Neral Railway Station, roughly 5–10 minutes by auto-rickshaw. Neral is the starting point of the Matheran toy train, so please check the current toy train schedule before you travel. Dasturi Naka, the Matheran entry point where vehicles must stop, is a quick drive from the resort.</p></details>
+    <details><summary>Is Seema's Resort couple-friendly and what ID is required?</summary><p>Yes, Seema's Resort is couple-friendly and offers Couple Deluxe Premium Rooms and Deluxe Suite Couple Cottages. A valid government-issued photo ID is required for all guests at check-in, and couples must carry suitable ID proof.</p></details>
+    <details><summary>What outdoor activities and games are available at the resort?</summary><p>The resort has a swimming pool and kids' pool (open 9:00 AM – 6:00 PM), rain dance with music, cricket, football, badminton, a kids' play area and nature walks. Indoor games include a pool table, carrom, chess and ludo.</p></details>
+    <details><summary>Do you have dormitories for large family groups and corporate outings?</summary><p>Yes. We have spacious dormitories, Family Executive Rooms and quad rooms, plus an AC dining hall for group meals. Customised group rates are available together with the unlimited AP buffet plan. Call or WhatsApp us with your group size and dates.</p></details>
   </div>
 </section>
 
@@ -1210,7 +1714,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
 
 <footer>
   <div class="wrap">
-    <span>© <span id="year"></span> Seema Resort. Best resort in Neral.</span>
+    <span>© <span id="year"></span> Seema's Resort &amp; Restaurant. Best resort in Neral.</span>
     <span>Highway touch, at the foot of Matheran.</span>
     <span class="footer-social">
       <a href="https://www.instagram.com/seemas_resort/" target="_blank" rel="noopener" aria-label="Seema Resort on Instagram">
@@ -1262,23 +1766,42 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   // Public key from web3forms.com (delivers to RESORT_EMAIL). Safe to keep in front-end code.
   const WEB3FORMS_KEY = 'a557294a-9f1e-4645-b3a1-9b9c3a5671f0';
 
-  /* ---------- Scroll reveal (runs first so nothing stays hidden if a later block fails) ---------- */
+  /* ---------- Scroll reveal (crawler-safe progressive enhancement) ----------
+     Content is never hidden by the static HTML/CSS. Only when <head> flagged this as a real,
+     motion-friendly browser (html.motion) do we fade in blocks that start below the fold.
+     Crawlers / headless tools / reduced-motion users skip this entirely and see everything
+     at full opacity. A timed safety net also reveals everything if nobody interacts. */
+  const REVEAL_FAILSAFE_MS = 5000;
   const revealTargets = $$('.room-card,.room-more,.slot-card,.amenity-card,.info-card,.g-tile,.section-head,.faq details,.stop,.rev-card');
-  if ('IntersectionObserver' in window) {
+  if (document.documentElement.classList.contains('motion') && 'IntersectionObserver' in window) {
+    const pending = new Set();
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         entry.target.classList.add('is-visible');
+        pending.delete(entry.target);
         revealObserver.unobserve(entry.target);
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+    const showAll = () => {
+      revealObserver.disconnect();
+      pending.forEach((el) => el.classList.add('is-visible'));
+      pending.clear();
+    };
+    const viewportH = window.innerHeight || document.documentElement.clientHeight;
     revealTargets.forEach((el) => {
+      if (el.getBoundingClientRect().top < viewportH) return; // already on screen: never hide it
       const position = [...el.parentElement.children].indexOf(el);
       el.style.setProperty('--d', `${(position % 3) * 80}ms`);
+      el.classList.add('reveal-wait');
+      pending.add(el);
       revealObserver.observe(el);
     });
-  } else {
-    revealTargets.forEach((el) => el.classList.add('is-visible'));
+    // Safety net: no scroll / touch / key / click soon after load => reveal everything.
+    const failsafe = setTimeout(showAll, REVEAL_FAILSAFE_MS);
+    const userActive = () => clearTimeout(failsafe);
+    ['scroll', 'wheel', 'touchstart', 'keydown', 'pointerdown'].forEach((type) =>
+      addEventListener(type, userActive, { once: true, passive: true }));
   }
 
   /* ---------- Footer year ---------- */
@@ -1504,105 +2027,5 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
 })();
 </script>
-<!-- TEST ONLY: GAME SCRIPT START -->
-<script>
-(function(){
-  var $=function(id){return document.getElementById(id)};
-  var reveal=document.querySelector('#play .section-head');
-  if(reveal&&!('IntersectionObserver' in window))reveal.classList.add('is-visible');
-
-  /* Tabs */
-  var tabs=[['tab-mem','pane-mem'],['tab-ttt','pane-ttt']];
-  tabs.forEach(function(t){
-    $(t[0]).addEventListener('click',function(){
-      tabs.forEach(function(o){
-        var on=o===t;
-        $(o[0]).setAttribute('aria-selected',on);
-        $(o[1]).hidden=!on;
-      });
-    });
-  });
-
-  /* Memory Match */
-  var icons=['\uD83C\uDFCA','\uD83C\uDF34','\uD83C\uDF5B','\uD83C\uDF04','\uD83C\uDFE8','\uD83D\uDE97','\u2615','\uD83D\uDD25'];
-  var first=null,lock=false,moves=0,found=0;
-  function memStart(){
-    var deck=icons.concat(icons).sort(function(){return Math.random()-.5});
-    var grid=$('memGrid');grid.innerHTML='';
-    first=null;lock=false;moves=0;found=0;
-    $('memMoves').textContent='0';$('memMsg').textContent='Find all 8 pairs.';
-    deck.forEach(function(ic){
-      var b=document.createElement('button');
-      b.type='button';b.className='mem-card';b.dataset.icon=ic;
-      b.setAttribute('aria-label','Hidden card');
-      b.addEventListener('click',function(){flip(b)});
-      grid.appendChild(b);
-    });
-  }
-  function show(b){b.classList.add('up');b.textContent=b.dataset.icon;b.setAttribute('aria-label','Card '+b.dataset.icon)}
-  function hide(b){b.classList.remove('up');b.textContent='';b.setAttribute('aria-label','Hidden card')}
-  function flip(b){
-    if(lock||b===first||b.classList.contains('done'))return;
-    show(b);
-    if(!first){first=b;return}
-    moves++;$('memMoves').textContent=moves;
-    if(first.dataset.icon===b.dataset.icon){
-      first.classList.add('done');b.classList.add('done');first=null;found++;
-      if(found===icons.length)$('memMsg').textContent='You did it in '+moves+' moves. Nicely done!';
-    }else{
-      lock=true;var a=first;first=null;
-      setTimeout(function(){hide(a);hide(b);lock=false},750);
-    }
-  }
-  $('memReset').addEventListener('click',memStart);
-  memStart();
-
-  /* Tic-Tac-Toe (you = X, computer = O) */
-  var L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-  var board,over,cells=[];
-  function winner(b){
-    for(var i=0;i<L.length;i++){var l=L[i];if(b[l[0]]&&b[l[0]]===b[l[1]]&&b[l[1]]===b[l[2]])return{p:b[l[0]],l:l}}
-    return null;
-  }
-  function paint(){
-    cells.forEach(function(c,i){c.textContent=board[i];c.dataset.v=board[i];c.disabled=over||!!board[i];c.classList.remove('win');c.setAttribute('aria-label','Square '+(i+1)+(board[i]?', '+board[i]:', empty'))});
-    var w=winner(board);
-    if(w)w.l.forEach(function(i){cells[i].classList.add('win')});
-  }
-  function finish(){
-    var w=winner(board);
-    if(w){over=true;$('tttMsg').textContent=w.p==='X'?'You win!':'Computer wins. Try again?'}
-    else if(board.every(Boolean)){over=true;$('tttMsg').textContent="It's a draw."}
-    paint();return over;
-  }
-  function pick(){
-    var i,e=board.map(function(v,k){return v?-1:k}).filter(function(k){return k>=0});
-    function tryFor(p){for(var j=0;j<L.length;j++){var l=L[j],v=l.map(function(k){return board[k]});
-      if(v.filter(function(x){return x===p}).length===2&&v.indexOf('')>-1)return l[v.indexOf('')]}return -1}
-    i=tryFor('O');if(i<0)i=tryFor('X');
-    if(i<0&&!board[4])i=4;
-    if(i<0)i=e[Math.floor(Math.random()*e.length)];
-    return i;
-  }
-  function tttStart(){
-    board=Array(9).fill('');over=false;
-    var g=$('tttGrid');g.innerHTML='';cells=[];
-    for(var i=0;i<9;i++)(function(i){
-      var c=document.createElement('button');c.type='button';c.className='ttt-cell';
-      c.addEventListener('click',function(){
-        if(over||board[i])return;
-        board[i]='X';if(finish())return;
-        board[pick()]='O';
-        if(!finish())$('tttMsg').textContent='Your move.';
-      });
-      g.appendChild(c);cells.push(c);
-    })(i);
-    $('tttMsg').textContent='Your move.';paint();
-  }
-  $('tttReset').addEventListener('click',tttStart);
-  tttStart();
-})();
-</script>
-<!-- TEST ONLY: GAME SCRIPT END -->
 </body>
 </html>
