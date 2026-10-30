@@ -5,6 +5,26 @@ Dates are written as YYYY-MM-DD. For changes before 2026-10-22, see the reposito
 
 ---
 
+## 2026-10-30 — New Year's Eve 2026-27 update (teaser mode, no prices)
+
+**Link preview (WhatsApp, Facebook, X):** `og:title`, `og:description`, `og:image` (new `images/og-nye.jpg`, 1200x630) and the matching `twitter:` tags now show the NYE teaser. After 1 Jan 2027, restore title `Seema's Resort Neral | Best Pool Resort & Cottages Near Matheran & Karjat`, the original description (same as `<meta name="description">`) and `images/og-image.jpg`, and update the `og:image:alt`.
+
+**Teaser mode:** until bookings open, the ribbon and `#nye` section show a "Bookings opening soon" hype message with a countdown, highlights and WhatsApp/call buttons. No prices, packages, policy or offers are shown, the dropdown has one NYE enquiry option, and the Event JSON-LD has no offers. The full-detail version is kept in `index-nye-bookings-live.html` to swap in when bookings open.
+
+
+**Added (all in `index.html`, every piece wrapped in `NYE START` / `NYE END` comments):**
+- Announcement ribbon above the header with a "View details" link to `#nye`.
+- New `#nye` section above `#rooms`: stay packages, party entry, kids rates, gala menu, entertainment, timings, advance and cancellation policy, WhatsApp and call buttons.
+- "NYE Party" link in the header navigation.
+- New Year's Eve options in the booking form's room preference dropdown (works with both the WhatsApp and email buttons).
+- `Event` JSON-LD for the 31 December 2026 party.
+- `.nye-head` and `.nye-card` added to the `revealTargets` list (content stays visible to crawlers).
+- `sitemap.xml` `lastmod` set to 2026-10-30.
+
+**To remove after 1 January 2027:** delete everything between the `NYE START` and `NYE END` comments (CSS, ribbon, section, dropdown group, Event JSON-LD), the `NYE Party` nav link line, and `,.nye-head,.nye-card` in `revealTargets`. Then update `lastmod` again.
+
+---
+
 ## 2026-10-22 — Technical SEO upgrade
 
 Goal: rank higher on Google Search and Google Maps for "resort in Neral", "resort near Matheran / Karjat", weekend getaways from Mumbai and Pune, couple cottages, pool resorts and group outings.
