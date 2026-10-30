@@ -624,6 +624,49 @@
   ]
 }
 </script>
+<!-- NYE START: Event structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "@id": "https://www.seemaresort.in/#nye-2026",
+  "name": "New Year's Eve Party 2026 at Seema's Resort & Restaurant, Neral",
+  "description": "31st December Eve party at Seema's Resort & Restaurant, Neral near Matheran and Karjat: live DJ and band, karaoke, games, anchors, gifts, firecrackers, cake cutting, kids and family fashion show, and an unlimited gala dinner with a live pasta counter. Stay packages or party entry only.",
+  "startDate": "2026-12-31T19:00:00+05:30",
+  "endDate": "2027-01-01",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "image": "https://www.seemaresort.in/images/og-image.jpg",
+  "url": "https://www.seemaresort.in/#nye",
+  "location": { "@id": "https://www.seemaresort.in/#resort" },
+  "organizer": { "@id": "https://www.seemaresort.in/#resort" },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Party entry with unlimited food (per person)",
+      "price": "1199",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "url": "https://www.seemaresort.in/#nye",
+      "validFrom": "2026-10-30"
+    },
+    {
+      "@type": "Offer",
+      "name": "NYE stay package (per person, dormitory to couple booking)",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "minPrice": 2800,
+        "maxPrice": 6000,
+        "priceCurrency": "INR"
+      },
+      "availability": "https://schema.org/InStock",
+      "url": "https://www.seemaresort.in/#nye",
+      "validFrom": "2026-10-30"
+    }
+  ]
+}
+</script>
+<!-- NYE END -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1124,15 +1167,55 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
 }
+
+/* NYE START: New Year's Eve 2026-27 (remove this block after 1 Jan 2027) */
+.nye-ribbon{background:linear-gradient(90deg,var(--forest-deep),var(--forest) 50%,var(--forest-deep));color:var(--on-dark);border-bottom:2px solid var(--gold);font-size:.92rem;line-height:1.4}
+.nye-ribbon .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 14px;padding-block:9px;text-align:center}
+.nye-ribbon strong{color:var(--gold);font-weight:700}
+.nye-ribbon a{display:inline-block;padding:4px 14px;border-radius:var(--r-pill);font-weight:700;font-size:.85rem;text-decoration:none;background:var(--gold);color:var(--forest-deep);transition:background-color var(--t)}
+.nye-ribbon a:hover{background:#F3B24F}
+#nye .nye-panel{padding:clamp(22px,5vw,48px);color:var(--on-dark);border:1px solid rgba(232,162,58,.5);border-radius:var(--r);box-shadow:var(--shadow-lg);
+  background:radial-gradient(circle at 12% 0%,rgba(232,162,58,.22),transparent 45%),radial-gradient(circle at 92% 100%,rgba(232,162,58,.14),transparent 40%),linear-gradient(160deg,var(--forest-deep),var(--forest))}
+#nye .nye-head{max-width:760px;margin-bottom:clamp(22px,4vw,34px)}
+#nye .nye-kicker{display:inline-block;margin-bottom:10px;padding:5px 14px;border-radius:var(--r-pill);font-size:.82rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--forest-deep);background:var(--gold)}
+#nye .nye-head h2{margin:0 0 12px;font-size:clamp(1.7rem,2.4vw + 1rem,2.5rem);color:#fff}
+#nye .nye-head h2 em{display:block;margin-top:6px;font-style:italic;font-weight:500;font-size:.58em;color:var(--gold)}
+#nye .nye-head p{margin:0;color:var(--on-dark-muted);font-size:1.05rem}
+#nye .nye-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+#nye .nye-card{padding:20px;background:rgba(255,255,255,.06);border:1px solid rgba(232,162,58,.3);border-radius:var(--r-sm)}
+#nye .nye-card h3{margin:0 0 12px;font-family:var(--font-display);font-size:1.2rem;color:var(--gold)}
+#nye .nye-card p{margin:0 0 8px;color:var(--on-dark);font-size:.98rem}
+#nye .nye-card p:last-child{margin-bottom:0}
+#nye .nye-card ul{margin:0;padding-left:1.15em;color:var(--on-dark);font-size:.98rem}
+#nye .nye-card li{margin-bottom:5px}
+#nye .nye-price{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed rgba(232,162,58,.35);font-size:.98rem}
+#nye .nye-price:last-of-type{border-bottom:0}
+#nye .nye-price b{color:#fff;white-space:nowrap}
+#nye .nye-note{margin-top:10px;font-size:.88rem;color:var(--on-dark-muted)}
+#nye .nye-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+#nye .nye-cta .btn-primary{background:var(--gold);color:var(--forest-deep)}
+#nye .nye-cta .btn-primary:hover{background:#F3B24F}
+#nye .nye-cta .btn-ghost{border-color:#fff;color:#fff}
+#nye .nye-cta .btn-ghost:hover{background:rgba(255,255,255,.14)}
+/* NYE END */
 </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
+<!-- NYE START: announcement ribbon -->
+<div class="nye-ribbon" role="region" aria-label="New Year's Eve announcement">
+  <div class="wrap">
+    <span>&#127881; <strong>31st December Eve at Seema Resort, Neral</strong> &mdash; Booking starts now! Party entry &#8377;1,199 &middot; Stay packages from &#8377;2,800 to &#8377;6,000 per person</span>
+    <a href="#nye">View details</a>
+  </div>
+</div>
+<!-- NYE END -->
 <header class="site">
   <div class="wrap nav">
     <a href="#top" class="brand-logo"><img src="images/LogoMainNoBG.png" alt="Seema's Resort &amp; Restaurant, Neral" class="logo-img" width="100" height="100" fetchpriority="high"></a>
     <nav class="links" id="navLinks" aria-label="Primary">
+      <a href="#nye">NYE Party</a><!-- NYE -->
       <a href="#rooms">Rooms</a>
       <a href="#amenities">Amenities</a>
       <a href="#gallery">Gallery</a>
@@ -1228,6 +1311,76 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
     </div>
   </div>
 </section>
+
+<!-- NYE START: New Year's Eve section -->
+<section class="section" id="nye">
+  <div class="wrap">
+    <div class="nye-panel">
+      <div class="nye-head">
+        <span class="nye-kicker">31 December 2026 &middot; Booking starts now</span>
+        <h2>New Year's Eve Party &amp; Resort Stay in Neral Near Matheran &amp; Karjat<em>31st December Eve at Seema's Resort &amp; Restaurant</em></h2>
+        <p>Ring in 2027 with live music, a gala dinner and a countdown celebration on the Neral-Karjat Highway. Stay with us or join the party only. The party starts at 7 PM onwards.</p>
+      </div>
+      <div class="nye-grid">
+        <div class="nye-card">
+          <h3>Stay packages (per person, starting rates)</h3>
+          <div class="nye-price"><span>Dormitory</span><b>&#8377;2,800 to &#8377;3,000</b></div>
+          <div class="nye-price"><span>Couple booking</span><b>&#8377;4,000 to &#8377;6,000</b></div>
+          <div class="nye-price"><span>Triple occupancy</span><b>&#8377;3,200 to &#8377;3,600</b></div>
+          <div class="nye-price"><span>Quadruple occupancy</span><b>&#8377;3,000 to &#8377;3,500</b></div>
+          <p class="nye-note">Each package starts from the lower price and goes up to the higher one, depending on room category. WhatsApp us for the exact price.</p>
+        </div>
+        <div class="nye-card">
+          <h3>Party entry only</h3>
+          <div class="nye-price"><span>Party entry with unlimited food</span><b>&#8377;1,199 per person</b></div>
+          <p class="nye-note">Kids: below 5 years free &middot; 5 to 10 years &#8377;1,799 per kid &middot; above 10 years same as adults.</p>
+        </div>
+        <div class="nye-card">
+          <h3>Gala menu</h3>
+          <ul>
+            <li>Starters: 1 veg + 1 chicken + 1 fish</li>
+            <li>Main course: 1 veg + 1 chicken</li>
+            <li>Live pasta counter (veg &amp; chicken)</li>
+            <li>1 roti + 1 rice + 1 dal</li>
+            <li>1 sweet</li>
+            <li>Bar: soft drinks, soda, ice and mocktails (outside drinks not allowed)</li>
+          </ul>
+        </div>
+        <div class="nye-card">
+          <h3>Unlimited entertainment</h3>
+          <ul>
+            <li>DJ Nick, live band and karaoke</li>
+            <li>Games, anchors and gifts</li>
+            <li>Firecrackers for the celebration</li>
+            <li>Cake cutting ceremony</li>
+            <li>Kids &amp; family fashion show and more</li>
+          </ul>
+        </div>
+        <div class="nye-card">
+          <h3>Timings</h3>
+          <p><strong>Party starts at 7 PM onwards.</strong></p>
+          <p>Slot 1: check-in 12 PM, check-out 10 AM</p>
+          <p>Slot 2: check-in 5 PM, check-out 3 PM</p>
+        </div>
+        <div class="nye-card">
+          <h3>Booking &amp; policy</h3>
+          <p><strong>&#8377;5,000 advance</strong> to confirm your booking.</p>
+          <ul>
+            <li>No refunds. The booking amount is non-refundable.</li>
+            <li>Postponement needs at least 48 hours' notice before check-in, and only to a weekday date.</li>
+            <li>Without 48 hours' notice, the booking amount is forfeited and the booking cannot be postponed.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="nye-cta">
+        <a class="btn-primary" href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20I%27d%20like%20to%20book%20the%20New%20Year%27s%20Eve%20%2831st%20December%29%20party.%20Please%20share%20availability%20and%20how%20to%20pay%20the%20Rs%205%2C000%20advance." target="_blank" rel="noopener">Book NYE on WhatsApp</a>
+        <a class="btn-ghost" href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20I%27d%20like%20to%20enquire%20about%20the%20New%20Year%27s%20Eve%20%2831st%20December%29%20package.%20Dates%3A%2031%20Dec%202026.%20Guests%3A%20" target="_blank" rel="noopener">Ask about NYE packages</a>
+        <a class="btn-ghost" href="tel:+917559411323">Call 75594 11323 / 77458 52323</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- NYE END -->
 
 <section class="section" id="rooms">
   <div class="wrap">
@@ -1640,6 +1793,15 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
             <option value="Elite Room">Elite Room</option>
             <option value="Couple Deluxe Premium Room">Couple Deluxe Premium Room</option>
             <option value="Family Executive Room">Family Executive Room</option>
+            <!-- NYE START: dropdown options -->
+            <optgroup label="New Year's Eve, 31 Dec 2026">
+              <option value="NYE 31 Dec: Dormitory package">NYE 31 Dec: Dormitory package</option>
+              <option value="NYE 31 Dec: Couple package">NYE 31 Dec: Couple package</option>
+              <option value="NYE 31 Dec: Triple occupancy package">NYE 31 Dec: Triple occupancy package</option>
+              <option value="NYE 31 Dec: Quadruple occupancy package">NYE 31 Dec: Quadruple occupancy package</option>
+              <option value="NYE 31 Dec: Party entry only (no stay)">NYE 31 Dec: Party entry only (no stay)</option>
+            </optgroup>
+            <!-- NYE END -->
           </select>
         </div>
         <div>
@@ -1772,7 +1934,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
      Crawlers / headless tools / reduced-motion users skip this entirely and see everything
      at full opacity. A timed safety net also reveals everything if nobody interacts. */
   const REVEAL_FAILSAFE_MS = 5000;
-  const revealTargets = $$('.room-card,.room-more,.slot-card,.amenity-card,.info-card,.g-tile,.section-head,.faq details,.stop,.rev-card');
+  const revealTargets = $$('.room-card,.room-more,.slot-card,.amenity-card,.info-card,.g-tile,.section-head,.faq details,.stop,.rev-card,.nye-head,.nye-card'); /* NYE */
   if (document.documentElement.classList.contains('motion') && 'IntersectionObserver' in window) {
     const pending = new Set();
     const revealObserver = new IntersectionObserver((entries) => {
