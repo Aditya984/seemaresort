@@ -11,7 +11,7 @@ Dates are written as YYYY-MM-DD. For changes before 2026-10-22, see the reposito
 
 **Rates now match the official poster:** party entry with unlimited food ₹1,200 per person (was ₹1,199); couple booking ₹4,500 onwards (was ₹4,000 to ₹6,000); dormitory ₹2,800 to ₹3,000, triple ₹3,200 to ₹3,600 and quadruple ₹3,000 to ₹3,500 unchanged. The ribbon now says "Stay from ₹2,800 per person", and the Event JSON-LD offers use ₹1,200 and a ₹2,800 minimum with no maximum.
 
-**Link preview:** `og:` and `twitter:` title, description and image (`images/og-nye.jpg`) show the live NYE offer with prices. Restore the originals after 1 Jan 2027 (see the 2026-10-30 entry).
+**Link preview:** `og:` and `twitter:` title, description and image show the live NYE offer with prices. New image `images/og-nye-live.jpg` (1200x630, "Booking starts now", party entry ₹1,200, stays from ₹2,800); the old `images/og-nye.jpg` still says "Bookings opening soon" and is no longer used. A new file name is used on purpose so WhatsApp and Facebook fetch a fresh preview. Restore the originals after 1 Jan 2027 (see the 2026-10-30 entry).
 
 **Sitemap:** `lastmod` set to 2026-10-31.
 
