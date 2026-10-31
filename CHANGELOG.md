@@ -5,6 +5,18 @@ Dates are written as YYYY-MM-DD. For changes before 2026-10-22, see the reposito
 
 ---
 
+## 2026-10-31 — New Year's Eve bookings live (prices final)
+
+**Swapped in:** the full-detail version (formerly `index-nye-bookings-live.html`) is now `index.html`. The "Bookings opening soon" teaser and countdown are gone.
+
+**Rates now match the official poster:** party entry with unlimited food ₹1,200 per person (was ₹1,199); couple booking ₹4,500 onwards (was ₹4,000 to ₹6,000); dormitory ₹2,800 to ₹3,000, triple ₹3,200 to ₹3,600 and quadruple ₹3,000 to ₹3,500 unchanged. The ribbon now says "Stay from ₹2,800 per person", and the Event JSON-LD offers use ₹1,200 and a ₹2,800 minimum with no maximum.
+
+**Link preview:** `og:` and `twitter:` title, description and image (`images/og-nye.jpg`) show the live NYE offer with prices. Restore the originals after 1 Jan 2027 (see the 2026-10-30 entry).
+
+**Sitemap:** `lastmod` set to 2026-10-31.
+
+---
+
 ## 2026-10-30 — New Year's Eve 2026-27 update (teaser mode, no prices)
 
 **Link preview (WhatsApp, Facebook, X):** `og:title`, `og:description`, `og:image` (new `images/og-nye.jpg`, 1200x630) and the matching `twitter:` tags now show the NYE teaser. After 1 Jan 2027, restore title `Seema's Resort Neral | Best Pool Resort & Cottages Near Matheran & Karjat`, the original description (same as `<meta name="description">`) and `images/og-image.jpg`, and update the `og:image:alt`.

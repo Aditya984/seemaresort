@@ -38,23 +38,22 @@
 <link rel="canonical" href="https://www.seemaresort.in/">
 
 <!-- Open Graph / Facebook, WhatsApp, Instagram link previews -->
-<!-- NYE: link-preview tags below show the New Year's Eve teaser; restore from CHANGELOG after 1 Jan 2027 -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Seema's Resort &amp; Restaurant">
-<meta property="og:title" content="Seema's Resort Neral | 31st December Eve Party: Bookings Opening Soon">
-<meta property="og:description" content="31st December Eve at Seema's Resort, Neral near Matheran &amp; Karjat: DJ Nick, live band, karaoke, firecrackers &amp; gala dinner. Bookings opening soon!">
+<meta property="og:title" content="New Year's Eve Party 2026 at Seema's Resort Neral | Party Entry &#8377;1,200 &amp; Stay Packages">
+<meta property="og:description" content="31st December New Year's Eve party at Seema's Resort &amp; Restaurant, Neral near Matheran &amp; Karjat. Party entry with unlimited food &#8377;1,200 per person, stay packages from &#8377;2,800, live DJ and band, gala dinner and a countdown celebration. Booking starts now.">
 <meta property="og:url" content="https://www.seemaresort.in/">
-<meta property="og:image" content="https://www.seemaresort.in/images/og-nye.jpg?v=1">
+<meta property="og:image" content="https://www.seemaresort.in/images/og-nye.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="31st December Eve party at Seema's Resort &amp; Restaurant, Neral. Bookings opening soon">
+<meta property="og:image:alt" content="New Year's Eve party 2026 at Seema's Resort &amp; Restaurant, Neral">
 <meta property="og:locale" content="en_IN">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Seema's Resort Neral | 31st December Eve Party: Bookings Opening Soon">
-<meta name="twitter:description" content="31st December Eve at Seema's Resort, Neral near Matheran &amp; Karjat: DJ Nick, live band, karaoke, firecrackers &amp; gala dinner. Bookings opening soon!">
-<meta name="twitter:image" content="https://www.seemaresort.in/images/og-nye.jpg?v=1">
+<meta name="twitter:title" content="New Year's Eve Party 2026 at Seema's Resort Neral | Party Entry &#8377;1,200 &amp; Stay Packages">
+<meta name="twitter:description" content="31st December New Year's Eve party at Seema's Resort &amp; Restaurant, Neral near Matheran &amp; Karjat. Party entry with unlimited food &#8377;1,200 per person, stay packages from &#8377;2,800, live DJ and band, gala dinner and a countdown celebration. Booking starts now.">
+<meta name="twitter:image" content="https://www.seemaresort.in/images/og-nye.jpg">
 
 <link rel="preload" as="image" href="images/pool.jpeg" fetchpriority="high">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
@@ -625,14 +624,14 @@
   ]
 }
 </script>
-<!-- NYE START: Event structured data (teaser mode, no offers yet) -->
+<!-- NYE START: Event structured data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Event",
   "@id": "https://www.seemaresort.in/#nye-2026",
   "name": "New Year's Eve Party 2026 at Seema's Resort & Restaurant, Neral",
-  "description": "31st December Eve party at Seema's Resort & Restaurant, Neral near Matheran and Karjat: DJ Nick, live band, karaoke, games, anchors, gifts, firecrackers, cake cutting, kids and family fashion show, and a gala dinner with a live pasta counter. Bookings opening soon.",
+  "description": "31st December Eve party at Seema's Resort & Restaurant, Neral near Matheran and Karjat: live DJ and band, karaoke, games, anchors, gifts, firecrackers, cake cutting, kids and family fashion show, and an unlimited gala dinner with a live pasta counter. Stay packages or party entry only.",
   "startDate": "2026-12-31T19:00:00+05:30",
   "endDate": "2027-01-01",
   "eventStatus": "https://schema.org/EventScheduled",
@@ -640,7 +639,30 @@
   "image": "https://www.seemaresort.in/images/og-image.jpg",
   "url": "https://www.seemaresort.in/#nye",
   "location": { "@id": "https://www.seemaresort.in/#resort" },
-  "organizer": { "@id": "https://www.seemaresort.in/#resort" }
+  "organizer": { "@id": "https://www.seemaresort.in/#resort" },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Party entry with unlimited food (per person)",
+      "price": "1200",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "url": "https://www.seemaresort.in/#nye",
+      "validFrom": "2026-10-30"
+    },
+    {
+      "@type": "Offer",
+      "name": "NYE stay package (per person, dormitory to couple booking)",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "minPrice": 2800,
+        "priceCurrency": "INR"
+      },
+      "availability": "https://schema.org/InStock",
+      "url": "https://www.seemaresort.in/#nye",
+      "validFrom": "2026-10-30"
+    }
+  ]
 }
 </script>
 <!-- NYE END -->
@@ -1185,29 +1207,20 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
 .motion #nye .nye-kicker{animation:nyeWiggle 3.2s ease-in-out 1.2s infinite}
 .motion .nye-ribbon .nye-chip--live::before{animation:nyePulse 1.6s ease-out infinite}
 .motion .nye-ribbon a:hover,.motion #nye .nye-kicker:hover{animation-play-state:paused}
-#nye .nye-cd{display:flex;flex-wrap:wrap;gap:clamp(8px,2vw,16px);margin:0 0 10px}
-#nye .nye-cd>div{min-width:76px;padding:14px 10px;text-align:center;border:1px solid rgba(232,162,58,.55);border-radius:var(--r-sm);background:rgba(255,255,255,.07)}
-#nye .nye-cd b{display:block;font-family:var(--font-display);font-size:clamp(1.7rem,4.5vw,2.5rem);line-height:1;color:var(--gold)}
-#nye .nye-cd span{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--on-dark-muted)}
-#nye .nye-cd-note{margin:0 0 22px}
-#nye .nye-chips{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
-#nye .nye-chips li{padding:8px 16px;border:1px solid rgba(232,162,58,.5);border-radius:var(--r-pill);background:rgba(255,255,255,.07);font-weight:600;font-size:.95rem;color:var(--on-dark)}
-@keyframes nyeBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.motion #nye .nye-cd>div:nth-child(odd){animation:nyeBob 3s ease-in-out infinite}
-.motion #nye .nye-cd>div:nth-child(even){animation:nyeBob 3s ease-in-out 1.5s infinite}
 /* NYE END */
 </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- NYE START: announcement ribbon (teaser mode) -->
+<!-- NYE START: announcement ribbon -->
 <div class="nye-ribbon" role="region" aria-label="New Year's Eve announcement">
   <div class="wrap">
-    <span class="nye-title">&#127881; <strong>31st December Eve</strong> at Seema Resort, Neral</span>
-    <span class="nye-chip nye-chip--live">Bookings opening soon!</span>
-    <span class="nye-chip">DJ Nick &middot; Live Band &middot; Karaoke</span>
-    <a href="#nye">Know more</a>
+    <span class="nye-title">&#127881; <strong>31st December Eve</strong> at Seema's Resort, Neral</span>
+    <span class="nye-chip nye-chip--live">Booking starts now!</span>
+    <span class="nye-chip">Party entry &#8377;1,200</span>
+    <span class="nye-chip">Stay from &#8377;2,800 per person</span>
+    <a href="#nye">View details</a>
   </div>
 </div>
 <!-- NYE END -->
@@ -1257,7 +1270,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
         <span>Join the highway, stay on it</span>
       </div>
       <div class="stop">
-        <h3>Neral phata</h3>
+        <h3>Neral Phata</h3>
         <span>~1.5–2 hrs by car</span>
       </div>
       <div class="stop here">
@@ -1312,52 +1325,73 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
   </div>
 </section>
 
-<!-- NYE START: New Year's Eve section (teaser mode) -->
+<!-- NYE START: New Year's Eve section -->
 <section class="section" id="nye">
   <div class="wrap">
     <div class="nye-panel">
       <div class="nye-head">
-        <span class="nye-kicker">31 December 2026 &middot; Bookings opening soon</span>
+        <span class="nye-kicker">31 December 2026 &middot; Booking starts now</span>
         <h2>New Year's Eve Party &amp; Resort Stay in Neral Near Matheran &amp; Karjat<em>31st December Eve at Seema's Resort &amp; Restaurant</em></h2>
-        <p>The biggest night of the year, on the Neral-Karjat Highway near Matheran. Save the date, tell your gang and be the first to know when bookings open. The party starts at 7 PM onwards.</p>
+        <p>Ring in 2027 with live music, a gala dinner and a countdown celebration on the Neral-Karjat Highway. Stay with us or join the party only. The party starts from 7 PM.</p>
       </div>
-      <div class="nye-cd" id="nyeCountdown">
-        <div><b id="nyeD">--</b><span>Days</span></div>
-        <div><b id="nyeH">--</b><span>Hours</span></div>
-        <div><b id="nyeM">--</b><span>Mins</span></div>
-        <div><b id="nyeS">--</b><span>Secs</span></div>
+      <div class="nye-grid">
+        <div class="nye-card">
+          <h3>Stay packages (per person, starting rates)</h3>
+          <div class="nye-price"><span>Dormitory</span><b>&#8377;2,800 to &#8377;3,000</b></div>
+          <div class="nye-price"><span>Couple booking</span><b>&#8377;4,500 onwards</b></div>
+          <div class="nye-price"><span>Triple occupancy</span><b>&#8377;3,200 to &#8377;3,600</b></div>
+          <div class="nye-price"><span>Quadruple occupancy</span><b>&#8377;3,000 to &#8377;3,500</b></div>
+          <p class="nye-note">Rates are per person. Where a range is shown, the price depends on room category. Couple booking starts at &#8377;4,500. WhatsApp us for the exact price.</p>
+        </div>
+        <div class="nye-card">
+          <h3>Party entry only</h3>
+          <div class="nye-price"><span>Party entry with unlimited food</span><b>&#8377;1,200 per person</b></div>
+          <p class="nye-note">Kids: below 5 years free &middot; 5 to 10 years &#8377;1,799 per kid &middot; above 10 years same as adults.</p>
+        </div>
+        <div class="nye-card">
+          <h3>Gala menu</h3>
+          <ul>
+            <li>Starters: 1 veg + 1 chicken + 1 fish</li>
+            <li>Main course: 1 veg + 1 chicken</li>
+            <li>Live pasta counter (veg &amp; chicken)</li>
+            <li>1 roti + 1 rice + 1 dal</li>
+            <li>1 sweet</li>
+            <li>Bar: soft drinks, soda, ice and mocktails (outside drinks not allowed)</li>
+          </ul>
+        </div>
+        <div class="nye-card">
+          <h3>Unlimited entertainment</h3>
+          <ul>
+            <li>DJ Nick, live band and karaoke</li>
+            <li>Games, anchors and gifts</li>
+            <li>Firecrackers for the celebration</li>
+            <li>Cake-cutting ceremony</li>
+            <li>Kids &amp; family fashion show and more</li>
+          </ul>
+        </div>
+        <div class="nye-card">
+          <h3>Timings</h3>
+          <p><strong>Party starts from 7 PM.</strong></p>
+          <p>Slot 1: check-in 12 PM, check-out 10 AM</p>
+          <p>Slot 2: check-in 5 PM, check-out 3 PM</p>
+        </div>
+        <div class="nye-card">
+          <h3>Booking &amp; policy</h3>
+          <p><strong>&#8377;5,000 advance</strong> to confirm your booking.</p>
+          <ul>
+            <li>No refunds. The booking amount is non-refundable.</li>
+            <li>Postponement needs at least 48 hours' notice before check-in, and only to a weekday date.</li>
+            <li>Without 48 hours' notice, the booking amount is forfeited and the booking cannot be postponed.</li>
+          </ul>
+        </div>
       </div>
-      <p class="nye-note nye-cd-note" id="nyeNote">Countdown to 7 PM, 31 December 2026</p>
-      <ul class="nye-chips">
-        <li>&#127911; DJ Nick</li>
-        <li>&#127928; Live Band</li>
-        <li>&#127908; Karaoke</li>
-        <li>&#127918; Games &amp; Gifts</li>
-        <li>&#127878; Firecrackers</li>
-        <li>&#127874; Cake Cutting</li>
-        <li>&#128087; Kids &amp; Family Fashion Show</li>
-        <li>&#127837; Gala Dinner &amp; Live Pasta Counter</li>
-      </ul>
       <div class="nye-cta">
-        <a class="btn-primary" href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20please%20notify%20me%20first%20when%20the%2031st%20December%20Eve%20bookings%20open." target="_blank" rel="noopener">Notify me on WhatsApp</a>
-        <a class="btn-ghost" href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20I%27d%20like%20to%20know%20more%20about%20the%2031st%20December%20Eve%20party." target="_blank" rel="noopener">Ask about NYE</a>
+        <a class="btn-primary" href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20I%27d%20like%20to%20book%20the%20New%20Year%27s%20Eve%20%2831st%20December%29%20party.%20Please%20share%20availability%20and%20how%20to%20pay%20the%20Rs%205%2C000%20advance." target="_blank" rel="noopener">Book NYE on WhatsApp</a>
+        <a class="btn-ghost" href="https://wa.me/917559411323?text=Hi%20Seema%20Resort%2C%20I%27d%20like%20to%20enquire%20about%20the%20New%20Year%27s%20Eve%20%2831st%20December%29%20package.%20Dates%3A%2031%20Dec%202026.%20Guests%3A%20" target="_blank" rel="noopener">Ask about NYE packages</a>
         <a class="btn-ghost" href="tel:+917559411323">Call 75594 11323 / 77458 52323</a>
       </div>
     </div>
   </div>
-  <script>
-  (function(){
-    var t=new Date('2026-12-31T19:00:00+05:30').getTime(),g=function(i){return document.getElementById(i)},
-        pad=function(n){return String(n).padStart(2,'0')};
-    function tick(){
-      var d=t-Date.now();
-      if(d<=0){['nyeD','nyeH','nyeM','nyeS'].forEach(function(i){g(i).textContent='00'});g('nyeNote').textContent='The party is on! Call or WhatsApp us now.';return;}
-      g('nyeD').textContent=Math.floor(d/864e5);g('nyeH').textContent=pad(Math.floor(d%864e5/36e5));
-      g('nyeM').textContent=pad(Math.floor(d%36e5/6e4));g('nyeS').textContent=pad(Math.floor(d%6e4/1e3));
-    }
-    tick();setInterval(tick,1000);
-  })();
-  </script>
 </section>
 <!-- NYE END -->
 
@@ -1685,7 +1719,7 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
       </figure>
       <figure class="rev-card">
         <div class="rev-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>We originally planned to stay for just one day, but the experience was so wonderful that we ended up extending our stay! The service was exceptional, and the staff were incredibly helpful and cooperative throughout our visit.<br>The resort has a beautiful ambience and is completely surrounded by lush greenery, making it the perfect escape. It's a fantastic place to spend quality time with family and friends. Highly recommended!"</blockquote>
+        <blockquote>We originally planned to stay for just one day, but the experience was so wonderful that we ended up extending our stay! The service was exceptional, and the staff were incredibly helpful and cooperative throughout our visit.<br>The resort has a beautiful ambience and is completely surrounded by lush greenery, making it the perfect escape. It's a fantastic place to spend quality time with family and friends. Highly recommended!</blockquote>
         <figcaption><span class="rev-av">N</span><span><strong>Nishigandha Veer</strong><small>Google review</small></span></figcaption>
       </figure>
       <figure class="rev-card">
@@ -1773,7 +1807,13 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
             <option value="Couple Deluxe Premium Room">Couple Deluxe Premium Room</option>
             <option value="Family Executive Room">Family Executive Room</option>
             <!-- NYE START: dropdown options -->
-            <option value="New Year's Eve 31 Dec: notify me / enquiry">New Year's Eve 31 Dec: notify me / enquiry</option>
+            <optgroup label="New Year's Eve, 31 Dec 2026">
+              <option value="NYE 31 Dec: Dormitory package">NYE 31 Dec: Dormitory package</option>
+              <option value="NYE 31 Dec: Couple package">NYE 31 Dec: Couple package</option>
+              <option value="NYE 31 Dec: Triple occupancy package">NYE 31 Dec: Triple occupancy package</option>
+              <option value="NYE 31 Dec: Quadruple occupancy package">NYE 31 Dec: Quadruple occupancy package</option>
+              <option value="NYE 31 Dec: Party entry only (no stay)">NYE 31 Dec: Party entry only (no stay)</option>
+            </optgroup>
             <!-- NYE END -->
           </select>
         </div>
