@@ -64,7 +64,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Structured data: Resort + LodgingBusiness + Restaurant (rooms, offers, reviews) -->
+<!-- Structured data: Resort + LodgingBusiness + Restaurant (rooms, offers) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -495,131 +495,191 @@
         "name": "Family Executive Room"
       }
     }
-  ],
-  "review": [
+  ]
+}
+</script>
+<!-- Structured data: guest reviews (each names the business it reviews) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
       "@type": "Review",
+      "itemReviewed": {
+        "@type": "Resort",
+        "@id": "https://www.seemaresort.in/#resort",
+        "name": "Seema's Resort & Restaurant",
+        "url": "https://www.seemaresort.in/"
+      },
       "author": {
         "@type": "Person",
         "name": "Manasi Kochrekar"
       },
       "reviewRating": {
         "@type": "Rating",
-        "ratingValue": 5,
-        "bestRating": 5,
-        "worstRating": 1
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "1"
       },
       "reviewBody": "Had a wonderful stay! Everything from breakfast to dinner was really good, and the location was excellent—convenient and well-connected. Overall, a very pleasant experience"
     },
     {
       "@type": "Review",
+      "itemReviewed": {
+        "@type": "Resort",
+        "@id": "https://www.seemaresort.in/#resort",
+        "name": "Seema's Resort & Restaurant",
+        "url": "https://www.seemaresort.in/"
+      },
       "author": {
         "@type": "Person",
         "name": "Runali Kadam"
       },
       "reviewRating": {
         "@type": "Rating",
-        "ratingValue": 5,
-        "bestRating": 5,
-        "worstRating": 1
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "1"
       },
       "reviewBody": "We had a pleasant stay at this hotel. The location was excellent and very convenient. My kid spent most of the time in the swimming pool and really enjoyed it a lot — that was definitely the highlight of our trip. The room was clean, spacious, and comfortable, which made our stay relaxing. We didn't try the food, so we can't comment on that part. Overall, the staff was courteous and the atmosphere was nice and family-friendly. We had a great experience and would consider staying here again."
     },
     {
       "@type": "Review",
+      "itemReviewed": {
+        "@type": "Resort",
+        "@id": "https://www.seemaresort.in/#resort",
+        "name": "Seema's Resort & Restaurant",
+        "url": "https://www.seemaresort.in/"
+      },
       "author": {
         "@type": "Person",
         "name": "mandar kirange"
       },
       "reviewRating": {
         "@type": "Rating",
-        "ratingValue": 5,
-        "bestRating": 5,
-        "worstRating": 1
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "1"
       },
       "reviewBody": "Superb arrangement, nice location and Cleanliness in property is awesome. Must visit place"
     },
     {
       "@type": "Review",
+      "itemReviewed": {
+        "@type": "Resort",
+        "@id": "https://www.seemaresort.in/#resort",
+        "name": "Seema's Resort & Restaurant",
+        "url": "https://www.seemaresort.in/"
+      },
       "author": {
         "@type": "Person",
         "name": "Sana Shah"
       },
       "reviewRating": {
         "@type": "Rating",
-        "ratingValue": 5,
-        "bestRating": 5,
-        "worstRating": 1
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "1"
       },
       "reviewBody": "A peaceful paradise! Exceptionally clean, baby-friendly, and pocket-friendly luxury! We recently took a weekend staycation here with our 6-month-old baby boy, and it was the most peaceful, refreshing getaway we could have asked for. The entire property is surrounded by beautiful, lush green gardens, creating an incredibly calm and tranquil atmosphere.For parents traveling with an infant, cleanliness is the top priority. We were so impressed by how spotless and hygienic the rooms were. The environment was safe, clean, and extremely comfortable for our baby, which allowed us to relax with total peace of mind.The food was another major highlight. The resort offers multiple dining options, and every single meal was delicious, fresh, and full of variety.What truly sets this resort apart is the outstanding hospitality. The staff is incredibly cooperative, supportive, and thoughtful. They anticipated our needs as parents, took care of every little necessity for our baby, and made us feel genuinely pampered. Despite offering top-notch, luxurious amenities that give you a completely relaxing and mind-refreshing vibe, the pricing is surprisingly pocket-friendly and budget-friendly.It is the ultimate destination for a stress-free family staycation. We will definitely be back!"
     },
     {
       "@type": "Review",
+      "itemReviewed": {
+        "@type": "Resort",
+        "@id": "https://www.seemaresort.in/#resort",
+        "name": "Seema's Resort & Restaurant",
+        "url": "https://www.seemaresort.in/"
+      },
       "author": {
         "@type": "Person",
         "name": "BHUVA PRITUL"
       },
       "reviewRating": {
         "@type": "Rating",
-        "ratingValue": 5,
-        "bestRating": 5,
-        "worstRating": 1
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "1"
       },
       "reviewBody": "Best ever experienced. Good food Clean environment...lush green property.. Recommended to all"
     },
     {
       "@type": "Review",
+      "itemReviewed": {
+        "@type": "Resort",
+        "@id": "https://www.seemaresort.in/#resort",
+        "name": "Seema's Resort & Restaurant",
+        "url": "https://www.seemaresort.in/"
+      },
       "author": {
         "@type": "Person",
         "name": "Nishigandha Veer"
       },
       "reviewRating": {
         "@type": "Rating",
-        "ratingValue": 5,
-        "bestRating": 5,
-        "worstRating": 1
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "1"
       },
       "reviewBody": "We originally planned to stay for just one day, but the experience was so wonderful that we ended up extending our stay! The service was exceptional, and the staff were incredibly helpful and cooperative throughout our visit. The resort has a beautiful ambience and is completely surrounded by lush greenery, making it the perfect escape. It's a fantastic place to spend quality time with family and friends. Highly recommended!"
     },
     {
       "@type": "Review",
+      "itemReviewed": {
+        "@type": "Resort",
+        "@id": "https://www.seemaresort.in/#resort",
+        "name": "Seema's Resort & Restaurant",
+        "url": "https://www.seemaresort.in/"
+      },
       "author": {
         "@type": "Person",
         "name": "Priya Patil"
       },
       "reviewRating": {
         "@type": "Rating",
-        "ratingValue": 5,
-        "bestRating": 5,
-        "worstRating": 1
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "1"
       },
       "reviewBody": "The room was well-maintained and tidy, the food was excellent, and the property itself is commendable. The reception staff were very helpful. I highly recommend visiting SEEMA Resort."
     },
     {
       "@type": "Review",
+      "itemReviewed": {
+        "@type": "Resort",
+        "@id": "https://www.seemaresort.in/#resort",
+        "name": "Seema's Resort & Restaurant",
+        "url": "https://www.seemaresort.in/"
+      },
       "author": {
         "@type": "Person",
         "name": "Anjuman Mansuri"
       },
       "reviewRating": {
         "@type": "Rating",
-        "ratingValue": 5,
-        "bestRating": 5,
-        "worstRating": 1
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "1"
       },
       "reviewBody": "Our experience Was so Good at this resort.the hospitality, food(veg and non veg both were Delicious),rooms,hygiene and everything was so Good... you can Book it without any Doubt..."
     },
     {
       "@type": "Review",
+      "itemReviewed": {
+        "@type": "Resort",
+        "@id": "https://www.seemaresort.in/#resort",
+        "name": "Seema's Resort & Restaurant",
+        "url": "https://www.seemaresort.in/"
+      },
       "author": {
         "@type": "Person",
         "name": "Abhinandan Sharma"
       },
       "reviewRating": {
         "@type": "Rating",
-        "ratingValue": 5,
-        "bestRating": 5,
-        "worstRating": 1
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "1"
       },
       "reviewBody": "We had gone with a group of almost 40 people… fabulous service and great food quality… would highly recommend a stay here… very special mention for Rahul who really went out his way to give us a great service"
     }
