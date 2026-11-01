@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Sitemap for Seema's Resort &amp; Restaurant, Neral-Karjat Highway -->
-<!-- Update <lastmod> after major changes to index.html -->
+<!-- Update <lastmod> after major changes to index.html. Anchors like /#nye are not listed: Google ignores URL fragments. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
     <loc>https://www.seemaresort.in/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.seemaresort.in/images/og-nye-live.jpg</image:loc>
+      <image:title>New Year's Eve Party 2026 at Seema's Resort Neral near Matheran &amp; Karjat</image:title>
+    </image:image>
     <image:image>
       <image:loc>https://www.seemaresort.in/images/pool.jpeg</image:loc>
       <image:title>Swimming Pool &amp; Lawn at Seema's Resort &amp; Restaurant, Neral near Matheran</image:title>
