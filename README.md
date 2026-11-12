@@ -64,6 +64,8 @@ Keep these in sync every time you change them.
 | **An FAQ** | the visible `<details>` in `#faq` **and** the `FAQPage` JSON-LD (the text must match) |
 | **Pool timings, check-in slots or rules** | the page text, the matching FAQ answers, and the JSON-LD `checkinTime` / `checkoutTime` |
 | **Guest reviews** | the cards in `#reviews` **and** the `review` list in the JSON-LD |
+| **Typeform event enquiry form** | the form ID `hsGlZvQ7` in the `data-tf-popup` buttons and noscript links in `index.html` and `wedding-venue-neral/index.html` |
+| **Event capacities or event types** | the `#events` section in `index.html`, the wedding page text, its FAQs **and** the `EventVenue` and `FAQPage` JSON-LD on `/wedding-venue-neral/` |
 | **Page title or description** | the `<title>`, `<meta name="description">`, `og:` and `twitter:` tags (the description appears three times) |
 | **Address** | the contact section, map caption, JSON-LD `address` / `geo`, and your Google Business Profile |
 

@@ -5,6 +5,22 @@ Dates are written as YYYY-MM-DD. For changes before 2026-10-22, see the reposito
 
 ---
 
+## 2026-11-12 — Wedding venue page, Typeform enquiry form and local SEO
+
+**Added**
+- New page `/wedding-venue-neral/` targeting wedding venue searches near Mumbai, Karjat, Neral, Badlapur and Navi Mumbai: events hosted, the two lawns (big lawn 1,800-2,000 floating, small lawn 500-800), stay and catering, getting-here cards by area, 8 FAQs, and JSON-LD (`WebPage`, `BreadcrumbList`, `EventVenue`, `Service` with `areaServed`, `FAQPage`). No event prices are shown, in line with the "call for a quote" rule.
+- Typeform event enquiry form (https://form.typeform.com/to/hsGlZvQ7) opens as a popup from "Request a Quote" buttons on the wedding page and from the new `#events` section on the home page. It uses `embed.typeform.com/next/embed.js`, loaded async at the end of `index.html` and the wedding page. A `<noscript>` link to the form is included.
+- Home page `#events` section (between `#stays` and `#good-to-know`), wrapped in `EVENTS START` / `EVENTS END` comments.
+- "Weddings" link in the header navigation on every page, and "Weddings & Events" in the Explore list on the sub-pages.
+
+**SEO**
+- Home page: wedding venue keywords added to `<meta name="keywords">`; JSON-LD `areaServed` now includes Navi Mumbai, Thane, Kalyan, Badlapur and Panvel; JSON-LD description mentions weddings and events. The title and meta description are unchanged (still NYE-focused).
+- `sitemap.xml`: wedding page added (priority 0.9, with image entries); `lastmod` set to 2026-11-12 on all URLs.
+
+**To remember:** if the Typeform form is ever recreated, its ID changes. Update `data-tf-popup` in `index.html` and `wedding-venue-neral/index.html` and the noscript links.
+
+---
+
 ## 2026-10-31 — New Year's Eve bookings live (prices final)
 
 **Swapped in:** the full-detail version (formerly `index-nye-bookings-live.html`) is now `index.html`. The "Bookings opening soon" teaser and countdown are gone.
